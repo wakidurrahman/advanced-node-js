@@ -27,3 +27,25 @@
 - Read books, articles, and documentation regularly.
 
 Remember, the key to mastering Node.js is consistent practice and hands-on experience. As you progress, consider building larger and more complex projects to solidify your skills.
+
+# [Where I will get advanced node.js topics?](./docs/overview-of-learning.md)
+
+1. Official Documentation:
+2. Online Courses:
+3. Books:
+4. Blogs and Tutorials:
+5. GitHub Repositories:
+6. Conferences and Meetups:
+7. Online Communities:
+8. Advanced Courses and Certifications:
+9. Podcasts:
+10. Experiment and Build Projects:
+
+# Summary of cover topics for learning  advanced Node.js.
+
+- microservices
+- performance optimization
+- advanced asynchronous patterns
+- security
+- performance tuning
+- advanced design patterns
