@@ -83,3 +83,31 @@ The following concepts are also key to understand asynchronous programming, whic
 - [Async and Await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 - [Closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 - [The Event Loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+
+
+---
+#### Lexical Structure (আভিধানিক গঠন)
+
+This page describes JavaScript's lexical grammar. JavaScript source text is just a sequence of characters — in order for the interpreter to understand it, the string has to be parsed to a more structured representation.
+
+#### Expressions
+
+Expressions and operators by category
+ - Primary expressions
+ - Left-hand-side expressions
+ - Increment and decrement
+ - Unary operators
+ - Arithmetic operators
+ - Relational operators
+ - Equality operators
+ - Bitwise shift operators
+ - Binary bitwise operators
+ - Binary logical operators
+ - Conditional (ternary) operator
+ - Assignment operators
+ - Yield operators
+ - Spread syntax
+ - Comma operator
+
+
+
