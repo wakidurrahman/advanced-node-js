@@ -6,17 +6,17 @@
 
 1. Understand `JavaScript`
 2. Learn Basic `Node.js`
-3. `Asynchronous` JavaScript
+3. [`Asynchronous` JavaScript](./asynchronous-javascript/README.md)
 4. `Node.js` Modules
 5. `Express.js`
 6. `RESTful` APIs
 7. `Database` Integration
-8. `Authentication` and `Authorization`
-9. `WebSockets`
-10. `Testing`
-11. Advanced Topics (like `streams`, `clusters`, and `worker threads`)
-12. Security Best Practices
-13. Performance Optimization
+8. [`Authentication` and `Authorization`](./authentication-and-authorization/README.md)
+9. [`WebSockets`](./web-sockets/README.md)
+10. [`Testing`](/testing-applications/README.md)
+11. [Advanced Topics (like `streams`, `clusters`, and `worker threads`)](./advanced-concepts-topics/README.md)
+12. [Security Best Practices](./security-best-practices/README.md)
+13. [Performance Optimization](./performance-optimization/README.md)
 14. Build Tools and Deployment
 15. Continue Learning and Stay Updated
 
@@ -49,3 +49,19 @@ Remember, the key to mastering Node.js is consistent practice and hands-on exper
 - security
 - performance tuning
 - advanced design patterns
+
+## Project structure:
+
+```bash
+root
+├── advanced-concepts-topics
+├── asynchronous-javascript
+├── authentication-and-authorization
+├── docs
+├── nodejs-org-learn
+├── performance-optimization
+├── security-best-practices
+├── testing-applications
+├── web-sockets
+└── README.md
+```
