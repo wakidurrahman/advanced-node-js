@@ -128,3 +128,32 @@ This means that you can write all the modern `ES2015` + `JavaScript` that your `
 Another difference is that `Node.js` supports both the `CommonJS` and `ES module` systems (since Node.js v12), while in the browser we are starting to see the ES Modules standard being implemented.
 
 In practice, this means that you can use both `require()` and `import` in Node.js, while you are limited to `import` in the browser.
+
+
+### 5. The V8 JavaScript Engine
+
+V8 is the name of the JavaScript engine that powers Google Chrome.
+
+V8 is the JavaScript engine i.e. it `parses` and `executes` JavaScript code. The `DOM`, and the other `Web Platform APIs` (they all makeup `runtime` `environment`) are provided by the browser.
+
+The cool thing is that the JavaScript engine is `independent` of the browser in which it's `hosted`.
+
+This key feature enabled the rise of `Node.js`. `V8` was chosen to be the engine that powered `Node.js` back in 2009, and as the popularity of `Node.js` exploded, V8 became the engine that now powers an incredible amount of `server-side` code written in JavaScript.
+
+
+Other browsers have their own `JavaScript engine`:
+
+- Firefox has `SpiderMonkey`
+- Safari has `JavaScriptCore` (also called Nitro)
+- Edge was originally based on `Chakra` but has more recently been rebuilt using `Chromium` and the `V8` engine.
+
+
+All those engines implement the `ECMA ES-262` standard, also called `ECMAScript`, the standard used by JavaScript.
+
+***Compilation***
+
+JavaScript is generally considered an `interpreted` language, but modern JavaScript engines no longer just `interpret` `JavaScript`, they `compile` it.
+
+This has been happening since 2009, when the `SpiderMonkey` ( Firefox JavaScript engine) JavaScript `compiler` was added to `Firefox 3.5`, and everyone followed this idea.
+
+
