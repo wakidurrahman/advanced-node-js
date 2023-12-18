@@ -49,3 +49,19 @@ Remember, the key to mastering Node.js is consistent practice and hands-on exper
 - security
 - performance tuning
 - advanced design patterns
+
+## Project structure:
+
+```bash
+root
+├── advanced-concepts-topics
+├── asynchronous-javascript
+├── authentication-and-authorization
+├── docs
+├── nodejs-org-learn
+├── performance-optimization
+├── security-best-practices
+├── testing-applications
+├── web-sockets
+└── README.md
+```
