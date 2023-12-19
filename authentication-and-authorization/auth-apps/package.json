@@ -1,14 +1,13 @@
 {
-  "name": "create-nodejs-express-app",
+  "name": "auth-apps",
   "version": "1.7.0",
   "description": "Create a Node.js app for building production-ready RESTful APIs using Express, by running one command",
-  "bin": "bin/createNodejsApp.js",
   "main": "src/index.js",
-  "repository": "https://github.com/hagopj13/node-express-boilerplate.git",
-  "author": "Hagop Jamkojian <hagopj13@gmail.com>",
-  "license": "MIT",
+  "repository": "https://github.com/wakidurrahman/advanced-node-js.git",
+  "author": "Wakidur Rahman",
+  "license": "UNLICENSED",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=18.10.0"
   },
   "scripts": {
     "start": "pm2 start ecosystem.config.json --no-daemon",
