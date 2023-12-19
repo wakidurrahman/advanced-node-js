@@ -247,3 +247,98 @@ $ npm run watch
 $ npm run dev
 $ npm run prod
 ```
+
+---
+
+### 7. ECMAScript 2015 (ES6) and beyond.
+
+Node.js is built against modern versions of V8. By keeping up-to-date with the latest releases of this engine, we ensure new features from the JavaScript [ECMA-262 specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm) are brought to Node.js developers in a timely manner, as well as continued performance and stability improvements. Node.js V8 এর আধুনিক সংস্করণের বিপরীতে নির্মিত। এই ইঞ্জিনের সর্বশেষ রিলিজগুলির সাথে আপ-টু-ডেট রাখার মাধ্যমে, আমরা নিশ্চিত করি যে JavaScript ECMA-262 স্পেসিফিকেশন থেকে নতুন বৈশিষ্ট্যগুলি একটি সময়মত Node.js ডেভেলপারদের কাছে আনা হয়েছে, সেইসাথে ক্রমাগত কর্মক্ষমতা এবং স্থিতিশীলতার উন্নতি।
+
+All ECMAScript 2015 (ES6) features are split into three groups for shipping, staged, and in progress features:
+
+- **_All shipping_** features, which `V8` considers `stable`, are turned **_on by default on Node.js_** and do ***NOT*** require any kind of `runtime flag`.
+- **_Staged_** features, which are almost-completed features that are not considered stable by the `V8` team, require a runtime flag: `--harmony`.
+- In **_progress_** features can be activated individually by their respective `harmony` flag, although this is **highly discouraged** unless for testing purposes. ***`Note:`*** these flags are exposed by V8 and will potentially change without any deprecation notice.
+
+---
+
+### 8. Node.js, the difference between `development` and `production`.
+
+You can have different configurations for `production` and `development` environments.
+
+Node.js assumes it's always running in a `development` environment. You can signal `Node.js` that you are running in `production` by setting the `NODE_ENV=production` environment variable.
+
+This is usually done by executing the command
+```bash
+export NODE_ENV=production
+```
+
+You can also apply the environment variable by prepending it to your application initialization command:
+```bash
+NODE_ENV=production node app.js
+```
+
+This environment variable is a convention that is widely used in external libraries as well.
+
+Setting the environment to 1 generally ensures that
+
+- logging is kept to a minimum, essential level
+- more caching levels take place to optimize performance
+
+For example `Pug`, the templating library used by `Express`, compiles in debug mode if `NODE_ENV` is not set to `production`. Express views are compiled in every request in `development` mode, while in `production` they are `cached`.
+
+You can use conditional statements to execute code in different environments:
+```bash
+if (process.env.NODE_ENV === 'development') {
+  // ...
+}
+if (process.env.NODE_ENV === 'production') {
+  // ...
+}
+if (['production', 'staging'].includes(process.env.NODE_ENV)) {
+  // ...
+}
+```
+
+In an Express app, you can use this to set different error handlers per environment:
+```bash
+if (process.env.NODE_ENV === 'development') {
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+}
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.errorHandler());
+}
+```
+
+---
+
+### 9. Node.js with TypeScript
+
+First thing to do is to install TypeScript in our project:
+```bash
+npm i -D typescript
+```
+
+Take a look at this code snippet and then we can unpack it together
+
+```ts
+type User = {
+  name: string;
+  age: number;
+};
+function isAdult(user: User): boolean {
+  return user.age >= 18;
+}
+const justine: User = {
+  name: 'Justine',
+  age: 23,
+};
+const isJustineAnAdult: boolean = isAdult(justine);
+```
+
+Assuming that our file is named `example.ts`, the command would look like:
+```bash
+npx tsc example.ts
+```
+
+### 10. Node.js with WebAssembly
