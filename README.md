@@ -72,11 +72,11 @@ OpenJS Node.js Application Developer (JSNAD) Sample Curriculum Path
 
 **_Start by enrolling in this free course_**
 
-1. Introduction to Node.js (LFW111)
+1. [Introduction to Node.js (LFW111)](https://training.linuxfoundation.org/training/introduction-to-nodejs-lfw111/)
 
 **_Increase your chances of becoming certified on the first try by taking_**
 
-2. Node.js Application Development
+2. [Node.js Application Development](https://training.linuxfoundation.org/training/nodejs-application-development-lfw211/)
 
 **_Finally, register and sit for your exam:_**
 
