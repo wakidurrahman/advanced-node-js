@@ -1,6 +1,6 @@
 # Advance Node.js
 
-> ***This repository is mainly for node.js advanced top learning and practice. I will practice from beginning to advanced topics.***
+> **_This repository is mainly for node.js advanced top learning and practice. I will practice from beginning to advanced topics._**
 
 ## [How can I learn node.js from scratch to an advanced level?](./docs/overview-of-learning.md)
 
@@ -41,7 +41,7 @@ Remember, the key to mastering Node.js is consistent practice and hands-on exper
 9. Podcasts:
 10. Experiment and Build Projects:
 
-# Summary of cover topics for learning  advanced Node.js.
+# Summary of cover topics for learning advanced Node.js.
 
 - microservices
 - performance optimization
@@ -65,3 +65,19 @@ root
 ├── web-sockets
 └── README.md
 ```
+
+# Web & Application
+
+OpenJS Node.js Application Developer (JSNAD) Sample Curriculum Path
+
+**_Start by enrolling in this free course_**
+
+1. [Introduction to Node.js (LFW111)](https://training.linuxfoundation.org/training/introduction-to-nodejs-lfw111/)
+
+**_Increase your chances of becoming certified on the first try by taking_**
+
+2. [Node.js Application Development](https://training.linuxfoundation.org/training/nodejs-application-development-lfw211/)
+
+**_Finally, register and sit for your exam:_**
+
+3. OpenJS Node.js Application Developer
