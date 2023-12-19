@@ -63,4 +63,3 @@ Technology stack you will use to build a web service from the scratch. I’m goi
 
 ## Develop Application
 
-I’ve started with application structure and found a great repository that helped me to follow [suitable project styles](https://github.com/hagopj13/node-express-boilerplate)
