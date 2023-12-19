@@ -340,5 +340,6 @@ Assuming that our file is named `example.ts`, the command would look like:
 ```bash
 npx tsc example.ts
 ```
+---
 
 ### 10. Node.js with WebAssembly
