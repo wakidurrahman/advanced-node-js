@@ -1,8 +1,8 @@
-# Getting Started
+# 1. Getting Started
 
 It covers a wide range of topics and is regularly updated.
 
-## 1. Introduction to Node.js
+## 1.1 Introduction to Node.js
 
 > A Node.js app runs in a single process, without creating a new thread for every request. Node.js provides a set of asynchronous I/O primitives in its standard library that prevent JavaScript code from blocking and generally, libraries in Node.js are written using non-blocking paradigms, making blocking behavior the exception rather than the norm.
 > একটি Node.js অ্যাপ প্রতিটি অনুরোধের জন্য একটি নতুন থ্রেড তৈরি না করে একটি একক প্রক্রিয়ায় চলে। Node.js তার স্ট্যান্ডার্ড লাইব্রেরিতে অ্যাসিঙ্ক্রোনাস I/O আদিমগুলির একটি সেট সরবরাহ করে যা জাভাস্ক্রিপ্ট কোডকে ব্লক করা থেকে বাধা দেয় এবং সাধারণত, Node.js-এর লাইব্রেরিগুলি নন-ব্লকিং প্যারাডাইম ব্যবহার করে লেখা হয়, ব্লকিং আচরণকে আদর্শের পরিবর্তে ব্যতিক্রম করে তোলে।
@@ -46,7 +46,7 @@ server.listen(port, hostname, () => {
 
 ---
 
-## 2. How to install Node.js
+## 1.2. How to install Node.js
 
 ```bash
 https://nodejs.org/download/.
@@ -54,7 +54,7 @@ https://nodejs.org/download/.
 
 ---
 
-## 3. How much JavaScript do you need to know to use Node.js?
+## 1.3. How much JavaScript do you need to know to use Node.js?
 
 > As a beginner, it's hard to get to a point where you are confident enough in your programming abilities. While learning to code, you might also be confused at where does JavaScript end, and where Node.js begins, and vice versa.
 > একজন শিক্ষানবিস হিসাবে, এমন একটি point পৌঁছানো কঠিন যেখানে আপনি আপনার programming দক্ষতার উপর যথেষ্ট আত্মবিশ্বাসী। কোড শেখার সময়, আপনি JavaScript কোথায় শেষ হবে এবং কোথায় Node.js শুরু হবে তা নিয়েও বিভ্রান্ত হতে পারেন, এবং এর বিপরীতে।
@@ -117,7 +117,7 @@ Expressions and operators by category
 
 ---
 
-## 4. Differences between `Node.js` and the Browser
+## 1.4. Differences between `Node.js` and the Browser
 
 Both the browser and `Node.js` use JavaScript as their programming language. Building apps that run in the browser is a completely different thing than building a `Node.js` application. Despite the fact that it's always JavaScript, there are some key differences that make the experience radically different.
 
@@ -137,7 +137,7 @@ In practice, this means that you can use both `require()` and `import` in Node.j
 
 ---
 
-## 5. The V8 JavaScript Engine
+## 1.5. The V8 JavaScript Engine
 
 V8 is the name of the JavaScript engine that powers Google Chrome.
 
@@ -163,7 +163,7 @@ This has been happening since 2009, when the `SpiderMonkey` ( Firefox JavaScript
 
 ---
 
-## 6. An introduction to the NPM package manager
+## 1.6. An introduction to the NPM package manager
 
 **_Introduction to npm_**
 
@@ -250,7 +250,7 @@ $ npm run prod
 
 ---
 
-## 7. ECMAScript 2015 (ES6) and beyond.
+## 1.7. ECMAScript 2015 (ES6) and beyond.
 
 Node.js is built against modern versions of V8. By keeping up-to-date with the latest releases of this engine, we ensure new features from the JavaScript [ECMA-262 specification](http://www.ecma-international.org/publications/standards/Ecma-262.htm) are brought to Node.js developers in a timely manner, as well as continued performance and stability improvements. Node.js V8 এর আধুনিক সংস্করণের বিপরীতে নির্মিত। এই ইঞ্জিনের সর্বশেষ রিলিজগুলির সাথে আপ-টু-ডেট রাখার মাধ্যমে, আমরা নিশ্চিত করি যে JavaScript ECMA-262 স্পেসিফিকেশন থেকে নতুন বৈশিষ্ট্যগুলি একটি সময়মত Node.js ডেভেলপারদের কাছে আনা হয়েছে, সেইসাথে ক্রমাগত কর্মক্ষমতা এবং স্থিতিশীলতার উন্নতি।
 
@@ -262,7 +262,7 @@ All ECMAScript 2015 (ES6) features are split into three groups for shipping, sta
 
 ---
 
-## 8. Node.js, the difference between `development` and `production`.
+## 1.8. Node.js, the difference between `development` and `production`.
 
 You can have different configurations for `production` and `development` environments.
 
@@ -316,7 +316,7 @@ if (process.env.NODE_ENV === 'production') {
 
 ---
 
-## 9. Node.js with TypeScript
+## 1.9. Node.js with TypeScript
 
 First thing to do is to install TypeScript in our project:
 
@@ -349,7 +349,7 @@ npx tsc example.ts
 
 ---
 
-## 10. Node.js with WebAssembly
+## 1.10. Node.js with WebAssembly
 
 WebAssembly is a high-performance assembly-like language that can be compiled from various languages, including `C/C++`, `Rust`, and `AssemblyScript`. Currently, it is supported by `Chrome`, `Firefox`, `Safari`, `Edge`, and `Node.js`!
 
