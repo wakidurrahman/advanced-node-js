@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Build a microservice using `Node.js`. I will create a `scalable`, `robust`, `reliable` and `performant` solution by using the popular `Node.js stack`.",
   "main": "index.js",
+  "repository": "https://github.com/wakidurrahman/advanced-node-js.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
