@@ -49,6 +49,7 @@ Remember, the key to mastering Node.js is consistent practice and hands-on exper
 - security
 - performance tuning
 - advanced design patterns
+- WebAssembly
 
 ## Project structure:
 

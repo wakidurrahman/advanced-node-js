@@ -60,7 +60,7 @@ To dive into advanced Node.js topics, you can explore various resources online. 
 
 1. Official Documentation:
     - Always start with the official documentation for Node.js. It covers a wide range of topics and is regularly updated.
-    - Node.js Official Documentation
+    - [Node.js Official Documentation](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
 2. Online Courses:
     - Platforms like Udemy, Coursera, and LinkedIn Learning offer advanced Node.js courses. Look for courses that cover topics such as microservices, performance optimization, and advanced asynchronous patterns.
 3. Books:
@@ -97,5 +97,11 @@ Remember to stay curious and proactive in seeking out new information. The Node.
 1. [Node.js Certification by NodeSource](https://nodesource.com/services/training).
 2. [edX - Microsoft's Introduction to Node.js:](https://www.edx.org/)
 3. [LinkedIn Learning: Node.js Courses](https://www.linkedin.com/learning/)
+4. [The Linux Foundation](https://training.linuxfoundation.org/itprofessionalprogram-catalog/?_sft_topic_area=embedded-development)
 
 Before enrolling in any course or certification program, read reviews, check the syllabus, and ensure that it aligns with your learning goals. Additionally, verify whether the course content is up-to-date, as the technology landscape evolves rapidly.
+
+# Documentation coverage topics and areas
+
+1. [nodejs.org-official-documentation](./nodejs.org-official-documentation/getting-started.md)
+2. [web-assembly](./web-assembly/overview.md)
