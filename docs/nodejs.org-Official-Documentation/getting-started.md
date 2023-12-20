@@ -137,7 +137,7 @@ In practice, this means that you can use both `require()` and `import` in Node.j
 
 ---
 
-### 5. The V8 JavaScript Engine
+## 5. The V8 JavaScript Engine
 
 V8 is the name of the JavaScript engine that powers Google Chrome.
 
