@@ -17,7 +17,7 @@ Build a microservice using `Node.js`. I will create a `scalable`, `robust`, `rel
   - from `‘new’` to `‘active’`
   - from `‘new’` to `‘canceled’`
   - from `‘active’` to `‘completed’`
-  - from `‘active’` to `‘canceled’`;
+  - from `‘active’` to `‘cancelled’`;
 
 **_The main non-functional requirements_**
 
@@ -63,3 +63,38 @@ Technology stack you will use to build a web service from the scratch. I’m goi
 
 ## Develop Application
 
+**_project dependencies_**
+
+````json
+"dependencies": {
+   "compression": "^1.7.4",
+   "dotenv": "^16.3.1",
+   "express": "^4.18.2",
+   "express-mongo-sanitize": "^2.2.0",
+   "express-prom-bundle": "^6.6.0",
+   "joi": "^17.11.0",
+   "mongoose": "^8.0.3",
+   "on-headers": "^1.0.2",
+   "prom-client": "^15.1.0",
+   "swagger-jsdoc": "^6.2.8",
+   "swagger-ui-express": "^5.0.0",
+   "winston": "^3.11.0",
+   "xss-clean": "^0.1.4"
+ },```
+
+````
+
+**_project devDependencies_**
+
+````json
+"devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.1"
+  }```
+````
