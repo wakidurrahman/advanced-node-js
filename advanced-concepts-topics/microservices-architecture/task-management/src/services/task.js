@@ -1,15 +1,16 @@
-const { error } = require("winston");
-const TaskModel = require("../models/task");
-const responseTo = require("../utils/response-to");
-
+const TaskModel = require('../models/task');
+const responseTo = require('../utils/response-to');
+const logger = require('../config/logger');
 
 // Available status transitions  "new", "active", "completed", "cancelled"
 const availableUpdates = {
-  new: ["active", "cancelled"],
-  active: ["completed", "cancelled"],
+  new: ['active', 'cancelled'],
+  active: ['completed', 'cancelled'],
   completed: [],
   cancelled: [],
 };
+
+const getTasks = () => TaskModel.find();
 
 /**
  * Get Task By Task Id
@@ -68,7 +69,7 @@ const updateTaskById = async (id, { name, description, status }) => {
     }
     if (status) {
       const allowedStatuses = availableUpdates[task.status];
-      console.log("Status", allowedStatuses)
+      console.log('Status', allowedStatuses);
       if (!allowedStatuses.includes(status)) {
         return {
           error: `cannot update from '${task.status}' to '${status}'`,
@@ -91,7 +92,8 @@ const updateTaskById = async (id, { name, description, status }) => {
     try {
       await task.save();
     } catch (error) {
-      if (error.name === "VersionError") {
+      logger.warn('error during save', { error });
+      if (error.name === 'VersionError') {
         continue;
       }
     }
@@ -104,6 +106,7 @@ const updateTaskById = async (id, { name, description, status }) => {
 };
 
 module.exports = {
+  getTasks,
   getTaskById,
   createTask,
   updateTaskById,

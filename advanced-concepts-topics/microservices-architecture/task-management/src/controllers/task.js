@@ -16,6 +16,23 @@ const toDoTo = (task) => {
   };
 };
 
+const getTasks = asyncHandler(async (req, res, next) => {
+  // 1. Find all tasks
+  const tasks = await taskService.getTasks();
+  if (!tasks) {
+    return next(
+      new ErrorResponse(`${responseTo.TASK_NOT_FOUND}`, responseTo.FOUR_HUNDRED)
+    );
+  }
+
+  // 3. Final response
+  res.status(200).json({
+    success: true,
+    message: responseTo.TASK_FOUND,
+    data: tasks,
+  });
+});
+
 /**
  * @desc Get Task By Task ID.
  * @route   get /api/v1/task/:id
@@ -132,6 +149,7 @@ const updateTaskByID = asyncHandler(async (req, res, next) => {
 });
 
 module.exports = {
+  getTasks,
   getTaskById,
   createTask,
   updateTaskByID,
