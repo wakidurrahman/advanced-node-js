@@ -1,12 +1,15 @@
-# Mixu's Node book 
+# Mixu's Node book
 
-A book about using Node.js
+> A book about using Node.js
 
-## 1. Introduction  
+## 1. Introduction
 
 My ideal book is short, comprehensive and interesting.
 
-In order to learn Node, you need to learn how to write code - not how to use a 3rd party library or a set of spells. I will recommend a few libraries, but the focus is on writing code yourself.
+In order to learn `Node`, you need to learn **_how to write code_** - not how to **_use a 3rd party library_** or a set of spells. I will recommend a few libraries, but the focus is on writing code yourself.
 
+This book will cover more advanced topics - such as
 
-## 2. What is Node.js?
+- testing
+- ES6
+- single page applications
