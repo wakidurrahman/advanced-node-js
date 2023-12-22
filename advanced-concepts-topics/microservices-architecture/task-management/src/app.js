@@ -9,11 +9,16 @@ const tasks = require('./routes/v1');
 // Error
 const globalErrorHandler = require('./services/error-handler');
 const ErrorResponse = require('./utils/error-response');
+// Middlewares
+const logger = require('./middlewares/logger');
 
 const app = express();
 
 // Service
 app.use(express.json());
+
+// logger
+app.use(logger);
 
 // Sanitize request data
 app.use(xss());

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const logger = require('../config/logger');
 
 let mongoUrl;
 
@@ -8,10 +9,12 @@ async function dbInit({ mongo: { url } }) {
   try {
     await mongoose.connect(mongoUrl);
   } catch (error) {
-    console.log(`Could not connect to the database. Exiting now... ${error}`);
+    logger.error('error in mongo connection', { error });
+    setTimeout(dbInit, 5000);
   }
 }
 
+// Establish DB connection;
 const db = mongoose.connection;
 
 function destroy() {
@@ -19,14 +22,22 @@ function destroy() {
   return mongoose.disconnect();
 }
 
-db.on('connected', () =>
-  console.log('MongoDB database connection established successfully!')
-);
+// MONGO Connected
+db.on('connected', () => {
+  logger.info('mongo connected');
+});
+
+// MONGO error
 db.on('error', () => {
-  console.error('error in mongo connection');
+  logger.error('error in mongo connection', { error });
   mongoose.disconnect();
 });
-db.on('disconnected', () => console.info('mongo disconnected'));
+
+// MONGO disconnected
+db.on('disconnected', () => {
+  logger.info('mongo disconnected');
+  dbInit({ mongo: { url: mongoUrl } });
+});
 
 module.exports = {
   dbInit,

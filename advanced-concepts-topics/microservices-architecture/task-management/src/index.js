@@ -1,20 +1,29 @@
 const path = require('path');
-const { dbInit, destroy } = require('./db');
-const { createBaseConfig } = require('./validation/base');
 const app = require('./app');
+const { dbInit } = require('./db');
+const { createBaseConfig } = require('./validation/base');
+const logger = require('./config/logger');
 
 async function run() {
+  // input base env
   const configBasePath = path.join(__dirname, '../.env');
+  // Base Environment config validation.
   const config = createBaseConfig(configBasePath);
-
+  // Logger Initialization
+  logger.initLogs(config);
+  // Database Initialization
   await dbInit(config);
+
+  // creates a HTTP server, and the listen on port ... 
   const server = app.listen(config.port, () => {
-    console.info('App started', { port: config.port });
+    logger.info('app started', { port: config.port });
   });
+
+  // server exit handler. 
   const exitHandler = () => {
     if (server) {
       server.close(() => {
-        console.info('server closed');
+        logger.info('server closed');
         process.exit(1);
       });
     } else {
@@ -23,7 +32,7 @@ async function run() {
   };
 
   const unexpectedErrorHandler = (error) => {
-    console.error('unhandled error', error);
+    logger.error('unhandled error', { error });
     exitHandler();
   };
 
@@ -31,7 +40,7 @@ async function run() {
   process.on('unhandledRejection', unexpectedErrorHandler);
 
   process.on('SIGTERM', () => {
-    console.info('SIGTERM received');
+    logger.info('SIGTERM received');
     if (server) {
       server.close();
     }
