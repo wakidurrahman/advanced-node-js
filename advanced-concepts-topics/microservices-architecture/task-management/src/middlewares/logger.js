@@ -7,7 +7,7 @@ const logger = require('../config/logger');
 function loggerMiddleware(req, res, next) {
   // Response start time.
   const startedTime = new Date();
-  // Convert time formet 
+  // Convert time format 
   function msToTime(duration) {
     let milliseconds = parseInt(duration % 1000).toFixed(0);
     let seconds = parseInt((duration / 1000) % 60).toFixed(0);

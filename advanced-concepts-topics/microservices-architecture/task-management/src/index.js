@@ -9,6 +9,7 @@ async function run() {
   const configBasePath = path.join(__dirname, '../.env');
   // Base Environment config validation.
   const config = createBaseConfig(configBasePath);
+  console.log(config);
   // Logger Initialization
   logger.initLogs(config);
   // Database Initialization
