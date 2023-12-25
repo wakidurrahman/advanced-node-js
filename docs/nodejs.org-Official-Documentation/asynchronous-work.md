@@ -65,3 +65,4 @@ function initiate() {
 initiate();
 ```
 
+### State management
