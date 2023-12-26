@@ -1,0 +1,92 @@
+components:
+  schemas:
+    CreateTask:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The task name
+          example: Buy milk
+        description:
+          type: string
+          description: The task description
+          example: Go to the store and buy some milk
+
+    UpdateTask:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The task name
+          example: Buy milk
+        description:
+          type: string
+          description: The task description
+          example: Go to the store and buy some milk
+        status:
+          type: string
+          description: The task status
+          example: new
+          enum:
+            - new
+            - active
+            - completed
+            - canceled
+
+    TaskResult:
+      type: object
+      required:
+        - success
+      properties:
+        success:
+          type: boolean
+          description: The result status
+          example: true
+        message:
+          type: string
+          description: The result message
+          example: Task created successfully
+        task:
+          $ref: "#/components/schemas/Task"
+
+    Task:
+      type: object
+      required:
+        - id
+        - name
+        - createdAt
+        - status
+      properties:
+        id:
+          type: string
+          description: The task ID
+          example: 1
+        name:
+          type: string
+          description: The task name
+          example: Buy milk
+        description:
+          type: string
+          description: The task description
+          example: Go to the store and buy some milk
+        createdAt:
+          type: string
+          format: date-time
+          description: The task creation date
+          example: 2021-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          format: date-time
+          description: The task update date
+          example: 2021-01-01T00:00:00.000Z
+        status:
+          type: string
+          description: The task status
+          example: new
+          enum:
+            - new
+            - active
+            - completed
+            - canceled
