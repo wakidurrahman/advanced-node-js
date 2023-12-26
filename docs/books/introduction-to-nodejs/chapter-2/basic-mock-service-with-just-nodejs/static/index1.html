@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mocking Service</title>
+    <script type="module" src="app1.js"></script>
+    <style>
+      body {
+        background: #fad8d8;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <button type="button" id="fetch">Fetch Products</button>
+  
+    <hr />
+    <div id="products"></div>
+    <!-- template  -->
+    <template id="element-details-template">
+      <style>
+        details {
+          font-size: 1.5em;
+        }
+        summary {
+          cursor: pointer;
+        }
+        p {
+          text-indent: 1.5rem;
+        }
+      </style>
+      <details>
+        <summary>
+          <strong>
+            <slot name="name"></slot>
+          </strong>
+          -
+          <em>
+            <slot name="rrp"></slot>
+          </em>
+        </summary>
+        <p>
+          <slot name="info"></slot>
+        </p>
+      </details>
+    </template>
+  </body>
+</html>
