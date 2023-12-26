@@ -1,0 +1,16 @@
+{
+  "name": "basic-mock-service-with-just-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "static": "serve -p 5050 static",
+    "server": "node server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
