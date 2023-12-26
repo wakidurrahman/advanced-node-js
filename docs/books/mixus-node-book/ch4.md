@@ -7,11 +7,11 @@
 There are basically two things that trip people up in Javascript:
 
 1. The rules surrounding the `'this`' keyword
-2. Variable scope rules.
+2. Variable `scope` rules.
 
 ### 4.1 Gotcha #1: `this` keyword
 
-In `object-oriented programming`(OOP) languages, the `this` keyword is used to refer to the `current instance` of the object.
+In `object-oriented programming`(OOP) languages, the `this` keyword is used to **refer** to the `current instance` of the object.
 
 In `Javascript` - which is a `prototype-based` language - the `this` keyword is not fixed to a **_particular value_**. Instead, the `value` of `this` is determined by **`how the function is called`**
 
@@ -19,16 +19,17 @@ In `Javascript` - which is a `prototype-based` language - the `this` keyword is 
 
 ```js
 // Calling the method of an object
-const objectContext = {
+const user = {
   id: 1,
-  name: "Wakidur",
-  details: "An object ",
-  f1: function () {
-    console.log(this);
+  name: "example",
+  callThis: function () {
+    console.log("This refer", this);
   },
 };
+
+user.callThis(); // this refers to the current object
 // We have define an object, and call objectContext.f1();
-objectContext.f1();
+user.f1();
 ```
 
 **_Calling a standalone function_**
@@ -36,11 +37,38 @@ objectContext.f1();
 ```js
 // Calling a standalone function
 function standaloneFunction() {
+  // In this case, this refers to the global object, which is "DomWindow" in the `browser`
+  console.log(this);
+  // In this case, this refers to the global object, which is "DomWindow" in the `browser`
   console.log(this.toString());
   // In this case, this refers to the global object, which is "DomWindow" in the `browser`
   console.log(this === window);
   // In this case, this refers to the global object, which is "global" in the  `Node`
   // console.log(this === global);
 }
-standaloneFunction();
+```
+
+**_Manipulating this via Function.apply and Function.call_**
+
+```js
+// 3. Manipulating this via Function.apply and Function.call
+
+function manipulating() {
+  console.log(this);
+}
+
+const objectManipulation1 = { id: "Foo" };
+const objectManipulation2 = { id: "Bar" };
+// both call() and apply() allow us to specify what the value of this should be.
+manipulating.call(objectManipulation1); // {id: 'Foo'}
+manipulating.apply(objectManipulation2); // {id: 'Bar'}
+
+// The difference between the two is how they pass on additional arguments
+function manipulatingWithParams(a, b) {
+  console.log(this, a, b);
+}
+
+// Call() takes the actual arguments of call(), while apply() takes just two arguments: thisArg and an array of arguments.
+manipulatingWithParams.call(objectManipulation1, "A", "B"); // {id: 'Foo'} 'A' 'B'
+manipulatingWithParams.apply(objectManipulation2, ["C", "D"]); // {id: 'Bar'} 'C' 'D'
 ```
