@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mocking Service</title>
-    <script type="module" src="app.js"></script>
+    <script type="module" src="app1.js"></script>
     <style>
       body {
         background: #fad8d8;
@@ -13,19 +13,12 @@
   </head>
   <body>
     <nav>
-      <!-- The Fetch Products button has been replaced with a selector element for choosing the category. -->
-      <label for="category">Choose a category:</label>
-      <select name="category" id="category">
-        <option value="" hidden>Select Category</option>
-        <option value="electronics">Electronics</option>
-        <option value="confectionery">Confectionery</option>
-      </select>
-    </nav>
+      <button type="button" id="fetch">Fetch Products</button>
+  
     <hr />
     <div id="products"></div>
-    <hr />
     <!-- template  -->
-    <template id="item">
+    <template id="element-details-template">
       <style>
         details {
           font-size: 1.5em;
