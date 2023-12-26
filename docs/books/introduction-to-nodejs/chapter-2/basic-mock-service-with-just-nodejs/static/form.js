@@ -4,6 +4,7 @@
 const API = "http://localhost:3000";
 
 // we have replaced the button-click event listener with an input event listener on the select element.
+
 // Populate products From API method
 const populateProducts = async (category, method = "GET", payload) => {
   // Search DOM by using query selector
@@ -50,30 +51,31 @@ category.addEventListener("input", async ({ target }) => {
   await populateProducts(target.value);
 });
 
-console.log("category", category.value)
-
 // Add product
 addProduct.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  event.preventDefault();
   const { target } = event;
-  console.log(category);
+  // Get currently selected category
+  const { value } = category;
   const payload = {
     name: target.name.value,
     rrp: target.rrp.value,
     info: target.info.value,
   };
-  await populateProducts(category.value, "POST", payload);
+  // function is called with the currently selected category,
+  // the method argument as ‘POST’, and a `payload` to send to the server based on the form values.
+  await populateProducts(value, "POST", payload);
   target.reset();
 });
 
 // Custom element.
 customElements.define(
   "product-item",
-  class Item extends HTMLElement {
+  class extends HTMLElement {
     constructor() {
       super();
-      const itemTmpl = document.querySelector("#item").content;
-      this.attachShadow({ mode: "open" }).appendChild(itemTmpl.cloneNode(true));
+      const template = document.getElementById("item").content;
+      this.attachShadow({ mode: "open" }).appendChild(template.cloneNode(true));
     }
   }
 );

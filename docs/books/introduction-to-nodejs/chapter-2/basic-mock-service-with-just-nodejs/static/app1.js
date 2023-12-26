@@ -31,16 +31,7 @@ document.querySelector("#fetch").addEventListener("click", async () => {
   await populateProductsForButton();
 });
 
-// customElements.define(
-//   "product-item",
-//   class Item extends HTMLElement {
-//     constructor() {
-//       super();
-//       const itemTmpl = document.querySelector("#item").content.cloneNode(true);
-//       this.attachShadow({ mode: "open" }).appendChild(itemTmpl);
-//     }
-//   }
-// );
+
 
 customElements.define(
   "element-details",

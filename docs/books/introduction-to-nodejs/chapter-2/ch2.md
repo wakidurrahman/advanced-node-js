@@ -63,3 +63,10 @@ basic-mock-service-with-just-nodejs
     └── index.html
 ```
 
+By mocking the GET routes in our local mock service, we can separate the client-side code from the data source and simulate the behavior of a real production service during development.
+
+### Creating POST Routes
+
+It is highly recommended that production Node.js services are stateless.
+
+we need to create a data utility library plugin to handle the insertion of new items into the mock data.
