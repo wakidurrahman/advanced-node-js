@@ -3,15 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mocking Service</title>
-    <script type="module" src="app.js"></script>
+    <title>Adding new items</title>
+    <script type="module" src="./form.js"></script>
+    <!-- Form style  -->
     <style>
       body {
         background: #fad8d8;
       }
+      #add-product {
+        margin-top: 1em;
+        width: 20rem;
+        display: none;
+      }
+      #add-product input {
+        margin-bottom: 0.5em;
+      }
+      [name="name"],
+      [name="rrp"] {
+        width: calc(10rem - 2px);
+      }
+      [name="info"] {
+        width: 20rem;
+      }
+      #add-product button {
+        font-weight: bold;
+        width: 5em;
+        float: right;
+      }
     </style>
   </head>
   <body>
+    <h1>
+      Mock web service to handle POST routes for adding new items to a category
+    </h1>
+    <hr />
     <nav>
       <!-- The Fetch Products button has been replaced with a selector element for choosing the category. -->
       <label for="category">Choose a category:</label>
@@ -22,7 +47,17 @@
       </select>
     </nav>
     <hr />
+    <!-- append child element inside product  -->
     <div id="products"></div>
+
+    <!-- Form Element  -->
+    <form id="add-product">
+      <input name="name" placeholder="name" type="text" required />
+      <input name="rrp" placeholder="rrp" type="number" step="0.01" required />
+      <input name="info" placeholder="info" type="text" required />
+      <button type="submit">Add</button>
+    </form>
+
     <!-- template  -->
     <template id="item">
       <style>
