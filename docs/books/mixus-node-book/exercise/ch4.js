@@ -13,9 +13,9 @@ user.callThis(); // this refers to the current object
 
 // Since every function has a 'this' value, you can access `this` even in functions that are not properties of an object.
 function standaloneFunction() {
-    console.log(this);
-    console.log(this.toString());
-    console.log(this === window);
+  console.log(this);
+  console.log(this.toString());
+  console.log(this === window);
 }
 
 standaloneFunction();
@@ -23,22 +23,33 @@ standaloneFunction();
 // 3. Manipulating this via Function.apply and Function.call
 
 function manipulating() {
-    console.log(this);
+  console.log(this);
 }
 
-const objectManipulation1 = {id: "Foo"};
-const objectManipulation2 = {id: "Bar"};
+const objectManipulation1 = { id: "Foo" };
+const objectManipulation2 = { id: "Bar" };
 // both call() and apply() allow us to specify what the value of this should be.
 manipulating.call(objectManipulation1); // {id: 'Foo'}
 manipulating.apply(objectManipulation2); // {id: 'Bar'}
 
-// The difference between the two is how they pass on additional arguments    
+// The difference between the two is how they pass on additional arguments
 function manipulatingWithParams(a, b) {
-    console.log(this, a, b);
+  console.log(this, a, b);
 }
 
 // Call() takes the actual arguments of call(), while apply() takes just two arguments: thisArg and an array of arguments.
-manipulatingWithParams.call(objectManipulation1, 'A', 'B'); // {id: 'Foo'} 'A' 'B'
-manipulatingWithParams.apply(objectManipulation2, ["C", "D"]); // {id: 'Bar'} 'C' 'D'         
+manipulatingWithParams.call(objectManipulation1, "A", "B"); // {id: 'Foo'} 'A' 'B'
+manipulatingWithParams.apply(objectManipulation2, ["C", "D"]); // {id: 'Bar'} 'C' 'D'
 
+// 4. Context changes
 
+const changesContext = {
+  id: "xyz",
+  printId: function () {
+    console.log(`This id is ${this.id} ${this.toString()}`);
+  },
+};
+
+setTimeout(changesContext.printId, 100); //This id is undefined [object Window]
+const methodCall = changesContext.printId;
+methodCall(); // This id is undefined [object Window]

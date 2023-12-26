@@ -72,3 +72,24 @@ function manipulatingWithParams(a, b) {
 manipulatingWithParams.call(objectManipulation1, "A", "B"); // {id: 'Foo'} 'A' 'B'
 manipulatingWithParams.apply(objectManipulation2, ["C", "D"]); // {id: 'Bar'} 'C' 'D'
 ```
+
+**_Context changes_**
+
+The value of `this` is not fixed it is determined by `how the function is called`. In other words, the value of `this` is determined at the time the function is called, rather than being fixed to some particular value.
+
+```js
+// 4. Context changes
+
+const changesContext = {
+  id: "xyz",
+  printId: function () {
+    console.log(`This id is ${this.id} ${this.toString()}`);
+  },
+};
+
+setTimeout(changesContext.printId, 100); //This id is undefined [object Window]
+const methodCall = changesContext.printId;
+methodCall(); // This id is undefined [object Window]
+```
+
+Since the value of `this` is determined at **_`call time`_** - and we are not calling the function using the `object.method` notation, ``
