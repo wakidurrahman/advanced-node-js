@@ -6,6 +6,8 @@ const prometheus = require('express-prom-bundle');
 
 // Routes
 const tasks = require('./routes/v1');
+const swaggerDoc = require('./routes/docs');
+const health = require('./routes/health')
 // Error
 const globalErrorHandler = require('./services/error-handler');
 const ErrorResponse = require('./utils/error-response');
@@ -27,7 +29,13 @@ app.use(mongoSanitize());
 // Compress all responses
 app.use(compression());
 
-// Task API
+// swagger docs
+app.use('/api-docs', swaggerDoc)
+
+// Health API
+app.use('/health', health)
+
+// Task API V1
 app.use('/api/v1', tasks);
 
 // while card

@@ -47,5 +47,5 @@ async function run() {
     }
   });
 }
-
+// Run project.
 run();

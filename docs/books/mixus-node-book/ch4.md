@@ -92,4 +92,122 @@ const methodCall = changesContext.printId;
 methodCall(); // This id is undefined [object Window]
 ```
 
-Since the value of `this` is determined at **_`call time`_** - and we are not calling the function using the `object.method` notation, ``
+Since the value of `this` is determined at **_`call time`_** - and we are not calling the function using the `object.method` notation, `this` refers to the global object.
+
+In `setTimeout(changesContext.printId, 100);`; we are passing the value of `obj.printId`, which is a function. When that function later gets called, it is called as a standalone function not as a method of an object.
+
+To get around this, we can create a function which maintains a reference to obj, which makes sure that `this` is bound correctly.
+
+```js
+setTimeout(() => {
+  changesContext.printId(); // method call
+}, 100);
+const referenceFunc = function () {
+  changesContext.printId();
+};
+referenceFunc();
+```
+
+To store the value of `this` at the beginning of a function to a variable called `self`, and then using `self` in callback in place of `this`.
+
+````js
+const objectSelfUse = {
+  items: ["a", "b", "c", "d", "f", 1, 3, 5, 6],
+  processItem: function () {
+    // `self` is an ordinary variable,  it will contain the value of this when the  function was called.
+    // no matter how or when the ```callback function passed to forEach()``` gets called.
+    // If we had used "this" instead of "self" in the callback function,
+    // it would have referred to the wrong object and the call to print() would have failed.
+    const self = this; // assign this to self
+    this.items.forEach((item) => {
+      self.printItem(item);
+    });
+  },
+  printItem: function (item) {
+    console.log(`*** ${item} ***`);
+  },
+};
+````
+
+### 4.2 Gotcha #2: variable scope and variable evaluation strategy
+
+There are three things you need to remember about variable scope in JavaScript.
+
+1. Variable scope is based on the nesting of functions. In other words, the position of the function in the source always determines what variables can be accessed.
+
+```js
+// 1. Nested function can access their parent's variables
+const globalVariables = "foo";
+function parentFunc() {
+  const b = "bar";
+  function nested() {
+    console.log(globalVariables);
+    console.log(b);
+  }
+  nested();
+}
+parentFunc();
+
+// 1.1 Non-nested functions can only access the topmost, global variables:
+function parentSecond() {
+  const b = "Nested inside parent function";
+}
+function accessParentVariable() {
+  console.log(globalVariables);
+  console.log(b);
+}
+
+parentSecond();
+accessParentVariable();
+```
+
+2. Defining functions creates new scopes:
+
+```js
+// 2. The default behavior is to access previous scope
+function grandparent() {
+  const b = "bar";
+  function parent() {
+    function nested() {
+      console.log(globalVariables);
+      console.log(b);
+    }
+    nested();
+  }
+  parent();
+}
+grandparent();
+
+// 2.  but inner function scopes can prevent access to a previous scope by defining a variable with the same name:
+
+function grandparentPrevent() {
+  const b = "bar";
+  function parent() {
+    const b = "B redefined!";
+    function nested() {
+      console.log(globalVariables);
+      console.log(b);
+    }
+    nested();
+  }
+  parent();
+}
+grandparentPrevent();
+```
+
+3. Some functions are executed later, rather than immediately. You can emulate this yourself by storing but not executing functions,
+
+```js
+var storyArrayData = [];
+for (var i = 0; i < 5; i++) {
+  storyArrayData[i] = function foo() {
+    console.log(i);
+  };
+}
+// if we will user `var` the output lock like
+storyArrayData[0](); // 5
+storyArrayData[1](); // 5
+storyArrayData[2](); // 5
+storyArrayData[3](); // 5
+storyArrayData[4](); // 5
+```

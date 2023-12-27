@@ -10,25 +10,30 @@
       body {
         background: #fad8d8;
       }
+      #add-product label {
+        display: inline;
+      }
       #add-product {
-        margin-top: 1em;
-        width: 20rem;
+        width: 30rem;
         display: none;
+        border: 1px solid #09c;
+        padding: 10px;
       }
       #add-product input {
         margin-bottom: 0.5em;
       }
+
       [name="name"],
       [name="rrp"] {
-        width: calc(10rem - 2px);
+        width: calc(11.7rem - 2px);
       }
       [name="info"] {
-        width: 20rem;
+        width: 27rem;
       }
+
       #add-product button {
         font-weight: bold;
         width: 5em;
-        float: right;
       }
     </style>
   </head>
@@ -52,9 +57,19 @@
 
     <!-- Form Element  -->
     <form id="add-product">
-      <input name="name" placeholder="name" type="text" required />
-      <input name="rrp" placeholder="rrp" type="number" step="0.01" required />
-      <input name="info" placeholder="info" type="text" required />
+      <label for="name">Name: </label>
+      <input id="name" name="name" placeholder="name" type="text" required />
+      <label for="rrp">RRP: </label>
+      <input
+        id="rrp"
+        name="rrp"
+        placeholder="rrp"
+        type="number"
+        step="0.01"
+        required
+      />
+      <label for="info">Info: </label>
+      <input id="info" name="info" placeholder="info" type="text" required />
       <button type="submit">Add</button>
     </form>
 
