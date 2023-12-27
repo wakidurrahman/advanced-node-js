@@ -1,21 +1,27 @@
 "use strict";
 const data = [
   {
-    id: "A1",
+    id: "E1",
     name: "Vacuum Cleaner",
     rrp: "99.99",
     info: "The suckiest vacuum in the world.",
   },
   {
-    id: "A2",
+    id: "E2",
     name: "Leaf Blower",
     rrp: "303.33",
     info: "This product will blow your socks off.",
   },
 ];
 
-export default async function (fastify) {
-  fastify.get("/", async function (request, reply) {
+export default async function (fastify, opts) {
+  fastify.get("/", async (request, reply) => {
+    return data;
+  });
+
+  // POST
+  fastify.post("/", async (request, reply) => {
+    fastify.mockDataInsert(request, opts.prefix.slice(1), data);
     return data;
   });
 }
