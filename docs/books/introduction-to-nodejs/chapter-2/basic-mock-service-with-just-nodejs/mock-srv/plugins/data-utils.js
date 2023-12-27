@@ -28,7 +28,7 @@ const calculateID = (idPrefix, data) => {
    * The code increments the extracted number by 1 to calculate the next ID value.
    */
   const next = Number(sorted.pop().slice(1)) + 1;
-  
+
   /**
    * Finally, the function constructs a new ID string by combining the idPrefix and the calculated next value.
    * Using string interpolation to concatenate the two values together.
