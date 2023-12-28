@@ -2,6 +2,7 @@ import path from 'path'
 import AutoLoad from '@fastify/autoload'
 import { fileURLToPath } from 'url'
 import cors from '@fastify/cors';
+import websocket from '@fastify/websocket';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -14,8 +15,10 @@ export default async function (fastify, opts) {
 
   // for enabling CORS support. This will ensure that the same Access-Control-Allow-Origin HTTP header.
   fastify.register(cors);
+  // Register WebSocket
+  fastify.register(websocket, {});
 
-  // Do not touch the following lines
+  // **** ---------- Do not touch the following lines -------- *********
 
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused
