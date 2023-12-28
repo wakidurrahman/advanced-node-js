@@ -23,7 +23,7 @@
         </select>
       </nav>
       <hr />
-      <div id="products"></div>
+      <div id="product-list"></div>
 
       <form id="add-product" method="post">
         <label for="name">Name: </label>
@@ -41,7 +41,7 @@
         <input id="info" type="text" name="info" placeholder="info" required />
         <button type="submit">Add Product</button>
       </form>
-      <!-- Template  -->
+      <!-- Template product time template  -->
       <template id="product-template">
         <style>
           details {
@@ -56,11 +56,19 @@
         </style>
         <details>
           <summary>
-            <strong><slot name="name"></slot></strong> -
-            <em><slot name="rrp"></slot></em>
+            <strong>
+              <slot name="name"></slot>
+            </strong>
+            -
+            <em>
+              <slot name="rrp"></slot>
+            </em>
+            <!-- with a slot for displaying orders -->
             <small>[Orders: <slot name="orders">pending</slot>]</small>
           </summary>
-          <p><slot name="info"></slot></p>
+          <p>
+            <slot name="info"></slot>
+          </p>
         </details>
       </template>
     </main>
