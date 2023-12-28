@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Going Real-Time</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <main role="main">
+      <h1>WebSockets into our frontend app and mock service</h1>
+      <p>
+        Enhance our application with the ability to display live order counts of
+        each product item.
+      </p>
+      <nav>
+        <label for="category">Category:</label>
+        <select name="category" id="category">
+          <option value="" hidden>Select Category</option>
+          <option value="electronics">Electronics</option>
+          <option value="confectionery">Confectionery</option>
+        </select>
+      </nav>
+      <hr />
+      <div id="product-list"></div>
+
+      <form id="add-product" method="post">
+        <label for="name">Name: </label>
+        <input id="name" type="text" name="name" placeholder="name" required />
+        <label for="rrp">RRP: </label>
+        <input
+          id="rrp"
+          name="rrp"
+          placeholder="rrp"
+          type="number"
+          step="0.01"
+          required
+        />
+        <label for="info">Info: </label>
+        <input id="info" type="text" name="info" placeholder="info" required />
+        <button type="submit">Add Product</button>
+      </form>
+      <!-- Template product time template  -->
+      <template id="product-template">
+        <style>
+          details {
+            font-size: 1.5em;
+          }
+          summary {
+            cursor: pointer;
+          }
+          p {
+            text-indent: 1.5rem;
+          }
+        </style>
+        <details>
+          <summary>
+            <strong>
+              <slot name="name"></slot>
+            </strong>
+            -
+            <em>
+              <slot name="rrp"></slot>
+            </em>
+            <!-- with a slot for displaying orders -->
+            <small>[Orders: <slot name="orders">pending</slot>]</small>
+          </summary>
+          <p>
+            <slot name="info"></slot>
+          </p>
+        </details>
+      </template>
+    </main>
+  </body>
+</html>

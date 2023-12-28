@@ -1,7 +1,10 @@
-# WebSockets:
+# Chapter 3. Going Real-Time.
 
-- Explore `real-time` communication by learning `WebSockets`.
-- Implement features like live `chat` or `real-time` updates.
+At the end of this chapter goal
+
+- apply the most common real-time web protocol: WebSockets
+- Implement bidirectional communication between server and client.
+- Discover how to cater to both read and write real-time functionality.
 
 ## Enhancing an HTTP Server with WebSockets
 
