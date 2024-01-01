@@ -60,7 +60,7 @@ const realTimeOrders = (category) => {
   } else {
     socket.send(
       // Send update-category command to server
-      JSON.stringify({ cmd: "update-categoryå", payload: { category } })
+      JSON.stringify({ cmd: "update-category", payload: { category } })
     );
   }
 
