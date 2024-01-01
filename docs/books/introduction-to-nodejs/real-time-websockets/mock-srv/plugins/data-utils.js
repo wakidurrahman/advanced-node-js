@@ -41,6 +41,7 @@ async function* realTimeOrdersSimulator() {
 
 /**
  * Return current orders
+ * 
  * A synchronous generator function:
  * 
  * The currentOrders generator function takes a `category` name and maps it to an ID prefix. 
@@ -94,6 +95,7 @@ const calculateID = (idPrefix, data) => {
 export default fp(async (fastify, opts) => {
   fastify.decorate("currentOrders", currentOrders);
   fastify.decorate("realTimeOrders", realTimeOrdersSimulator);
+  
   /**
    * decorators
    * We use the `fastify.decorateRequest` method to decorate the request object that is passed to route handler functions with a method we name mockDataInsert.
