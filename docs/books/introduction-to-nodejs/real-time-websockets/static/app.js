@@ -53,17 +53,24 @@ let socket = null;
 
 // Realtime orders handler using WebSocket
 const realTimeOrders = (category) => {
-  if (socket) socket.close();
-  // Instantiate WebSocket
-  // ws://localhost:3000/orders/{category}
-  socket = new WebSocket(`${WS_API}/orders/${category}`);
+  if (socket === null) {
+    // Instantiate WebSocket
+    // ws://localhost:3000/orders/{category}
+    socket = new WebSocket(`${WS_API}/orders/${category}`);
+  } else {
+    socket.send(
+      // Send update-category command to server
+      JSON.stringify({ cmd: "update-category", payload: { category } })
+    );
+  }
 
+  // Listen for message
   // The WebSocket connection (socket) listens for real-time messages sent from the server.
   socket.addEventListener("message", ({ data }) => {
     try {
-        // newly received order total based on the corresponding ID of the received message 
-        const { id, total } = JSON.parse(data);
-        // It updates the relevant <product-item> element 
+      // newly received order total based on the corresponding ID of the received message
+      const { id, total } = JSON.parse(data);
+      // It updates the relevant <product-item> element
       const item = document.querySelector(`[data-id="${id}"]`);
       if (item === null) return;
       const span =
