@@ -30,8 +30,8 @@ export async function updateCategory(id, amount) {
     // Use `got` HTTP request library for Node.js to make a POST request to the API.
     await got.post(`${API}/orders/${id}`, { json: { amount: +amount } });
     // Log th result to the console
-    console.log(`Order ${id} updated with amount ${amount}`);
-  } catch (error) {
+    log(`Order ${id} updated with amount ${amount}`);
+  } catch (err) {
     /**
      * If there is an error, log it to the console and exit
      *
@@ -42,7 +42,7 @@ export async function updateCategory(id, amount) {
      * the catch block will log out whatever the error message might be,
      * and then exit the process with a code of 1 to indicate it was not successful.
      */
-    console.error(error.message);
+    error(err.message);
     process.exit(1);
   }
 }
@@ -51,11 +51,11 @@ export async function updateCategory(id, amount) {
 
 /**
  * Add a new Order
- * 
+ *
  * we are passing through all the arguments ...args that would be provided to the function.
- * This allows us to destructure and extract the values that we need, 
- * to allow us to provide the additional functionality that we require. 
- * @param  {...any} args 
+ * This allows us to destructure and extract the values that we need,
+ * to allow us to provide the additional functionality that we require.
+ * @param  {...any} args
  */
 
 export async function addCategory(...args) {
@@ -64,7 +64,7 @@ export async function addCategory(...args) {
   log(`Adding item ${id} with amount ${amount}`);
 
   try {
-    // we force the type of the amount to be an integer by using the '+' before the amount 
+    // we force the type of the amount to be an integer by using the '+' before the amount
     if (isNaN(+amount)) {
       error(`Error: <AMOUNT> must be a number`);
       process.exit(1);
@@ -80,9 +80,21 @@ export async function addCategory(...args) {
     });
     // Log the result to the console
     log(`Item "${id}: ${name}" has been added to the ${category} category`);
-  } catch (error) {
+  } catch (err) {
     // If there is an error, log it to the console and exit
-    error(error.message);
+    error(err.message);
     process.exit(1);
+  }
+}
+
+// List the categories
+export function listCategories() {
+  log("Listing categories");
+  try {
+    // Loop through the categories and log them to the console
+    for (const cat of categories) log(cat);
+  } catch (err) {
+    // If there is an error, log it to the console and exit
+    error(err.message);
   }
 }
