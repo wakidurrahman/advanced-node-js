@@ -98,3 +98,22 @@ export function listCategories() {
     error(err.message);
   }
 }
+
+// // List the IDs for the given category
+export async function listCategoryItems(category) {
+  log(`Listing IDs for category ${category}`);
+  try {
+    // Use GTO Library to make the GET request to the API
+    const result = await got(`${API}/${category}`).json();
+    // Log the result to the console
+    for (const item of result) {
+      log(
+        `${item.id}: ${item.name} - $${item.rrp}\nProduct Info:\t${item.info}`
+      );
+    }
+  } catch (err) {
+    // if there is an error, log it to the console and exit.
+    error(err.message);
+    process.exit(1);
+  }
+}

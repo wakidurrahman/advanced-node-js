@@ -83,5 +83,8 @@ program
   // Set the action to be executed when the command is run
   .action(async (id, amount) => await updateItem(id, amount));
 
+
+
+
 // Parse the arguments from process.argv
 program.parse();
