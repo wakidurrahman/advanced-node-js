@@ -9,10 +9,9 @@
  * When a non-binary file has executable permissions and is run from the command line, the "hashbang" is checked so that the Operating System knows what interpreter to execute the text of the file with.
  */
 
-// we are using the ESM syntax to import the got library.
-import { got } from "got";
 // The complete solution for node.js command-line interfaces.
 import { Command } from "commander";
+import { updateCategory } from '../src/utils';
 
 /**
  * Create a new Command Program
@@ -51,7 +50,17 @@ async function updateItem(id, amount) {
     // Log the result to the console
     usage(`Order ${id} updated with amount ${amount}`);
   } catch (error) {
-    // If there is an error, log it to the console and exit
+    /**
+     * If there is an error, log it to the console and exit
+     *
+     * It rejects in the case of a request responding with a 4xx or 5xx status code,
+     * or in case of any other errors, such as a network error.
+     * An awaited promise in a try block will fall through to the catch block if the awaited promise is rejected.
+     * So in the event of any error making the request,
+     * the catch block will log out whatever the error message might be,
+     * and then exit the process with a code of 1 to indicate it was not successful.
+     */
+
     console.error(error.message);
     process.exit(1);
   }
