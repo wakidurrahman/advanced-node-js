@@ -1,0 +1,17 @@
+{
+  "name": "cli-tools",
+  "version": "1.0.0",
+  "description": "Creating a Command Line Tool",
+  "bin": "./bin/cmd.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "got": "^14.0.0"
+  }
+}
