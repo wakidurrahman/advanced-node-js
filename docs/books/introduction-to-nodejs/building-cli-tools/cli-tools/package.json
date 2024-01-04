@@ -2,7 +2,6 @@
   "name": "cli-tools",
   "version": "1.0.0",
   "description": "Creating a Command Line Tool",
-  "main": "index.js",
   "bin": "./bin/cmd.js",
   "type": "module",
   "scripts": {
