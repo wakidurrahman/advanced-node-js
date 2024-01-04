@@ -10,10 +10,28 @@
  */
 
 // we are using the ESM syntax to import the got library.
-import got from "got";
+import { got } from "got";
+// The complete solution for node.js command-line interfaces.
+import { Command } from "commander";
 
 // This line sets up an API constant which references the default address of our local web service.
 const API = "http://localhost:3000";
+
+/**
+ * Create a new Command Program
+ *
+ * Instructing commander to create a new Command program.
+ * To create a new program we apply a new Command instance to the program.
+ */
+const program = new Command();
+// Create a new program
+program
+  .name("cli-tools") // Set the name of the program;
+  .description("Back office for My App") // set the description
+  .version("1.0.0"); // Set the version
+
+// Parse the arguments from from process.argv
+program.parse();
 
 /**
  * Log the usage of the command to the console
@@ -36,15 +54,16 @@ const usage = (msg = "Back office for My App") => {
  * so we use `process.argv.slice(2)` to create a new array (argv) that has the first two elements of the `process.argv` array chopped off.
  *
  */
+console.log("Process ARGV", process.argv);
 const argv = process.argv.slice(2);
 
 /**
  * If there are no arguments, show the usage and exit
- * 
+ *
  * So if there are less than two elements in the argv array, that is an input error.
  * We call the `usage` function with no arguments (which means it outputs the default msg in the usage function),
  * and then exit with a code of 1 (any non-zero code is a non-successful exit).
- * 
+ *
  */
 //
 if (argv.length < 2) {
@@ -68,7 +87,7 @@ const [argID, argAmount] = argv;
  * Since all arguments that come from the command line are strings,
  * we convert the `amt` string to a number and assign it to the amount constant.
  * Amounts must be whole numbers, which we verify using Number.isInteger.
- * 
+ *
  */
 //
 const amount = parseInt(argAmount); // Convert the `amt` string to a number and assign it to the amount constantl
@@ -79,7 +98,7 @@ const amount = parseInt(argAmount); // Convert the `amt` string to a number and 
  *
  * This will also return false if a non-numerical string has been passed to Number (it will be `NaN`, which is not an integer).
  *  If amount is not a valid integer we call the usage function — this time with a custom error message, and exit the process with a code of 1.
- * 
+ *
  */
 if (isNaN(amount)) {
   usage("Error: <AMOUNT> must be a number");
@@ -87,20 +106,20 @@ if (isNaN(amount)) {
 }
 
 /**
- * 
+ *
  */
 
 /**
  * Update the order with the given ID
- * 
- * Now for the actual meat of what we want our CLI to do: 
+ *
+ * Now for the actual meat of what we want our CLI to do:
  * make a POST request to the `/orders/{ID}` route of our mock service.
- * 
+ *
  * The ESM format supports the Top-Level Await syntax. "type": "module",
  * So the await keyword can be used outside any functions when using the ESM format
- * 
+ *
  */
-// 
+//
 try {
   // Use `got` HTTP request library for Node.js to make a POST request to the API.
   // Execution will pause until the promise return from got.post resolves or rejects.
