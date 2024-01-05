@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 /**
  * This first line is a unix and unix-like system
  * (e.g. Linux, MacOS) directive known as the ”shebang” or the “hashbang”
@@ -9,10 +8,14 @@
  * When a non-binary file has executable permissions and is run from the command line, the "hashbang" is checked so that the Operating System knows what interpreter to execute the text of the file with.
  */
 
-// we are using the ESM syntax to import the got library.
-import { got } from "got";
 // The complete solution for node.js command-line interfaces.
 import { Command } from "commander";
+import {
+  addProduct,
+  listCategories,
+  listCategoryItems,
+  updateProduct,
+} from "../src/utils.js";
 
 /**
  * Create a new Command Program
@@ -22,57 +25,81 @@ import { Command } from "commander";
  */
 const program = new Command();
 
-// This line sets up an API constant which references the default address of our local web service.
-const API = "http://localhost:3000";
-
-/**
- * Log the usage of the command to the console
- * @param {*} msg
- */
-
-const usage = (msg = "Back office for My App") => {
-  console.log(`\n${msg}\n`);
-};
-
-/**
- * Update the order with the give ID
- * @param {*} id
- * @param {*} amount
- */
-async function updateItem(id, amount) {
-  usage(`Updating order ${id} with amount ${amount}`);
-  try {
-    if (isNaN(+amount)) {
-      usage("Error: <AMOUNT> must be a number");
-      process.exit(1);
-    }
-    // Use `got` HTTP request library for Node.js to make a POST request to the API.
-    await got.post(`${API}/orders/${id}`, { json: { amount: +amount } });
-    // Log the result to the console
-    usage(`Order ${id} updated with amount ${amount}`);
-  } catch (error) {
-    // If there is an error, log it to the console and exit
-    console.error(error.message);
-    process.exit(1);
-  }
-}
-
-// Create a new program
+// Create a new Program
 program
-  .name("cli-tools") // Set the name of the program
-  .description("Back office for My App") // set the description
+  // Set the name of the program
+  .name("cli-tools")
+  // Set the description
+  .description("Back office for My App")
+  // Set the version
   .version("1.0.0"); // Set the version
 
 // Create a command for adding a new order program.
 program
   // Set the command name
-  .command("update")
+  .command("updateProduct")
   // Set the argument ID to be required
   .argument("<ID>", "Order ID")
   // Set the argument AMOUNT to be required
   .argument("<AMOUNT>", "Order Amount")
   // Set the action to be executed when the command is run
-  .action(async (id, amount) => await updateItem(id, amount));
+  .action(async (id, amount) => await updateProduct(id, amount));
+
+// Create a command for listing categories by IDs
+program
+  // Set the command name
+  .command("addProduct")
+  // Set the command description
+  .description("Add Product by ID to a Category")
+  // Set the category to be required
+  .argument("<CATEGORY>", "Product Category")
+  // Set the argument ID to be required
+  .argument("<ID>", "Product ID")
+  // Set the argument NAME to be required
+  .argument("<NAME>", "Product Name")
+  // Set the argument AMOUNT to be required
+  .argument("<AMOUNT>", "Product RRP")
+  // Set the argument INFO to be optional.
+  // it can accept more than one parameter.
+  // This allows us to send through strings to our backend to provide a long-form product description.
+  .argument("[INFO...]", "Product Info")
+  // Set the action to be executed when the command is run
+  .action(
+    async (category, id, name, amount, info) =>
+      await addProduct(category, id, name, amount, info)
+  );
+
+/**
+ * Create a command for listing categories
+ * 
+ * We are also creating a program.option() that defines our two CLI flags as the first argument to the method.
+ * For both of our flags, we are also setting our short-hand expressions -a, for its long-handed declaration --all. 
+ * 
+ * The idea is that we can either provide the name of the individual category 
+ * to be listed or we can list all the categories from our application by commanding the output via a flag.
+ */
+program
+  // Set the command name
+  .command("list")
+  // Set the command description
+  .description("List categories")
+  // Set the category to be optional
+  .argument("[CATEGORY]", "Category to list IDs for")
+  // Set the option to list all categories
+  .option("-a, --all", "List all categories")
+  // Set the action to be executed when the command is run
+  .action(async (args, opts) => {
+    if (args && opts.all)
+      throw new Error("Cannot specify both category and 'all'");
+    if (opts.all || args === "all") {
+      console.log("Argument")
+      listCategories();
+    } else if (args === "confectionery" || args === "electronics") {
+      await listCategoryItems(args);
+    } else {
+      throw new Error("Invalid category specified");
+    }
+  });
 
 // Parse the arguments from process.argv
 program.parse();

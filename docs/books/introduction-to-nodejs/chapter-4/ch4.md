@@ -28,3 +28,51 @@ Let's run the following commands from the cli-tools folder to setup tool.
 2. `sudo npm link` ⬇️
 3. `npm link cli-tools`⬇️
 4. `cli-tools`
+
+CLI Tools command
+
+```bash
+
+$ cli-tools --help
+$ cli-tools -h
+$ cli-tools --version
+$ cli-tools -V
+
+UpdateProduct
+$ cli-tools updateProduct --help
+$ cli-tools updateProduct E2 40
+$ cli-tools updateProduct E1 4
+$ cli-tools updateProduct E1 30
+
+AddProduct 
+$ cli-tools addProduct --help 
+$ cli-tools addProduct electronics E3 Laptop 599 "Best mid-priced laptop money can 
+buy"
+
+List
+`Usage: cli-tools list [options] [CATEGORY]`
+$ cli-tools list --help
+$ cli-tools list --all
+$ cli-tools list -a || cli-tools list all
+$ cli-tools list electronics 
+$ cli-tools list confectionery 
+
+```
+
+**Amazing work! Let's summarize what we have achieved so far.**
+
+We have successfully created a terminal interface for our CLI application that displays helpful contextual information. It also parses the command-line arguments for us. We also have a very nice and declarative way of expressing our commands for our application. Now we can create and define specialized behavior based on the inputs to the application. Finally, we created a separate module to contain the utility functionality that the application will be using.
+
+
+Let's try out the new and improved `cli-tools` tool. In one terminal from the project route, let's run the following command:
+
+`$ npm run static`
+
+
+In another terminal, with the mock-srv folder as the current working directory, let's execute the following command:
+
+`$ npm run dev`
+
+Now let's execute the following in another terminal window:
+
+`$ cli-tools --help`
