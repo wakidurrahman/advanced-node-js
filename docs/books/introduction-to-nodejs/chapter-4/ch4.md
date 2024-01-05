@@ -46,5 +46,11 @@ $ cli-tools updateProduct E1 30
 
 AddProduct 
 $ cli-tools addProduct --help 
-$ cli-tools addProduct electronics A3 Laptop 599 "Best mid-priced laptop money can buy"
+$ cli-tools addProduct electronics A3 Laptop 599 "Best mid-priced laptop money can 
+buy"
+
+List
+
+$ cli-tools list --help
+
 ```

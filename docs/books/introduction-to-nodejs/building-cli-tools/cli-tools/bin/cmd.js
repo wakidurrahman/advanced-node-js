@@ -71,7 +71,17 @@ program
       await addProduct(category, id, name, amount, info)
   );
 
-// Create a command for listing categories
+
+
+/**
+ * Create a command for listing categories
+ * 
+ * We are also creating a program.option() that defines our two CLI flags as the first argument to the method.
+ * For both of our flags, we are also setting our short-hand expressions -a, for its long-handed declaration --all. 
+ * 
+ * The idea is that we can either provide the name of the individual category 
+ * to be listed or we can list all the categories from our application by commanding the output via a flag.
+ */
 
 program
   // Set the command name
