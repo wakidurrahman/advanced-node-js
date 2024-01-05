@@ -46,11 +46,19 @@ $ cli-tools updateProduct E1 30
 
 AddProduct 
 $ cli-tools addProduct --help 
-$ cli-tools addProduct electronics A3 Laptop 599 "Best mid-priced laptop money can 
+$ cli-tools addProduct electronics E3 Laptop 599 "Best mid-priced laptop money can 
 buy"
 
 List
-
+`Usage: cli-tools list [options] [CATEGORY]`
 $ cli-tools list --help
+$ cli-tools list --all
+$ cli-tools list -a || cli-tools list all
+$ cli-tools list electronics 
+$ cli-tools list confectionery 
 
 ```
+
+**Amazing work! Let's summarize what we have achieved so far.**
+
+We have successfully created a terminal interface for our CLI application that displays helpful contextual information. It also parses the command-line arguments for us. We also have a very nice and declarative way of expressing our commands for our application. Now we can create and define specialized behavior based on the inputs to the application. Finally, we created a separate module to contain the utility functionality that the application will be using.
