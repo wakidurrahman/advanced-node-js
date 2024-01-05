@@ -87,7 +87,14 @@ export async function addProduct(...args) {
   }
 }
 
-// List the categories
+/**
+ * List the categories
+ *
+ * This is a very simple functionality,
+ * where we loop over the categories array and log each one out to the terminal.
+ *
+ */
+//
 export function listCategories() {
   log("Listing categories");
   try {
@@ -96,6 +103,7 @@ export function listCategories() {
   } catch (err) {
     // If there is an error, log it to the console and exit
     error(err.message);
+    process.exit(1);
   }
 }
 
