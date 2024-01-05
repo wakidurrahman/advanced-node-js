@@ -9,6 +9,11 @@ import {
   displayText,
   displayTimestamp,
   error as displayError,
+  log as displayLog,
+  displayCategory,
+  displayName,
+  displayRRP,
+  displayKey,
 } from "./displays.js";
 
 // This line sets up an API constant which references the default address of our local web service.
@@ -18,20 +23,10 @@ const API = "http://localhost:3000";
 // Set the categories
 const categories = ["confectionery", "electronics"];
 
-// Log the usage of the command to the console
-export const log = (message) => {
-  console.log(`\n${message}\n`);
-};
-
-// Log the error to the console
-export const error = (message) => {
-  console.error(`\n${message}\n`);
-};
-
 // Update the order with the given ID
 export async function updateProduct(id, amount) {
-  log(`${displayTimestamp()}`);
-  log(
+  displayLog(`${displayTimestamp()}`);
+  displayLog(
     `${displayInfo("Updating Order")} ${displayID(id)} ${displayText(
       "with amount"
     )} ${displayAmount(amount)}`
@@ -47,7 +42,7 @@ export async function updateProduct(id, amount) {
       json: { amount: +amount },
     });
     // Log the result to the console
-    log(
+    displayLog(
       `${displaySuccess()} ${displayText("Order")} ${displayID(
         id
       )} ${displayText("updated with amount")} ${displayAmount(amount)}`
@@ -80,12 +75,22 @@ export async function updateProduct(id, amount) {
 export async function addProduct(...args) {
   // Destructure the arguments
   let [category, id, name, amount, info] = args;
-  log(`Adding item ${id} with amount ${amount}`);
+  displayLog(`${displayTimestamp()}`);
+  displayLog(
+    `${displayInfo(" Request to add item to category")} ${displayCategory(
+      category
+    )}`
+  );
+  displayLog(
+    `${displayText("Adding item")} ${displayID(id)} ${displayText(
+      "with amount"
+    )} ${displayAmount(amount)}`
+  );
 
   try {
     // we force the type of the amount to be an integer by using the '+' before the amount
     if (isNaN(+amount)) {
-      error(`Error: <AMOUNT> must be a number`);
+      displayError(`<AMOUNT> must be a number`);
       process.exit(1);
     }
     // use GOT library to make a POST request to the API
@@ -98,10 +103,16 @@ export async function addProduct(...args) {
       },
     });
     // Log the result to the console
-    log(`Item "${id}:${name}" has been added to the ${category} category`);
+    displayLog(
+      `${displaySuccess("Product Added! :")} ${displayID(id)} ${displayText(
+        "-"
+      )} ${displayName(name)} ${displayText(
+        "has been added to the"
+      )} ${displayCategory(category)} ${displayText("category")}`
+    );
   } catch (err) {
     // If there is an error, log it to the console and exit
-    error(err.message);
+    displayError(err.message);
     process.exit(1);
   }
 }
@@ -115,13 +126,15 @@ export async function addProduct(...args) {
  */
 //
 export function listCategories() {
-  log("Listing categories");
+  displayLog(`${displayTimestamp()}`);
+  displayLog(`${displayInfo(" Listing categories")}`);
+
   try {
     // Loop through the categories and log them to the console
-    for (const cat of categories) log(cat);
+    for (const cat of categories) displayLog(cat);
   } catch (err) {
     // If there is an error, log it to the console and exit
-    error(err.message);
+    displayError(err.message);
     process.exit(1);
   }
 }
@@ -136,19 +149,27 @@ export function listCategories() {
  * @param {*} category
  */
 export async function listCategoryItems(category) {
-  log(`Listing IDs for category ${category}`);
+  displayLog(`${displayTimestamp()}`);
+  displayLog(
+    `${displayInfo(" Listing IDs for category")} ${displayCategory(category)}`
+  );
+
   try {
     // Use GOT Library to make a GET request to the API
     const result = await got(`${API}/${category}/`).json();
     // Log the result to the console
     for (const item of result) {
-      log(
-        `${item.id}: ${item.name} - $${item.rrp}\nProduct Info:\t${item.info}`
+      displayLog(
+        `${displayID(item.id)}${displayText(":")} ${displayName(
+          item.name
+        )}${displayText(" - ")}${displayRRP(item.rrp)}\n${displayKey(
+          "Product Info:"
+        )}\t${displayText(item.info)}`
       );
     }
   } catch (err) {
     // If there is an error, log it to the console and exit
-    error(err.message);
+    displayError(err.message);
     process.exit(1);
   }
 }

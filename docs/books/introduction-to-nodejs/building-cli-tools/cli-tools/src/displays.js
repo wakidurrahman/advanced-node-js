@@ -32,6 +32,11 @@ export const log = (message) => console.log(`\n${message}\n`);
 export const error = (message) =>
   console.error(`${bgRed.inverse(`⚠️ Error:`)}\n${txRed(message)}\n`);
 
+// Log the usage of the command to the console
+ export const logMessage = (message) => console.log(`\n${message}\n`);
+// Log the error to the console
+ export const errorMessage = (message) => console.error(`\n${message}\n`);
+
 // ------------- The following display methods that we begin to decorate the messages that we are outputting to the terminal from `commands`: --- ------
 
 // Get the current timestamp
