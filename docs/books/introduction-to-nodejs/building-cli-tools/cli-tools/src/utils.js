@@ -8,12 +8,12 @@ import {
   displaySuccess,
   displayText,
   displayTimestamp,
-  error as displayError,
-  log as displayLog,
   displayCategory,
   displayName,
   displayRRP,
   displayKey,
+  error as displayError,
+  log as displayLog,
 } from "./displays.js";
 
 // This line sets up an API constant which references the default address of our local web service.
@@ -34,7 +34,7 @@ export async function updateProduct(id, amount) {
 
   try {
     if (isNaN(+amount)) {
-      displayError("<AMOUNT> must be a number");
+      displayError(" must be a number");
       process.exit(1);
     }
     // Use `got` HTTP request library for Node.js to make a POST request to the API.
@@ -131,6 +131,7 @@ export function listCategories() {
 
   try {
     // Loop through the categories and log them to the console
+    displayLog(displayText("Categories received from API:"));
     for (const cat of categories) displayLog(cat);
   } catch (err) {
     // If there is an error, log it to the console and exit
@@ -150,21 +151,20 @@ export function listCategories() {
  */
 export async function listCategoryItems(category) {
   displayLog(`${displayTimestamp()}`);
-  displayLog(
-    `${displayInfo(" Listing IDs for category")} ${displayCategory(category)}`
-  );
+  displayLog(`${displayInfo(" List IDs")}`);
 
   try {
     // Use GOT Library to make a GET request to the API
     const result = await got(`${API}/${category}/`).json();
     // Log the result to the console
+    displayLog(`${displaySuccess("IDs received from API:")}`);
     for (const item of result) {
       displayLog(
-        `${displayID(item.id)}${displayText(":")} ${displayName(
-          item.name
-        )}${displayText(" - ")}${displayRRP(item.rrp)}\n${displayKey(
-          "Product Info:"
-        )}\t${displayText(item.info)}`
+        `${displayKey("ID:")}\t${displayID(item.id)} ${displayKey(
+          "Name:"
+        )}\t${displayName(item.name)} ${displayKey("RRP:")}\t${displayRRP(
+          item.rrp
+        )} ${displayKey("Product Info:")}\n\t${displayText(item.info)}`
       );
     }
   } catch (err) {
