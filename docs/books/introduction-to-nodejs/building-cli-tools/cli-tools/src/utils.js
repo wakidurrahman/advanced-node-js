@@ -20,7 +20,7 @@ export const error = (message) => {
 };
 
 // Update the order with the given ID
-export async function updateCategory(id, amount) {
+export async function updateProduct(id, amount) {
   console.log(`Updating order ${id} with amount ${amount}`);
   try {
     if (isNaN(+amount)) {
@@ -58,7 +58,7 @@ export async function updateCategory(id, amount) {
  * @param  {...any} args
  */
 
-export async function addCategory(...args) {
+export async function addProduct(...args) {
   // Destructure the arguments
   let [category, id, name, amount, info] = args;
   log(`Adding item ${id} with amount ${amount}`);
@@ -75,11 +75,11 @@ export async function addCategory(...args) {
         id,
         name,
         rrp: +amount,
-        info: info.json(" "),
+        info: info.join(" "),
       },
     });
     // Log the result to the console
-    log(`Item "${id}: ${name}" has been added to the ${category} category`);
+    log(`Item "${id}:${name}" has been added to the ${category} category`);
   } catch (err) {
     // If there is an error, log it to the console and exit
     error(err.message);

@@ -28,3 +28,23 @@ Let's run the following commands from the cli-tools folder to setup tool.
 2. `sudo npm link` ⬇️
 3. `npm link cli-tools`⬇️
 4. `cli-tools`
+
+CLI Tools command
+
+```bash
+
+$ cli-tools --help
+$ cli-tools -h
+$ cli-tools --version
+$ cli-tools -V
+
+UpdateProduct
+$ cli-tools updateProduct --help
+$ cli-tools updateProduct E2 40
+$ cli-tools updateProduct E1 4
+$ cli-tools updateProduct E1 30
+
+AddProduct 
+$ cli-tools addProduct --help 
+$ cli-tools addProduct electronics A3 Laptop 599 "Best mid-priced laptop money can buy"
+```
