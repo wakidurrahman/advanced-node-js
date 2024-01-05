@@ -97,6 +97,7 @@ program
     if (args && opts.all)
       throw new Error("Cannot specify both category and 'all'");
     if (opts.all || args === "all") {
+      console.log("Argument")
       listCategories();
     } else if (args === "confectionery" || args === "electronics") {
       await listCategoryItems(args);
