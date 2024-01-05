@@ -47,7 +47,6 @@ export async function updateProduct(id, amount) {
   }
 }
 
-// Add a new Order
 
 /**
  * Add a new Order
@@ -106,7 +105,6 @@ export function listCategories() {
     process.exit(1);
   }
 }
-
 
 /**
  * List the IDs for the given category
