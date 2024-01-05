@@ -107,12 +107,20 @@ export function listCategories() {
   }
 }
 
-// // List the IDs for the given category
+
+/**
+ * List the IDs for the given category
+ * 
+ * The purpose of this function is to list the Items within each category 
+ * when the category is supplied to the method.
+ * It makes a GET request to our mock-srv pointing at the relevant category endpoint, then displays the output to the terminal. 
+ * @param {*} category 
+ */
 export async function listCategoryItems(category) {
   log(`Listing IDs for category ${category}`);
   try {
-    // Use GTO Library to make the GET request to the API
-    const result = await got(`${API}/${category}`).json();
+    // Use GOT Library to make a GET request to the API
+    const result = await got(`${API}/${category}/`).json();
     // Log the result to the console
     for (const item of result) {
       log(
@@ -120,7 +128,7 @@ export async function listCategoryItems(category) {
       );
     }
   } catch (err) {
-    // if there is an error, log it to the console and exit.
+      // If there is an error, log it to the console and exit
     error(err.message);
     process.exit(1);
   }
