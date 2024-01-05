@@ -113,7 +113,8 @@ export function listCategories() {
  * 
  * The purpose of this function is to list the Items within each category 
  * when the category is supplied to the method.
- * It makes a GET request to our mock-srv pointing at the relevant category endpoint, then displays the output to the terminal. 
+ * It makes a GET request to our mock-srv pointing at the relevant category endpoint, 
+ * then displays the output to the terminal. 
  * @param {*} category 
  */
 export async function listCategoryItems(category) {
