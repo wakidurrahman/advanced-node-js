@@ -46,8 +46,8 @@ $ cli-tools updateProduct E1 30
 
 AddProduct
 $ cli-tools addProduct --help
-$ cli-tools addProduct electronics E3 Laptop 599 "Best mid-priced laptop money can
-buy"
+$ cli-tools addProduct electronics E3 Laptop 599 "Best mid-priced laptop money can buy"
+$ cli-tools addProduct electronics E3 Server 999 A super powerful server to run all your node applications on
 
 List
 `Usage: cli-tools list [options] [CATEGORY]`
