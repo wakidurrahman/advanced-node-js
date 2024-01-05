@@ -33,4 +33,4 @@ export const txRed = chalk.rgb(231, 76, 60);
 export const txWhite = chalk.rgb(236, 240, 241);
 export const txYellow = chalk.rgb(241, 196, 15);
 
-log(txYellow("Hello , I'm a Yellow string"));
+// log(txYellow("Hello , I'm a Yellow string"));

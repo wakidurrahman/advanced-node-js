@@ -1,6 +1,15 @@
 // we are using the ESM syntax to import the got library.
 // Implement GOT to make HTTP request
 import { got } from "got";
+import {
+  displayAmount,
+  displayID,
+  displayInfo,
+  displaySuccess,
+  displayText,
+  displayTimestamp,
+  error as displayError,
+} from "./displays.js";
 
 // This line sets up an API constant which references the default address of our local web service.
 // Set the API URL
@@ -21,16 +30,28 @@ export const error = (message) => {
 
 // Update the order with the given ID
 export async function updateProduct(id, amount) {
-  console.log(`Updating order ${id} with amount ${amount}`);
+  log(`${displayTimestamp()}`);
+  log(
+    `${displayInfo("Updating Order")} ${displayID(id)} ${displayText(
+      "with amount"
+    )} ${displayAmount(amount)}`
+  );
+
   try {
     if (isNaN(+amount)) {
-      log("Error: <AMOUNT> must be a number");
+      displayError("<AMOUNT> must be a number");
       process.exit(1);
     }
     // Use `got` HTTP request library for Node.js to make a POST request to the API.
-    await got.post(`${API}/orders/${id}`, { json: { amount: +amount } });
-    // Log th result to the console
-    log(`Order ${id} updated with amount ${amount}`);
+    await got.post(`${API}/orders/${id}`, {
+      json: { amount: +amount },
+    });
+    // Log the result to the console
+    log(
+      `${displaySuccess()} ${displayText("Order")} ${displayID(
+        id
+      )} ${displayText("updated with amount")} ${displayAmount(amount)}`
+    );
   } catch (err) {
     /**
      * If there is an error, log it to the console and exit
@@ -42,11 +63,10 @@ export async function updateProduct(id, amount) {
      * the catch block will log out whatever the error message might be,
      * and then exit the process with a code of 1 to indicate it was not successful.
      */
-    error(err.message);
+    displayError(err.message);
     process.exit(1);
   }
 }
-
 
 /**
  * Add a new Order
@@ -108,12 +128,12 @@ export function listCategories() {
 
 /**
  * List the IDs for the given category
- * 
- * The purpose of this function is to list the Items within each category 
+ *
+ * The purpose of this function is to list the Items within each category
  * when the category is supplied to the method.
- * It makes a GET request to our mock-srv pointing at the relevant category endpoint, 
- * then displays the output to the terminal. 
- * @param {*} category 
+ * It makes a GET request to our mock-srv pointing at the relevant category endpoint,
+ * then displays the output to the terminal.
+ * @param {*} category
  */
 export async function listCategoryItems(category) {
   log(`Listing IDs for category ${category}`);
@@ -127,7 +147,7 @@ export async function listCategoryItems(category) {
       );
     }
   } catch (err) {
-      // If there is an error, log it to the console and exit
+    // If there is an error, log it to the console and exit
     error(err.message);
     process.exit(1);
   }
