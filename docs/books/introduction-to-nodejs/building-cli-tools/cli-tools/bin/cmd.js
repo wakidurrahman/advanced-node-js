@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 /**
  * This first line is a unix and unix-like system
  * (e.g. Linux, MacOS) directive known as the ”shebang” or the “hashbang”
@@ -26,7 +25,7 @@ import {
  */
 const program = new Command();
 
-// Create a new program
+// Create a new Program
 program
   // Set the name of the program
   .name("cli-tools")
@@ -47,7 +46,6 @@ program
   .action(async (id, amount) => await updateProduct(id, amount));
 
 // Create a command for listing categories by IDs
-
 program
   // Set the command name
   .command("addProduct")
@@ -71,8 +69,6 @@ program
       await addProduct(category, id, name, amount, info)
   );
 
-
-
 /**
  * Create a command for listing categories
  * 
@@ -82,7 +78,6 @@ program
  * The idea is that we can either provide the name of the individual category 
  * to be listed or we can list all the categories from our application by commanding the output via a flag.
  */
-
 program
   // Set the command name
   .command("list")
