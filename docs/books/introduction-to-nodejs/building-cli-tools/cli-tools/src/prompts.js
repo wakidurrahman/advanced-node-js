@@ -1,5 +1,5 @@
 import Enquirer from "enquirer";
-import { categories, listCategoryItems } from "./utils";
+import { categories, listCategoryItems } from "./utils.js";
 // Import the Enquirer prompt types
 const { prompt } = Enquirer;
 
@@ -18,6 +18,14 @@ const categoryQuestions = [
 ];
 
 export const promptListIds = async () => {
+  /**
+   * These are received asynchronously by awaiting the response from the prompt:
+   * This command will return the named input 'category' an the return value,
+   */
   const { category } = await prompt(categoryQuestions);
   return listCategoryItems(category);
 };
+
+await promptListIds();
+
+

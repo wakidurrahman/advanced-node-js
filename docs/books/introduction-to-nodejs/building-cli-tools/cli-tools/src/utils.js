@@ -159,13 +159,12 @@ export async function listCategoryItems(category) {
     // Log the result to the console
     displayLog(`${displaySuccess("IDs received from API:")}`);
     for (const item of result) {
-      displayLog(
-        `${displayKey("ID:")}\t${displayID(item.id)} ${displayKey(
-          "Name:"
-        )}\t${displayName(item.name)} ${displayKey("RRP:")}\t${displayRRP(
-          item.rrp
-        )} ${displayKey("Product Info:")}\n\t${displayText(item.info)}`
-      );
+      displayLog(`
+        ${displayKey("ID:")}\t${displayID(item.id)} 
+        ${displayKey("Name:")}\t${displayName(item.name)} 
+        ${displayKey("RRP:")}\t${displayRRP(item.rrp)} 
+        ${displayKey("Product Info:")}\n\t${displayText(item.info)}
+        `);
     }
   } catch (err) {
     // If there is an error, log it to the console and exit
