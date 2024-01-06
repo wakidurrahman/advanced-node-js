@@ -10,12 +10,6 @@
 
 // The complete solution for node.js command-line interfaces.
 import { Command } from "commander";
-import {
-  addProduct,
-  listCategories,
-  listCategoryItems,
-  updateProduct,
-} from "../src/utils.js";
 
 /**
  * Create a new Command Program

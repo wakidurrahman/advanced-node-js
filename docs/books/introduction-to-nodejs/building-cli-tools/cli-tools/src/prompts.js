@@ -145,3 +145,6 @@ export const interactiveApp = async (cmd) => {
     process.exit(1);
   }
 };
+
+// Run the Interactive program
+await interactiveApp();
