@@ -21,7 +21,7 @@ import {
 const API = "http://localhost:3000";
 
 // Set the categories
-const categories = ["confectionery", "electronics"];
+export const categories = ["confectionery", "electronics"];
 
 // Update the order with the given ID
 export async function updateProduct(id, amount) {
@@ -75,6 +75,7 @@ export async function updateProduct(id, amount) {
 export async function addProduct(...args) {
   // Destructure the arguments
   let [category, id, name, amount, info] = args;
+  console.log("Info ",info)
   displayLog(`${displayTimestamp()}`);
   displayLog(
     `${displayInfo(" Request to add item to category")} ${displayCategory(
@@ -99,7 +100,7 @@ export async function addProduct(...args) {
         id,
         name,
         rrp: +amount,
-        info: info.join(" "),
+        info: info,
       },
     });
     // Log the result to the console
@@ -159,13 +160,12 @@ export async function listCategoryItems(category) {
     // Log the result to the console
     displayLog(`${displaySuccess("IDs received from API:")}`);
     for (const item of result) {
-      displayLog(
-        `${displayKey("ID:")}\t${displayID(item.id)} ${displayKey(
-          "Name:"
-        )}\t${displayName(item.name)} ${displayKey("RRP:")}\t${displayRRP(
-          item.rrp
-        )} ${displayKey("Product Info:")}\n\t${displayText(item.info)}`
-      );
+      displayLog(`
+        ${displayKey("ID:")}\t${displayID(item.id)} 
+        ${displayKey("Name:")}\t${displayName(item.name)} 
+        ${displayKey("RRP:")}\t${displayRRP(item.rrp)} 
+        ${displayKey("Product Info:")}\n\t${displayText(item.info)}
+        `);
     }
   } catch (err) {
     // If there is an error, log it to the console and exit

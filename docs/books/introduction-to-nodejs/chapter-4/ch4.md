@@ -90,3 +90,22 @@ We will need to add two new ecosystem modules: `chalk` and `enquirer`.
 Let's install the modules
 
 `$ npm install chalk enquirer`
+
+
+### Adding Interactivity 
+
+We will now be creating a series of interactive prompts for the application. These are ways that we can move the end-user through a series of preemptive questions. Using the responses from the prompts, we can populate the required information needed for our business logic to work.
+
+```bash
+// Execute the application in both the interactive mode and as a CLI tool. 
+$ cli-tools -i
+$ cli-tools --interactive
+
+// Independently enter each command’s prompt behavior to provide inputs, while also keeping the existing CLI functionality. 
+  
+$ cli-tools add --interactive
+$ cli-tools list --interactive
+$ cli-tools list -i -a
+$ cli-tools update --interactive
+```
+
