@@ -21,7 +21,7 @@ import {
 const API = "http://localhost:3000";
 
 // Set the categories
-const categories = ["confectionery", "electronics"];
+export const categories = ["confectionery", "electronics"];
 
 // Update the order with the given ID
 export async function updateProduct(id, amount) {
