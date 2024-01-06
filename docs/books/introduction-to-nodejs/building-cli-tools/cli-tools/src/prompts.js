@@ -1,4 +1,5 @@
 import Enquirer from "enquirer";
+import { program } from "commander";
 import {
   addProduct,
   categories,
@@ -7,7 +8,6 @@ import {
   updateProduct,
 } from "./utils.js";
 import { displayInfo, displayText, error, log } from "./displays.js";
-import { program } from "commander";
 // Import the Enquirer prompt types
 const { prompt } = Enquirer;
 
@@ -146,5 +146,3 @@ export const interactiveApp = async (cmd) => {
   }
 };
 
-// Run the Interactive program
-await interactiveApp();
