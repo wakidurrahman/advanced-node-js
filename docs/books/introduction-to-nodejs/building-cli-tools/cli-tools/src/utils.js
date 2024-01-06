@@ -75,6 +75,7 @@ export async function updateProduct(id, amount) {
 export async function addProduct(...args) {
   // Destructure the arguments
   let [category, id, name, amount, info] = args;
+  console.log("Info ",info)
   displayLog(`${displayTimestamp()}`);
   displayLog(
     `${displayInfo(" Request to add item to category")} ${displayCategory(
@@ -99,7 +100,7 @@ export async function addProduct(...args) {
         id,
         name,
         rrp: +amount,
-        info: info.join(" "),
+        info: info,
       },
     });
     // Log the result to the console
