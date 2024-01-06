@@ -116,6 +116,7 @@ export const interactiveApp = async (cmd) => {
   try {
     // If we pass the command as the optional argument to the function. 
     // If no command is passed, then the application is prompted to display the promptCommand() that we designed earlier.
+    // with the command variable now defined from either the functional argument or form a user derived input we pass it through a series of 'switches'
     const command = cmd ?? promptCommand();
     switch (command) {
       case "add":
