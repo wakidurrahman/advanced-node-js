@@ -32,50 +32,51 @@ program
   // Set the description
   .description("Back office for My App")
   // Set the version
-  .version("1.0.0"); // Set the version
+  .version("1.0.0")
+  // Set the option to run application in interactive mode
+  .option("-i, --interactive", "Run App in interactive mode")
+  // Set the primary program action to be executed when no commands are specified
+  .action(() => {
+    // No-operation (noop)
+  });
 
-// Create a command for adding a new order program.
+// Create a command for updating an order
 program
   // Set the command name
-  .command("updateProduct")
-  // Set the argument ID to be required
-  .argument("<ID>", "Order ID")
-  // Set the argument AMOUNT to be required
-  .argument("<AMOUNT>", "Order Amount")
-  // Set the action to be executed when the command is run
-  .action(async (id, amount) => await updateProduct(id, amount));
+  .command("update")
+  .description("Update an order")
+  .option("-i, --interactive", "Run Update Command in interactive mode")
+  .argument("[ID]", "Order ID")
+  .argument("[AMOUNT]", "Order Amount");
 
 // Create a command for listing categories by IDs
 program
   // Set the command name
-  .command("addProduct")
+  .command("add")
   // Set the command description
   .description("Add Product by ID to a Category")
-  // Set the category to be required
-  .argument("<CATEGORY>", "Product Category")
-  // Set the argument ID to be required
-  .argument("<ID>", "Product ID")
-  // Set the argument NAME to be required
-  .argument("<NAME>", "Product Name")
-  // Set the argument AMOUNT to be required
-  .argument("<AMOUNT>", "Product RRP")
+  // Set the option to run command in interactive mode
+  .option("-i, --interactive", "Run Update Command in interactive mode")
+  // Set the category to be optional
+  .argument("[CATEGORY]", "Product Category")
+  // Set the argument ID to be optional
+  .argument("[ID]", "Product ID")
+  // Set the argument NAME to be optional
+  .argument("[NAME]", "Product Name")
+  // Set the argument AMOUNT to be optional
+  .argument("[AMOUNT]", "Product RRP")
   // Set the argument INFO to be optional.
   // it can accept more than one parameter.
   // This allows us to send through strings to our backend to provide a long-form product description.
-  .argument("[INFO...]", "Product Info")
-  // Set the action to be executed when the command is run
-  .action(
-    async (category, id, name, amount, info) =>
-      await addProduct(category, id, name, amount, info)
-  );
+  .argument("[INFO...]", "Product Info");
 
 /**
  * Create a command for listing categories
- * 
+ *
  * We are also creating a program.option() that defines our two CLI flags as the first argument to the method.
- * For both of our flags, we are also setting our short-hand expressions -a, for its long-handed declaration --all. 
- * 
- * The idea is that we can either provide the name of the individual category 
+ * For both of our flags, we are also setting our short-hand expressions -a, for its long-handed declaration --all.
+ *
+ * The idea is that we can either provide the name of the individual category
  * to be listed or we can list all the categories from our application by commanding the output via a flag.
  */
 program
@@ -83,23 +84,12 @@ program
   .command("list")
   // Set the command description
   .description("List categories")
-  // Set the category to be optional
-  .argument("[CATEGORY]", "Category to list IDs for")
+  // Set the option to run command in interactive mode
+  .option("-i, --interactive", "Run Update Command in interactive mode")
   // Set the option to list all categories
   .option("-a, --all", "List all categories")
-  // Set the action to be executed when the command is run
-  .action(async (args, opts) => {
-    if (args && opts.all)
-      throw new Error("Cannot specify both category and 'all'");
-    if (opts.all || args === "all") {
-      console.log("Argument")
-      listCategories();
-    } else if (args === "confectionery" || args === "electronics") {
-      await listCategoryItems(args);
-    } else {
-      throw new Error("Invalid category specified");
-    }
-  });
+  // Set the category to be optional
+  .argument("[CATEGORY]", "Category to list IDs for");
 
 // Parse the arguments from process.argv
 program.parse();

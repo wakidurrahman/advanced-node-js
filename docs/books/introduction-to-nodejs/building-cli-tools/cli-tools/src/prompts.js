@@ -2,9 +2,12 @@ import Enquirer from "enquirer";
 import {
   addProduct,
   categories,
+  listCategories,
   listCategoryItems,
   updateProduct,
 } from "./utils.js";
+import { displayInfo, displayText, error, log } from "./displays.js";
+import { program } from "commander";
 // Import the Enquirer prompt types
 const { prompt } = Enquirer;
 
@@ -92,4 +95,52 @@ export const promptUpdate = async () => {
 export const promptCommand = async () => {
   const { command } = await prompt(commandsQuestions);
   return command;
+};
+
+/**
+ * we can begin to construct out the main terminal prompt that will,
+ * in effect, enclose the predefined functionality together.
+ *
+ * We first make the method accept an optional argument where we pass through a command from our 'program' .
+ * We define this functionality as if we can do one of two things with our method.
+ * The first is to act as a standalone application where it is not given any command to execute.
+ * The second is where we pass the command as the optional argument to the function.
+ * If no command is passed, then the application is prompted to display the promptCommand() that we designed earlier.
+ * @param {*} cmd
+ * @returns
+ */
+export const interactiveApp = async (cmd) => {
+  log(displayText("Back office for My App"));
+  log(displayInfo("Interactive Mode"));
+
+  try {
+    // If we pass the command as the optional argument to the function. 
+    // If no command is passed, then the application is prompted to display the promptCommand() that we designed earlier.
+    const command = cmd ?? promptCommand();
+    switch (command) {
+      case "add":
+        log(displayInfo("Add Order"));
+        await promptAddOrder();
+        return interactiveApp();
+      case "update":
+        log(displayInfo("Update Order"));
+        await promptUpdate();
+        return interactiveApp();
+      case "list":
+        log(displayInfo("List Categories"));
+        await listCategories();
+        return interactiveApp();
+      case "list by ID's":
+        log(displayInfo("List Category Items"));
+        await promptListIds();
+        return interactiveApp();
+      case "help":
+        program.help();
+      case "exit":
+        program.exit(0);
+    }
+  } catch (err) {
+    error(err);
+    process.exit(1);
+  }
 };
