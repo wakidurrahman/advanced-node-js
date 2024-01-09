@@ -12,3 +12,13 @@ Learning Objectives
 - Determine ways to interpret stats and avoid the pitfalls of large numbers.
 - Discover shortcuts for speeding up the research and selection process.
 - Understand the OSS social contract.
+
+
+## Matching Requirement Scope to Library Scope
+
+The need for an ecosystem package starts with a problem that needs to be solved. The first thing to determine when selecting a package to help solve a problem is the scope of the problem. 
+
+Packages can be grouped into two categories: `libraries` and `frameworks`.
+
+- A library provides some tools to perform certain tasks.
+- A framework provides patterns and opinions that act as constraints around (mostly) business logic
