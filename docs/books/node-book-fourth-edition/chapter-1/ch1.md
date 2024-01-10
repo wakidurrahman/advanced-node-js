@@ -38,3 +38,28 @@ All LTS versions of Node.js are given `codenames`, named after elements. Node.js
 2. nvm [Node Version Manager](https://github.com/nvm-sh/nvm)
 3. n [Interactively Manage Your Node.js Versions](https://github.com/tj/n)
 4. You can install Node.js manually from Node.js [downloads page](https://nodejs.org/en/download/)
+
+
+## Accessing the Node.js API documentation
+
+The Node.js documentation also describes how to interact with APIs,  including which arguments a method accepts and the method's return value.
+
+
+### [Node.js v18.19.0 documentation](https://nodejs.org/docs/latest-v18.x/api/documentation.html)
+
+**Node.js is a JavaScript runtime built on the V8 JavaScript engine.**
+
+#### Stability index 
+
+Throughout the documentation are indications of a section's stability. Some APIs are so proven and so relied upon that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous.
+
+1. Stability: 0 - Deprecated. The feature may emit warnings. Backward compatibility is not guaranteed.
+2. Stability: 1 - Experimental. The feature is not subject to semantic versioning rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
+3. Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
+4. Stability: 3 - Legacy. Although this feature is unlikely to be removed and is still covered by semantic versioning guarantees, it is no longer actively maintained, and other alternatives are available.
+
+```bash
+node --help
+Usage: node [options] [ script.js ] [arguments]
+       node inspect [options] [ script.js | host:port ] [arguments]
+```
