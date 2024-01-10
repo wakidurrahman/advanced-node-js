@@ -7,8 +7,8 @@ NodeJS created in 2009, it wrapped Google Chrome's JavaScript Engine,V8, to enab
 Today, Node.js is a popular technology choice for building many types of applications, including
 
 - HTTP web servers,
-- microservices,
-- command-line applications, and more.
+- Microservices,
+- Command-line applications, and more.
 
 **_Key to Node.js's success is that it enables full-stack development in a common language, JavaScript._**
 
@@ -17,4 +17,4 @@ The massive ecosystem of Node.js modules has supported Node.js's success. There 
 ## Who this book is for.
 
 - Who want to gain a broad understanding of fundamental Node.js concepts.
-- This book will provide a bast understanding that will allow you to start building fast, efficient, and scalable Node.js applications.
+- This book will provide a base understanding that will allow you to start building fast, efficient, and scalable Node.js applications.
