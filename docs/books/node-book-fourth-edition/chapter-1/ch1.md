@@ -30,3 +30,11 @@ All LTS versions of Node.js are given `codenames`, named after elements. Node.js
 - Hydrogen (18.x 2022)
 - Iron (20.x 2023)
 - Jod (22.x 2024)
+
+
+## NodeJS Installing
+
+1. fnm [Fast Node Manager](https://github.com/Schniz/fnm)
+2. nvm [Node Version Manager](https://github.com/nvm-sh/nvm)
+3. n [Interactively Manage Your Node.js Versions](https://github.com/tj/n)
+4. You can install Node.js manually from Node.js [downloads page](https://nodejs.org/en/download/)
