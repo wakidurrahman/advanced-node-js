@@ -53,13 +53,22 @@ The Node.js documentation also describes how to interact with APIs,  including w
 
 Throughout the documentation are indications of a section's stability. Some APIs are so proven and so relied upon that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous.
 
-1. Stability: 0 - Deprecated. The feature may emit warnings. Backward compatibility is not guaranteed.
-2. Stability: 1 - Experimental. The feature is not subject to semantic versioning rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
-3. Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
-4. Stability: 3 - Legacy. Although this feature is unlikely to be removed and is still covered by semantic versioning guarantees, it is no longer actively maintained, and other alternatives are available.
+1. Stability: `0 - Deprecated`. The feature may emit warnings. Backward compatibility is not guaranteed.
+2. Stability: `1 - Experimental`. The feature is not subject to semantic versioning rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
+3. Stability: `2 - Stable`. Compatibility with the npm ecosystem is a high priority.
+4. Stability: `3 - Legacy`. Although this feature is unlikely to be removed and is still covered by semantic versioning guarantees, it is no longer actively maintained, and other alternatives are available.
 
 ```bash
 node --help
 Usage: node [options] [ script.js ] [arguments]
        node inspect [options] [ script.js | host:port ] [arguments]
 ```
+
+The API documentation also details the stability of APIs. The Node.js project defines and
+uses the following three stability indices:
+
+1. 0 – Deprecated: Usage of these APIs is discouraged. Warnings may be emitted upon
+the usage of these APIs.
+2. 1 – Experimental: These APIs are not considered stable and may be subject to
+some non-backward-compatible changes.
+3. 2 – Stable: With stable APIs, the Node.js project will try to ensure compatibility.
