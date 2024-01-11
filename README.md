@@ -4,8 +4,8 @@
 
 ## [How can I learn node.js from scratch to an advanced level?](./docs/overview-of-learning.md)
 
-1. Understand `JavaScript`
-2. Learn Basic `Node.js`
+1. [Understand `JavaScript`](./javascript-exercises-practice-solution/README.md)
+2. [Learn Basic `Node.js`](./nodejs-org-learn/README.md)
 3. [`Asynchronous` JavaScript](./asynchronous-javascript/README.md)
 4. `Node.js` Modules
 5. `Express.js`
