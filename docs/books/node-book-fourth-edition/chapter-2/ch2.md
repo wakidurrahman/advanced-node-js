@@ -44,3 +44,6 @@ Today, there are three notable ways to handle asynchronous code in Node.js
 1. callbacks,
 2. Promises, 
 3. async/await syntax.
+
+
+It's not recommended to have too many nested callbacks as it can negatively impact the readability of the code.
