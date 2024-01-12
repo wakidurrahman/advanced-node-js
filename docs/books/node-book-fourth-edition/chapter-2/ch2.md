@@ -47,3 +47,9 @@ Today, there are three notable ways to handle asynchronous code in Node.js
 
 
 It's not recommended to have too many nested callbacks as it can negatively impact the readability of the code.
+
+
+## Using the fs Promises API
+
+A Promise is an object that is used to represent the completion of an asynchronous
+function.
