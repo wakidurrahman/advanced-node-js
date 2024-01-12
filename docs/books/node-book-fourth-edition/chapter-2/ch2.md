@@ -33,3 +33,8 @@ Each data event returns a `Buffer` object. The `Buffer` object (typically named 
 `const name = data.toString()` is what turns the `Buffer` object into a string. The `trim()` function removes the `newline` character that denoted the end of each input.
 
 We write to `STDOUT` and `STDERR` using the respective properties on the process object (`process.stdout.write`, `process.stderr.write`). During the recipe, we also used `CTRL + C` to exit the program in the shell. CTRL + C sends `SIGINT`, or `signal interrupt`, to the Node.js process.
+
+
+## Working with `fs` module managing files. 
+
+`fs` stands for File System, and this module provides the APIs to interact with the file system.
