@@ -12,3 +12,7 @@ process.stdin.on("data", (userInput) => {
   if (name !== "") process.stdout.write(`Hello ${name}!`);
   else process.stderr.write("Input was empty");
 });
+
+process.on("SIGINT", () => {
+    console.log("Received SIGINT. Press Control-D to exit.")
+})
