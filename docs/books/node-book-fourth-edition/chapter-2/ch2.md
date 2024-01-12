@@ -38,3 +38,9 @@ We write to `STDOUT` and `STDERR` using the respective properties on the process
 ## Working with `fs` module managing files. 
 
 `fs` stands for File System, and this module provides the APIs to interact with the file system.
+
+Today, there are three notable ways to handle asynchronous code in Node.js
+
+1. callbacks,
+2. Promises, 
+3. async/await syntax.
