@@ -53,3 +53,13 @@ It's not recommended to have too many nested callbacks as it can negatively impa
 
 A Promise is an object that is used to represent the completion of an asynchronous
 function.
+
+## Inspecting file metadata
+
+The fs module generally provides APIs that are modeled around Portable Operating System Interface (POSIX) functions.
+
+## Checking file access. 
+
+It is recommended that if you're attempting to read, write, or edit a file, you follow the approach of handling the error if the file is not found,
+
+if you simply wanted to check the existence of a file, you could use the fs.access() or fs.accessSync() APIs.
