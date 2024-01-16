@@ -9,7 +9,7 @@ fs.readFile(filepath, "utf8")
     const upperContents = contents.toUpperCase();
 
     // Split the callbacks into named functions.
-    //   updateFile(filepath, upperContents);
+    // updateFile(filepath, upperContents);
     updateFile(filepath, upperContents);
   })
   .catch((err) => {

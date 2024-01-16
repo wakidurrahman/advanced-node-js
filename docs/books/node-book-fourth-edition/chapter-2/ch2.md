@@ -34,22 +34,82 @@ Each data event returns a `Buffer` object. The `Buffer` object (typically named 
 
 We write to `STDOUT` and `STDERR` using the respective properties on the process object (`process.stdout.write`, `process.stderr.write`). During the recipe, we also used `CTRL + C` to exit the program in the shell. CTRL + C sends `SIGINT`, or `signal interrupt`, to the Node.js process.
 
-
-## Working with `fs` module managing files. 
+## Working with `fs` module managing files.
 
 `fs` stands for File System, and this module provides the APIs to interact with the file system.
 
 Today, there are three notable ways to handle asynchronous code in Node.js
 
 1. callbacks,
-2. Promises, 
+2. Promises,
 3. async/await syntax.
 
-
 It's not recommended to have too many nested callbacks as it can negatively impact the readability of the code.
-
 
 ## Using the fs Promises API
 
 A Promise is an object that is used to represent the completion of an asynchronous
 function.
+
+## Inspecting file metadata
+
+The fs module generally provides APIs that are modeled around Portable Operating System Interface (POSIX) functions.
+
+## Checking file access.
+
+It is recommended that if you're attempting to read, write, or edit a file, you follow the approach of handling the error if the file is not found,
+
+if you simply wanted to check the existence of a file, you could use the fs.access() or fs.accessSync() APIs.
+
+## Modifying file permissions
+
+The Node.js `fs` module provides APIs that can be used to alter the permissions on a given file. As with many of the other `fs` functions, there is both
+
+- an asynchronous API, `chmod()`, and
+- an equivalent synchronous API, `chmodSync()`.
+
+**_`fs.chmod(path, mode, callback)`_**
+
+the `chmod` functions take a file `path` and `mode` as the first and second arguments, respectively. The asynchronous function accepts a third parameter, which is the callback function to be executed upon completion.
+
+Asynchronously changes the permissions of a file. No arguments other than a possible exception are given to the completion callback.
+
+The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric `bitmask` created using a logical `OR` of the following constants:
+
+The `mode` argument can be either in the form of a numeric `bitmask` using a series of constants provided by the `fs` module or a sequence of three `octal` digits.
+
+Imagine that you have a file that currently has the following permissions:
+
+- Owner readable and writeable
+- Group readable
+- Readable only by all other users (sometimes referred to as world readable).
+
+```js
+/*
+ * path <string> | <Buffer> | <URL>
+ * mode <string> | <integer>
+ * callback <Function>
+ *   ↪️ err <Error>
+ */
+
+import { chmod } from "node:fs";
+
+chmod("my_file.txt", 0o775, (err) => {
+  if (err) throw err;
+  console.log('The permissions for file "my_file.txt" have been changed!');
+});
+```
+
+## Inspecting symbolic links
+
+A `symbolic link`, or `symlink`, is a special file that stores a reference to another file or directory. When the `stat` or `statSync()` function from Inspecting file metadata is run on a symbolic link, it will return information about the file the symbolic link references, rather than the symbolic link itself.
+
+The Node.js fs module does, however, provide the functions named `lstat()` and `lstatSync()` that inspect the symbolic link itself:
+
+`$ ln -s file.txt link-to-file`
+
+`$ node`
+
+`> fs.lstatSync("link-to-file");`
+
+> **_Note that we did not need to explicitly import the Node.js fs module. The REPL automatically loads the core (built-in) Node.js modules so that they are available to be used. The REPL is a useful tool for testing out commands without having to create new files._**

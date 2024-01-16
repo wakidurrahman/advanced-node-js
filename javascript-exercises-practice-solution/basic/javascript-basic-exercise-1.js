@@ -8,7 +8,7 @@
 // Get the current date and time
 const today1 = new Date("2023-01-11T15:00:00.512Z"); // test 'Noon'
 const today2 = new Date("2023-01-11T03:00:00.512Z"); // test "Midnight"
-const today = new Date("2023-01-11T12:00:00.512Z");
+const today = new Date("2024-01-15T01:59:40.820Z");
 // Get the day of the week (0-6, where 0 is Sunday and 6 is Saturday)
 const day = today.getDay();
 // Array of day names
