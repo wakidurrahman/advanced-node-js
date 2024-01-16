@@ -113,3 +113,7 @@ The Node.js fs module does, however, provide the functions named `lstat()` and `
 `> fs.lstatSync("link-to-file");`
 
 > **_Note that we did not need to explicitly import the Node.js fs module. The REPL automatically loads the core (built-in) Node.js modules so that they are available to be used. The REPL is a useful tool for testing out commands without having to create new files._**
+
+## Watching for file updates
+
+Node.js's `fs` module provides functionality that enables you to watch files and track when `files` or `directories` are `created`, `updated`, or `deleted`.
