@@ -78,13 +78,11 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 The `mode` argument can be either in the form of a numeric `bitmask` using a series of constants provided by the `fs` module or a sequence of three `octal` digits.
 
-Imagine that you have a file that currently has the following permissions: 
+Imagine that you have a file that currently has the following permissions:
 
 - Owner readable and writeable
 - Group readable
 - Readable only by all other users (sometimes referred to as world readable).
-
-
 
 ```js
 /*
@@ -100,9 +98,18 @@ chmod("my_file.txt", 0o775, (err) => {
   if (err) throw err;
   console.log('The permissions for file "my_file.txt" have been changed!');
 });
-
-
-// 
-
-
 ```
+
+## Inspecting symbolic links
+
+A `symbolic link`, or `symlink`, is a special file that stores a reference to another file or directory. When the `stat` or `statSync()` function from Inspecting file metadata is run on a symbolic link, it will return information about the file the symbolic link references, rather than the symbolic link itself.
+
+The Node.js fs module does, however, provide the functions named `lstat()` and `lstatSync()` that inspect the symbolic link itself:
+
+`$ ln -s file.txt link-to-file`
+
+`$ node`
+
+`> fs.lstatSync("link-to-file");`
+
+> **_Note that we did not need to explicitly import the Node.js fs module. The REPL automatically loads the core (built-in) Node.js modules so that they are available to be used. The REPL is a useful tool for testing out commands without having to create new files._**
