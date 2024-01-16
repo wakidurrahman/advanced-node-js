@@ -117,3 +117,47 @@ The Node.js fs module does, however, provide the functions named `lstat()` and `
 ## Watching for file updates
 
 Node.js's `fs` module provides functionality that enables you to watch files and track when `files` or `directories` are `created`, `updated`, or `deleted`.
+
+**`fs.watchFile(filename[, options], listener)`**
+
+The watchFile() function to watch for changes on a given file path. The function accepts `three` arguments
+
+- a filename,
+- a list of options
+- a listener function.
+
+The `options` object can include the following:
+
+- `BigInt`: This defaults to `false`; when set to true, the numeric values returned from the object of Stats would be specified as `BigInt`. BigInt is a JavaScript object that allows you to represent larger numbers more reliably.
+- `Persistent`: This value indicates whether the Node.js process should continue to run while files are still being watched. It defaults to true.
+- `Interval`: The interval value controls how often the file should be polled for changes, measured in milliseconds. The default value is 5,007 milliseconds when no interval is supplied.
+
+```js
+import { watchFile } from "node:fs";
+/*
+ * filename <string> | <Buffer> | <URL>
+ * options <Object>
+ *   ↪️ bigint <boolean> Default: false
+ *   ↪️ persistent <boolean> Default: true
+ *   ↪️ interval <integer> Default: 5007
+ * listener <Function>
+ *   ↪️ current <fs.Stats>
+ *   ↪️ previous <fs.Stats>
+ */
+watchFile("message.text", (curr, prev) => {
+  console.log(`the current mtime is: ${curr.mtime}`);
+  console.log(`the previous mtime was: ${prev.mtime}`);
+});
+```
+
+The watch() function accepts three parameters—the file path, an array of options, and a listener function. The options that can be passed via the options parameter are as follows:
+
+```js
+const fs = require("fs");
+const file = "./file.txt";
+const moment = require("moment");
+fs.watch(file, (eventType, filename) => {
+  const time = moment().format("MMMM Do YYYY, h:mm:ss a");
+  return console.log(`${filename} updated ${time}`);
+});
+```
