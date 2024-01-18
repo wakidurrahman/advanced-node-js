@@ -57,7 +57,7 @@ $ ls -lh file.txt
 
 > **Generally, the Node.js `stream` core module is not interacted with directly.** You'd typically only interact with the Node.js `stream` implementation via higher-level APIs, such as those exposed by the `fs` module.
 
-### We created a `writable` stream, via the `createWriteStream()` method, to sequentially `write` our file contents. 
+### Created a `writable` stream, via the `createWriteStream()` method, to sequentially `write` our file contents.
 
 [fs.createWriteStream(path[, options])](https://nodejs.org/docs/latest-v20.x/api/fs.html#fscreatewritestreampath-options)
 
@@ -82,7 +82,7 @@ The first is the path of the `file` to write to, and the second is an `options` 
   - **highWaterMark**: `<number>` Default: `16384`
   - **flush**: `<boolean>` If true, the underlying file descriptor is flushed prior to closing it. Default: `false`.
 
-### Created a `readable stream` to sequentially read the contents of our file. 
+### Created a `readable stream` to sequentially read the contents of our file.
 
 [fs.createReadStream(path[, options])](https://nodejs.org/docs/latest-v20.x/api/fs.html#fscreatereadstreampath-options)
 
@@ -94,6 +94,7 @@ The `createReadStream()` method is an abstraction of a `readable stream`. This m
 
 - path `<string> | <Buffer> | <URL>`
 - options `<string> | <Object>`
+
   - **flags**: `<string>` See support of file system flags. Default: `'r'`.
   - **encoding**: `<string>` Default: `'null'`
   - **fd**: `<integer> | <FileHandle>` Default: `null`
@@ -105,3 +106,32 @@ The `createReadStream()` method is an abstraction of a `readable stream`. This m
   - **highWaterMark**: `<number>` Default: `64 * 1024`
   - **fs**: `<Object> | <null>` Default: `null`
   - **signal**: `<AbortSignal> | <null>` Default: `null`
+
+  All Node.js `streams` are instances of the `EventEmitter` class. Streams emit a series of different event.
+
+  **_The following events are emitted on `readable streams`:_**
+
+  ![readable stream](./readable-streams-emit-events.png)
+
+  - `close`: Emitted when the stream and any of the stream's resources have been closed. No further events will be emitted
+  - `data`: Emitted when new data is read from the stream
+  - `end`: Emitted when all available data has been read
+  - `error`: Emitted when the readable stream experiences an error
+  - `open`: --
+  - `pause`: Emitted when the readable stream is paused
+  - `readable`: Emitted when there is data available to be read
+  - `ready`: ---
+  - `resume`: Emitted when a readable stream resumes after being in a paused state
+
+  **_The following are the events emitted on `writable streams`_**
+
+  ![writable streams](./writable-streams-emit-events.png)
+
+- `close`: Emitted when the stream and any of the stream's resources have been closed. No further events will be emitted
+- `drain`: Emitted when the writable stream can resume writing data
+- `error`: Emitted when the writeable stream experiences an error
+- `finish`: Emitted when the writeable stream has ended and all writes have completed
+- `open`: ---
+- `pipe`: Emitted when the stream.pipe() method is called on a readable stream
+- `ready`: ---
+- `unpipe`: Emitted when the stream.unpipe() method is called on a readable stream
