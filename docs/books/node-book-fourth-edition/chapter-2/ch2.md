@@ -171,3 +171,19 @@ we will create a TCP server and a TCP client and allow them to communicate. TCP 
 `server.js`
 
 `client.js`
+
+### UDP(User Datagram Protocol) is more appropriate than TCP
+
+UDP is more appropriate than TCP.
+
+- Let's take a look at what UDP socket are.
+- What they're used for,
+- How to implement a UDP socket
+
+**UDP** stands for `User Datagram Protocol` and is an alternative to TCP. **_UDP is a connectionless protocol._** Unlike TCP, the protocol does not establish a connection before sending data. UDP also doesn't guarantee delivery of packets some can be lost. 
+
+> UDP is most often used in cases where speed is considered more important than reliability.
+
+> UDP is typically used for `video calling`, `gaming`, or `streaming—because` in these cases, minimizing delay is important. 
+
+
