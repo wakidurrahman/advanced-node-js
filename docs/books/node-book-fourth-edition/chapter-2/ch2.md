@@ -113,3 +113,77 @@ The Node.js fs module does, however, provide the functions named `lstat()` and `
 `> fs.lstatSync("link-to-file");`
 
 > **_Note that we did not need to explicitly import the Node.js fs module. The REPL automatically loads the core (built-in) Node.js modules so that they are available to be used. The REPL is a useful tool for testing out commands without having to create new files._**
+
+## Watching for file updates
+
+Node.js's `fs` module provides functionality that enables you to watch files and track when `files` or `directories` are `created`, `updated`, or `deleted`.
+
+**`fs.watchFile(filename[, options], listener)`**
+
+The watchFile() function to watch for changes on a given file path. The function accepts `three` arguments
+
+- a filename,
+- a list of options
+- a listener function.
+
+The `options` object can include the following:
+
+- `BigInt`: This defaults to `false`; when set to true, the numeric values returned from the object of Stats would be specified as `BigInt`. BigInt is a JavaScript object that allows you to represent larger numbers more reliably.
+- `Persistent`: This value indicates whether the Node.js process should continue to run while files are still being watched. It defaults to true.
+- `Interval`: The interval value controls how often the file should be polled for changes, measured in milliseconds. The default value is 5,007 milliseconds when no interval is supplied.
+
+```js
+import { watchFile } from "node:fs";
+/*
+ * filename <string> | <Buffer> | <URL>
+ * options <Object>
+ *   ↪️ bigint <boolean> Default: false
+ *   ↪️ persistent <boolean> Default: true
+ *   ↪️ interval <integer> Default: 5007
+ * listener <Function>
+ *   ↪️ current <fs.Stats>
+ *   ↪️ previous <fs.Stats>
+ */
+watchFile("message.text", (curr, prev) => {
+  console.log(`the current mtime is: ${curr.mtime}`);
+  console.log(`the previous mtime was: ${prev.mtime}`);
+});
+```
+
+The watch() function accepts three parameters—the file path, an array of options, and a listener function. The options that can be passed via the options parameter are as follows:
+
+```js
+const fs = require("fs");
+const file = "./file.txt";
+const moment = require("moment");
+fs.watch(file, (eventType, filename) => {
+  const time = moment().format("MMMM Do YYYY, h:mm:ss a");
+  return console.log(`${filename} updated ${time}`);
+});
+```
+
+## Creating TCP server and client communication
+
+`Sockets` allow machines and devices to communicate. `Sockets` are also used to coordinate I/O across networks. **The term socket is used to refer to one endpoint of a two-way networking communication link.** `Sockets` enable us to build real-time web applications such as instant messaging applications.
+
+we will create a TCP server and a TCP client and allow them to communicate. TCP stands for Transmission Control Protocol. TCP provides a standard that allows devices to communicate over a network.
+
+`server.js`
+
+`client.js`
+
+### UDP(User Datagram Protocol) is more appropriate than TCP
+
+UDP is more appropriate than TCP.
+
+- Let's take a look at what UDP socket are.
+- What they're used for,
+- How to implement a UDP socket
+
+**UDP** stands for `User Datagram Protocol` and is an alternative to TCP. **_UDP is a connectionless protocol._** Unlike TCP, the protocol does not establish a connection before sending data. UDP also doesn't guarantee delivery of packets some can be lost. 
+
+> UDP is most often used in cases where speed is considered more important than reliability.
+
+> UDP is typically used for `video calling`, `gaming`, or `streaming—because` in these cases, minimizing delay is important. 
+
+
