@@ -1,4 +1,4 @@
-# Streams
+# 📖 Streams
 
 Streams are one of the key features of Node.js. Most Node.js applications rely on the underlying Node.js `streams` implementation, be it for
 
@@ -18,3 +18,10 @@ Streams provide a mechanism to sequentially read input and write output.
 2. Writable Streams: Used for writing data
 3. Duplex Streams: Use for both reading and writing data
 4. Transform Streams: A type of duplex stream that transforms the data input, and then outputs the transformed data.  
+
+We will create various types of streams, and also how we can chain these types of streams together to form stream pipelines. 
+
+## #️⃣ Creating streams in Node.js
+
+The Node.js `stream` API is provided by the Node.js `stream` core module.
+

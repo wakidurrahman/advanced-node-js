@@ -1,4 +1,4 @@
-# Introduction.
+# 📖 Introduction.
 
 Long-Term Support(LTS).
 The NodeJS release schedule is based on the [`Semantic Versioning`](https://semver.org/) standard.
@@ -31,14 +31,14 @@ All LTS versions of Node.js are given `codenames`, named after elements. Node.js
 - Iron (20.x 2023)
 - Jod (22.x 2024)
 
-## NodeJS Installing
+## #️⃣  NodeJS Installing
 
 1. fnm [Fast Node Manager](https://github.com/Schniz/fnm)
 2. nvm [Node Version Manager](https://github.com/nvm-sh/nvm)
 3. n [Interactively Manage Your Node.js Versions](https://github.com/tj/n)
 4. You can install Node.js manually from Node.js [downloads page](https://nodejs.org/en/download/)
 
-## Accessing the Node.js API documentation
+## #️⃣ Accessing the Node.js API documentation
 
 The Node.js documentation also describes how to interact with APIs, including which arguments a method accepts and the method's return value.
 
@@ -70,7 +70,7 @@ uses the following three stability indices:
    some non-backward-compatible changes.
 3. 2 – Stable: With stable APIs, the Node.js project will try to ensure compatibility.
 
-## Adopting new JavaScript syntax in NodeJS
+## #️⃣ Adopting new JavaScript syntax in NodeJS
 
 ```bash
 $ npm version
