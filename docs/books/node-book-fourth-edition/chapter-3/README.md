@@ -12,16 +12,72 @@ Streams provide a mechanism to sequentially read input and write output.
 
 > Streams are fundamental to big data applications or media streaming services, where the data is too large to consume at once.
 
-**_There are four main types of streams in Node.js:_**
+## #️⃣ There are four fundamental stream types within Node.js:
 
-1. Readable Streams: Used for reading data
-2. Writable Streams: Used for writing data
-3. Duplex Streams: Use for both reading and writing data
-4. Transform Streams: A type of duplex stream that transforms the data input, and then outputs the transformed data.  
+1. `Readable`: streams from which data can be read (for example, `fs.createReadStream()`).
+2. `Writable`: streams to which data can be written (for example, `fs.createWriteStream()`).
+3. `Duplex`: streams that are both Readable and Writable (for example, `net.Socket`).
+4. `Transform`: Duplex streams that can modify or transform the data as it is written and read (for example, `zlib.createDeflate()`).
 
-We will create various types of streams, and also how we can chain these types of streams together to form stream pipelines. 
+**_Additionally, this module includes the utility functions `stream.pipeline()`, `stream.finished()`, `stream.Readable.from()` and `stream.addAbortSignal()`._**
 
 ## #️⃣ Creating streams in Node.js
 
 The Node.js `stream` API is provided by the Node.js `stream` core module.
+
+1. writable stream `fs.createWriteStream()`
+
+`write-stream.js`
+
+```js
+const fs = require("fs");
+const file = fs.createWriteStream("./file.txt");
+```
+
+2. readable stream `fs.createReadStream()`
+
+`read-stream.js`
+
+```js
+const fs = require("fs");
+const readStream = fs.createReadStream("./file-one.txt");
+```
+
+To check that the file exists, enter the following command in your Terminal:
+
+```bash
+$ ls -lh file.txt
+```
+
+`wrote` and `read` a file sequentially using the `createReadStream()` and `createWriteStream()` fs methods.
+
+> The Node.js core `fs` module relies on the underlying Node.js `stream` core module.
+
+> To access the node:stream module: `const stream = require('node:stream');`. The `node:stream` module is useful for creating new types of stream instances.**_ It is usually not necessary to use the `node:stream` module to consume streams._**
+
+> **Generally, the Node.js `stream` core module is not interacted with directly.** You'd typically only interact with the Node.js `stream` implementation via higher-level APIs, such as those exposed by the `fs` module.
+
+
+[fs.createWriteStream(path[, options])](https://nodejs.org/docs/latest-v20.x/api/fs.html#fscreatewritestreampath-options)
+
+```bash
+fs.createWriteStream(path[, options])
+```
+
+We created a `writable` stream, via the `createWriteStream()` method, to sequentially `write` our file contents. The `createWriteStream()` method accepts two `parameters`.
+The first is the path of the `file` to write to, and the second is an `options` object that can be used to supply configuration to the stream.
+
+- path `<string> | <Buffer> | <URL>`
+- options `<string> | <Object>`
+  - **flags**: `<string>` See support of file system flags. Default: `'w'`.
+  - **encoding**: `<string>` Default: `'utf8'`
+  - **fd**: `<integer>` | <FileHandle> Default: `null`
+  - **mode**: `<integer>` Default: `0o666`
+  - **autoClose**: `<boolean>` Default: `true`
+  - **emitClose**: `<boolean>` Default: `true`
+  - **start**: `<integer>`
+  - **fs**: `<Object> | <null>` Default: `null`
+  - **signal**: `<AbortSignal> | <null>` Default: `null`
+  - **highWaterMark**: `<number>` Default: `16384`
+  - **flush**: `<boolean>` If true, the underlying file descriptor is flushed prior to closing it. Default: `false`.
 
