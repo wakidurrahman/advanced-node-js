@@ -57,6 +57,7 @@ $ ls -lh file.txt
 
 > **Generally, the Node.js `stream` core module is not interacted with directly.** You'd typically only interact with the Node.js `stream` implementation via higher-level APIs, such as those exposed by the `fs` module.
 
+### We created a `writable` stream, via the `createWriteStream()` method, to sequentially `write` our file contents. 
 
 [fs.createWriteStream(path[, options])](https://nodejs.org/docs/latest-v20.x/api/fs.html#fscreatewritestreampath-options)
 
@@ -64,14 +65,14 @@ $ ls -lh file.txt
 fs.createWriteStream(path[, options])
 ```
 
-We created a `writable` stream, via the `createWriteStream()` method, to sequentially `write` our file contents. The `createWriteStream()` method accepts two `parameters`.
+The `createWriteStream()` method accepts two `parameters`.
 The first is the path of the `file` to write to, and the second is an `options` object that can be used to supply configuration to the stream.
 
 - path `<string> | <Buffer> | <URL>`
 - options `<string> | <Object>`
   - **flags**: `<string>` See support of file system flags. Default: `'w'`.
   - **encoding**: `<string>` Default: `'utf8'`
-  - **fd**: `<integer>` | <FileHandle> Default: `null`
+  - **fd**: `<integer> | <FileHandle>` Default: `null`
   - **mode**: `<integer>` Default: `0o666`
   - **autoClose**: `<boolean>` Default: `true`
   - **emitClose**: `<boolean>` Default: `true`
@@ -81,3 +82,26 @@ The first is the path of the `file` to write to, and the second is an `options` 
   - **highWaterMark**: `<number>` Default: `16384`
   - **flush**: `<boolean>` If true, the underlying file descriptor is flushed prior to closing it. Default: `false`.
 
+### Created a `readable stream` to sequentially read the contents of our file. 
+
+[fs.createReadStream(path[, options])](https://nodejs.org/docs/latest-v20.x/api/fs.html#fscreatereadstreampath-options)
+
+```bash
+fs.createReadStream(path[, options])
+```
+
+The `createReadStream()` method is an abstraction of a `readable stream`. This method expects two parameters – the first being the `path` to the contents to read, and the second an `options` object. The following table details the options we can pass to the `createReadStream()` method via an options object:
+
+- path `<string> | <Buffer> | <URL>`
+- options `<string> | <Object>`
+  - **flags**: `<string>` See support of file system flags. Default: `'r'`.
+  - **encoding**: `<string>` Default: `'null'`
+  - **fd**: `<integer> | <FileHandle>` Default: `null`
+  - **mode**: `<integer>` Default: `0o666`
+  - **autoClose**: `<boolean>` Default: `true`
+  - **emitClose**: `<boolean>` Default: `true`
+  - **start**: `<integer>`
+  - **end**: `<integer>` Default: `Infinity`
+  - **highWaterMark**: `<number>` Default: `64 * 1024`
+  - **fs**: `<Object> | <null>` Default: `null`
+  - **signal**: `<AbortSignal> | <null>` Default: `null`
