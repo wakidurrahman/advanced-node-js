@@ -161,3 +161,13 @@ fs.watch(file, (eventType, filename) => {
   return console.log(`${filename} updated ${time}`);
 });
 ```
+
+## Creating TCP server and client communication
+
+`Sockets` allow machines and devices to communicate. `Sockets` are also used to coordinate I/O across networks. **The term socket is used to refer to one endpoint of a two-way networking communication link.** `Sockets` enable us to build real-time web applications such as instant messaging applications.
+
+we will create a TCP server and a TCP client and allow them to communicate. TCP stands for Transmission Control Protocol. TCP provides a standard that allows devices to communicate over a network.
+
+`server.js`
+
+`client.js`
