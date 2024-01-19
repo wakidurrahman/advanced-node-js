@@ -135,3 +135,13 @@ The `createReadStream()` method is an abstraction of a `readable stream`. This m
 - `pipe`: Emitted when the stream.pipe() method is called on a readable stream
 - `ready`: ---
 - `unpipe`: Emitted when the stream.unpipe() method is called on a readable stream
+
+
+## #️⃣  Dive deeper into `readable streams`.
+
+- How to read from `infinite` data sources.
+- How to use the more modern `asynchronous` iterator syntax with `readable streams`.
+
+### Interacting with `infinite` data. 
+
+Streams make it possible to interact with `infinite` amounts of data.
