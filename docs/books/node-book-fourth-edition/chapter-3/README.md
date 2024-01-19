@@ -136,12 +136,52 @@ The `createReadStream()` method is an abstraction of a `readable stream`. This m
 - `ready`: ---
 - `unpipe`: Emitted when the stream.unpipe() method is called on a readable stream
 
-
-## #️⃣  Dive deeper into `readable streams`.
+## #️⃣ Dive deeper into `readable streams`.
 
 - How to read from `infinite` data sources.
 - How to use the more modern `asynchronous` iterator syntax with `readable streams`.
 
-### Interacting with `infinite` data. 
+### 📝 Interacting with `infinite` data.
 
 Streams make it possible to interact with `infinite` amounts of data.
+
+### 📝 Readable streams with async iterators
+
+Readable streams are `asynchronous iterables`. This means we can use the `for await ...of` syntax to loop over the stream data.
+
+### 📝 Generating readable streams with `Readable.from()`
+
+The `Readable.from()` method is exposed by the Node.js core `stream` module. This method is used to construct readable streams with iterators:
+
+Define the asynchronous generator function.
+
+```js
+async function* generate() {
+  yield "Node.js";
+  yield "is";
+  yield "a";
+  yield "JavaScript";
+  yield "Runtime";
+}
+```
+
+The `function*` declaration creates a `binding` of a new generator function to a given name. A generator function can be exited and later re-entered, with its context (variable `bindings`) saved across re-entrances.
+
+You can also define generator functions using the function* expression.
+
+```js
+function* generator(i) {
+  yield i;
+  yield i + 10;
+}
+
+const gen = generator(10);
+
+console.log(gen.next().value);
+// Expected output: 10
+
+console.log(gen.next().value);
+// Expected output: 20
+```
+
+## #️⃣ Interacting with paused streams
