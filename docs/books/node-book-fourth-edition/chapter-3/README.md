@@ -350,3 +350,10 @@ A `Duplex` stream is one that implements both `Readable` and `Writable`, such as
   - `writableObjectMode`: `<boolean>` Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Default**: `false`.
   - `readableHighWaterMark`: `<number>` Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   - `writableHighWaterMark`: `<number>` Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
+
+## #️⃣ Building stream pipelines
+
+The Node.js core `stream` module provides a `pipeline()` method. Similar to how we can use the Node.js core stream `pipe()` method to pipe one stream to another, we can also use the pipeline() method to chain multiple streams together.
+
+Unlike the `pipe()` method, the `pipeline()` method also forwards `errors`, making it easier to handle `errors` in the stream flow.
+
