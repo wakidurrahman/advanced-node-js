@@ -276,4 +276,35 @@ This configuration instructs the destination stream to remain open even after th
 
 ## #️⃣ Transforming data with transform streams
 
-Transform streams allow us to consume input data, then process that data, and then output the data in processed form. We can use transform streams to handle data manipulation functionally and asynchronously. 
+Transform streams allow us to consume input data, then process that data, and then output the data in processed form. We can use transform streams to handle data manipulation functionally and asynchronously.
+
+`new stream.Transform([options])`
+
+- options `<Object>` Passed to both Writable and Readable constructors. Also has the following fields:
+  - transform: The `<Function>` Implementation for the `stream._transform()` method. The function that implements the data processing/transformation logic
+  - flush: `<Function>` Implementation for the `stream._flush()` method. If the transform process emits additional data, the flush method is used to flush the data. This argument is optional
+
+```js
+const { Transform } = require("node:stream");
+
+const myTransform = new Transform({
+  transform(chunk, encoding, callback) {
+    // ...
+  },
+});
+```
+
+A `Transform stream` is a `Duplex` stream where the output is computed in some way from the input. Which means they implement both `readable` and `writable` stream interfaces. Transform streams are used to process (or transform) the input and then pass it as output.
+
+It is the `transform()` function that processes the stream input and produces the output.
+
+📒 Note: that it is not necessary for the number of chunks supplied via the input stream to be equal to the number output by the transform stream – some chunks could be omitted during the transformation/processing.
+There is no requirement that the output be the same size as the input, the same number of chunks, or arrive at the same time.
+
+Under the covers, the `transform()` function gets attached to the `_transform()` method of the transform stream. The `_transform()` method is an internal method on the `Transform` `class` that is not intended to be called directly (hence the `_` `underscore` prefix).
+
+The `_transform()` method accepts the following three arguments:
+
+- chu`nk: The data to be transformed
+- `encoding`: If the input is of the `String` type, the encoding will be of the `String` type. If it is of the `Buffer` type, this value is set to `buffer`
+- `callback(err, transformedChunk)`: The callback function to be called once the chunk has been processed. The callback function is expected to have two arguments – the first an error and the second the transformed chunk
