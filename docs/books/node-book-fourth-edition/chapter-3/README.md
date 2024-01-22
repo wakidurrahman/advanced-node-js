@@ -167,7 +167,7 @@ async function* generate() {
 
 The `function*` declaration creates a `binding` of a new generator function to a given name. A generator function can be exited and later re-entered, with its context (variable `bindings`) saved across re-entrances.
 
-You can also define generator functions using the function* expression.
+You can also define generator functions using the function\* expression.
 
 ```js
 function* generator(i) {
@@ -185,3 +185,51 @@ console.log(gen.next().value);
 ```
 
 ## #️⃣ Interacting with paused streams
+
+A Node.js stream can be in either `flowing` or `paused` mode.
+
+- In `flowing` mode, data chunks are read automatically,
+- whereas in `paused` mode, the stream.read() method must be called to read the `chunks` of data.
+
+```js
+const fs = require("fs");
+const readStream = fs.createReadStream("./file-one.txt");
+
+/**
+ * To interact with a `readable` stream in `paused mode` by
+ * listening for the `readable` event and manually calling the read() method.
+ * By default, a readable stream is in paused mode.
+ * 
+ * When the readable stream is in paused mode, 
+ * it is necessary to manually call the readableStream.read() method to consume the  stream data.
+ */
+
+// added a `readable event handler` to our readable stream.
+// to register a `readable` event handler on the `readable` stream:
+readStream.on("readable", () => {
+  // Read data
+  // We can add the manual logic to read the data chunks within our readable handler.
+
+  let data = readStream.read();
+  while (data !== null) {
+    console.log("Read chunk: ", data.toString());
+    data = readStream.read();
+  }
+});
+```
+
+we learned how to interact with a readable stream that was in paused mode.
+> **_By default, a readable stream is in paused mode._**
+
+The `readable` stream switches to flowing mode in the following instances:
+
+- When a `data event handler` is registered `readStream.on("data", () => { .. })`
+- When the `pipe()` method is called
+- When the `resume()` method is called
+
+As our program in the above did none of these, our stream remained in `paused mode`.
+
+If a `readable` stream was in `flowing mode`, it would switch back to `paused mode` in the following instances:
+
+- When the pause() method is called and there are no pipe destinations
+- When the unpipe() method is called on all pipe destinations
