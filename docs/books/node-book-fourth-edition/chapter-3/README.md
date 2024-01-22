@@ -199,8 +199,8 @@ const readStream = fs.createReadStream("./file-one.txt");
  * To interact with a `readable` stream in `paused mode` by
  * listening for the `readable` event and manually calling the read() method.
  * By default, a readable stream is in paused mode.
- * 
- * When the readable stream is in paused mode, 
+ *
+ * When the readable stream is in paused mode,
  * it is necessary to manually call the readableStream.read() method to consume the  stream data.
  */
 
@@ -219,6 +219,7 @@ readStream.on("readable", () => {
 ```
 
 we learned how to interact with a readable stream that was in paused mode.
+
 > **_By default, a readable stream is in paused mode._**
 
 The `readable` stream switches to flowing mode in the following instances:
@@ -234,5 +235,41 @@ If a `readable` stream was in `flowing mode`, it would switch back to `paused mo
 - When the pause() method is called and there are no pipe destinations
 - When the unpipe() method is called on all pipe destinations
 
-
 ## #️⃣ Piping streams
+
+A pipe is form of one-way redirection. In our terminal (DOS or Unix-like), we often utilize the pipe operator (|) to pipe the output of one program as the input to another program.
+
+we can use the Node.js pipe() method to pipe data between streams.
+
+`we'll learn how to pipe a readable stream to a writable stream`
+
+```js
+const fs = require("fs");
+// First created a `readable stream` to read our `file.txt` file using the createReadStream() method.
+const readStream = fs.createReadStream("./file.txt");
+
+// We need to pipe our readable stream to `process.stdout`, which returns a writable stream connected to "STDOUT"
+
+readStream.pipe(process.stdout);
+```
+
+First created a `readable stream` to read our `file.txt` file using the `createReadStream()` method.
+Then piped the output of this `readable stream` to `process.stdout` (a `writable stream`) using the `pipe()` method.
+
+The `pipe()` method attaches a `data event handler` to the source stream, which `writes` the incoming data to the destination stream.
+
+The `pipe()` method is used to direct data through a flow a streams.
+
+Under the covers, the pipe() method manages the flow of data to ensure that the destination writable stream is not overwhelmed by a faster readable stream.
+
+The in-built management provided by the `pipe()` method helps resolve the issue of backpressure. Backpressure occurs when an input overwhelms a system's capacity. For streams, this could occur when we're consuming a stream that is rapidly reading data, and the writable stream cannot keep up. This can result in a large amount of memory being kept in-process before being written by the writable stream. The mass amount of data being stored in-memory can degrade our Node.js process performance, or in the worst cases, cause the process to crash.
+
+By default, when using the `pipe()` method, `stream.end()` is called on the destination `writable stream` when the source `readable stream` emits and `end` event. This means that the destination is no longer writable.
+
+To disable this default behavior, we can supply `{ end: false }` to the `pipe()` method via an options argument:
+
+```js
+sourceStream.pipe(destinationStream, { end: false });
+```
+
+This configuration instructs the destination stream to remain open even after the end event has been emitted by the source stream.
