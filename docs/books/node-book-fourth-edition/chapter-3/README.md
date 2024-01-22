@@ -357,3 +357,69 @@ The Node.js core `stream` module provides a `pipeline()` method. Similar to how 
 
 Unlike the `pipe()` method, the `pipeline()` method also forwards `errors`, making it easier to handle `errors` in the stream flow.
 
+```js
+const fs = require("fs");
+const { pipeline, Transform } = require("stream");
+
+const uppercase = new Transform({
+  transform(chunk, encoding, callback) {
+    // Data processing
+    callback(null, chunk.toString().toUpperCase());
+  },
+});
+
+/**
+ * pipeline(); The pipeline method expects:
+ *
+ * The first: argument to be a readable stream
+ * Our first argument will be a readable stream that will read the file.txt file,
+ * using the createReadStream() method
+ *
+ * Second argument: we need to add our transform stream as the second argument to the pipeline() method.
+ *
+ * Third argument: Then, we can add our `writable stream` to write the `newFile.txt` file to the pipeline
+ *
+ * Forth argument: Finally, the last argument to our pipeline is a callback function
+ * that will execute once the pipeline has completed.
+ * This callback function will handle any errors in pipeline
+ */
+pipeline(
+  fs.createReadStream("./file.txt"),
+  uppercase,
+  fs.createWriteStream("newFile.txt"),
+  (err) => {
+    if (err) {
+      console.error("Pipeline failed.", err.message);
+    } else {
+      console.log("Pipeline succeeded.");
+    }
+  }
+);
+```
+
+A module method to pipe between streams and generators forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
+
+The pipeline() method allows us to pipe streams to one another – forming a flow of streams.
+
+`stream.pipeline(source[, ...transforms], destination, callback)`
+
+`stream.pipeline(streams, callback)`
+
+- `source`: A source stream from which to read data `<Stream>` | `<Iterable>` | `<AsyncIterable>` | `<Function>` | `<ReadableStream>`
+  - `Returns`: `<Iterable>` | `<AsyncIterable>`
+- `...transforms`: Any number of transform streams to process data (including 0) `<Stream>` | `<Function>` | `<TransformStream>`
+  - `source` `<AsyncIterable>`
+  - `Returns`: `<AsyncIterable>`
+- `destination`: A destination stream to write the processed data to `<Stream>` | `<Function>` | `<WritableStream>`
+  - `source` `<AsyncIterable>`
+  - `Returns`: `<AsyncIterable>` | `<Promise>`
+- `callback`: `<Function>` Called when the pipeline is fully done.
+
+  - `err` `<Error>`
+  - `val` Resolved value of Promise returned by destination.
+
+Pass the `pipeline()` method our series of streams, in the order they need to run, followed by a `callback` function that executes once the pipeline is complete.
+
+The `pipeline()` method elegantly forwards errors that occur in the streams on to the callback. This is one of the benefits of using the `pipeline()` method over the `pipe()` method.
+
+The pipeline() method also cleans up any unterminated streams by calling `stream.destroy()`.
