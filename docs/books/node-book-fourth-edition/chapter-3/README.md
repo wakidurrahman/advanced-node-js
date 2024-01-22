@@ -314,7 +314,7 @@ The `_transform()` method accepts the following three arguments:
 As well as the simplified constructor approach used, transform streams can be written using ES6 class syntax:
 
 ```js
-const { Transform } = require('node:stream');
+const { Transform } = require("node:stream");
 
 class MyTransform extends Transform {
   constructor(options) {
@@ -323,3 +323,15 @@ class MyTransform extends Transform {
   }
 }
 ```
+
+### 📝 Creating object mode transform streams
+
+By default, Node.js streams operate on `String`, `Buffer` or `Uint8Array` objects.
+
+However, it is also possible to work with Node.js streams in `object mode`. In object mode, the values returned from the stream are generic JavaScript objects.
+
+The main difference with `object mode` is that the `highWaterMark` value refers to the number of objects, rather than `bytes`. We've learned in previously that the `highWaterMark` value dictates the maximum number of `bytes` that are stored in the internal `buffer` before the stream stops reading the input. 
+
+For `object mode` streams, this value is set to `16` – meaning `16 objects are buffered` at a time.
+
+To set a stream in object mode, we pass `{ objectMode: true }` via the options object.
