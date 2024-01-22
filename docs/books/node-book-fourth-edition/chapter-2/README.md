@@ -1,10 +1,10 @@
-# Handling Input/Output
+# 📖 Handling Input/Output
 
 Node.js brought JavaScript to the server and has enabled us to interact with the operating system with JavaScript.
 
 Node.js interacts with the operating system at a fundamental level: input and output.
 
-## Handling standard I/O
+## #️⃣ Handling standard I/O
 
 - `STDIN (standard in)`: refers to an input stream that a program can use to read input from a command shell or Terminal. Similarly,
 - `STDOUT (standard out)`: refers to the stream that is used to write the output.
@@ -34,7 +34,7 @@ Each data event returns a `Buffer` object. The `Buffer` object (typically named 
 
 We write to `STDOUT` and `STDERR` using the respective properties on the process object (`process.stdout.write`, `process.stderr.write`). During the recipe, we also used `CTRL + C` to exit the program in the shell. CTRL + C sends `SIGINT`, or `signal interrupt`, to the Node.js process.
 
-## Working with `fs` module managing files.
+## #️⃣ Working with `fs` module managing files.
 
 `fs` stands for File System, and this module provides the APIs to interact with the file system.
 
@@ -46,22 +46,22 @@ Today, there are three notable ways to handle asynchronous code in Node.js
 
 It's not recommended to have too many nested callbacks as it can negatively impact the readability of the code.
 
-## Using the fs Promises API
+## #️⃣ Using the fs Promises API
 
 A Promise is an object that is used to represent the completion of an asynchronous
 function.
 
-## Inspecting file metadata
+## #️⃣ Inspecting file metadata
 
 The fs module generally provides APIs that are modeled around Portable Operating System Interface (POSIX) functions.
 
-## Checking file access.
+## #️⃣ Checking file access.
 
 It is recommended that if you're attempting to read, write, or edit a file, you follow the approach of handling the error if the file is not found,
 
 if you simply wanted to check the existence of a file, you could use the fs.access() or fs.accessSync() APIs.
 
-## Modifying file permissions
+## #️⃣ Modifying file permissions
 
 The Node.js `fs` module provides APIs that can be used to alter the permissions on a given file. As with many of the other `fs` functions, there is both
 
@@ -100,7 +100,7 @@ chmod("my_file.txt", 0o775, (err) => {
 });
 ```
 
-## Inspecting symbolic links
+## #️⃣ Inspecting symbolic links
 
 A `symbolic link`, or `symlink`, is a special file that stores a reference to another file or directory. When the `stat` or `statSync()` function from Inspecting file metadata is run on a symbolic link, it will return information about the file the symbolic link references, rather than the symbolic link itself.
 
@@ -114,7 +114,7 @@ The Node.js fs module does, however, provide the functions named `lstat()` and `
 
 > **_Note that we did not need to explicitly import the Node.js fs module. The REPL automatically loads the core (built-in) Node.js modules so that they are available to be used. The REPL is a useful tool for testing out commands without having to create new files._**
 
-## Watching for file updates
+## #️⃣ Watching for file updates
 
 Node.js's `fs` module provides functionality that enables you to watch files and track when `files` or `directories` are `created`, `updated`, or `deleted`.
 
@@ -162,7 +162,7 @@ fs.watch(file, (eventType, filename) => {
 });
 ```
 
-## Creating TCP server and client communication
+## #️⃣ Creating TCP server and client communication
 
 `Sockets` allow machines and devices to communicate. `Sockets` are also used to coordinate I/O across networks. **The term socket is used to refer to one endpoint of a two-way networking communication link.** `Sockets` enable us to build real-time web applications such as instant messaging applications.
 
