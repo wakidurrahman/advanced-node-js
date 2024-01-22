@@ -233,3 +233,6 @@ If a `readable` stream was in `flowing mode`, it would switch back to `paused mo
 
 - When the pause() method is called and there are no pipe destinations
 - When the unpipe() method is called on all pipe destinations
+
+
+## #️⃣ Piping streams
