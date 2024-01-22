@@ -423,3 +423,17 @@ Pass the `pipeline()` method our series of streams, in the order they need to ru
 The `pipeline()` method elegantly forwards errors that occur in the streams on to the callback. This is one of the benefits of using the `pipeline()` method over the `pipe()` method.
 
 The pipeline() method also cleans up any unterminated streams by calling `stream.destroy()`.
+
+---
+
+The `pipeline()` method can also be used in `Promise` form, using the `util.promisify()` utility method.
+
+The `util.promisify()` method is used to convert a `callback-style method` into `Promise` form. To use this method, we pass the method we wish to promisify as an argument.
+
+```js
+const fs = require("fs");
+const stream = require("stream");
+const util = require("util");
+
+const pipeline = util.promisify(stream.pipeline);
+```
