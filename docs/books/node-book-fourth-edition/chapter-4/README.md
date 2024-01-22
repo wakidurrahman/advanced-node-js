@@ -10,10 +10,16 @@ It's important to have an understanding of how Node.js interacts with underlying
 Will cover the following:
 
 - Using `http module` to make `HTTP` requests
-- Building an `HTTP server` to accept GET requests
-- Handling `HTTP` `POST` requests
+- Building an `HTTP server` to accept `GET requests`
+- Handling `HTTP` `POST requests`
 - Using formidable to handle `file uploads`
 - Using ws to create a `WebSocket` server
 - Sending an automated `email` using your own `SMTP` server
 
 HTTP: is a `stateless protocol` that was originally designed to facilitate communication between `web browsers` and `servers`.
+
+## #️⃣ Using http module to make HTTP requests
+
+To build `HTTP servers`, the Node.js core `http` and `https` modules expose APIs that can be used to send requests to other servers.
+
+To use the `Node.js` core `http` and `https` modules to send both an `HTTP` `GET request` and an `HTTP` `POST request`.
