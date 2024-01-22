@@ -330,8 +330,23 @@ By default, Node.js streams operate on `String`, `Buffer` or `Uint8Array` object
 
 However, it is also possible to work with Node.js streams in `object mode`. In object mode, the values returned from the stream are generic JavaScript objects.
 
-The main difference with `object mode` is that the `highWaterMark` value refers to the number of objects, rather than `bytes`. We've learned in previously that the `highWaterMark` value dictates the maximum number of `bytes` that are stored in the internal `buffer` before the stream stops reading the input. 
+The main difference with `object mode` is that the `highWaterMark` value refers to the number of objects, rather than `bytes`. We've learned in previously that the `highWaterMark` value dictates the maximum number of `bytes` that are stored in the internal `buffer` before the stream stops reading the input.
 
 For `object mode` streams, this value is set to `16` – meaning `16 objects are buffered` at a time.
 
 To set a stream in object mode, we pass `{ objectMode: true }` via the options object.
+
+**_Implementing a duplex stream_**
+
+`new stream.Duplex(options)`
+
+A `Duplex` stream is one that implements both `Readable` and `Writable`, such as a TCP socket connection.
+
+- `options` `<Object>` Passed to both `Writable` and `Readable` constructors. Also has the following fields:
+  - `allowHalfOpen`: `<boolean>` If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Default**: `true`.
+  - `readable`: `<boolean>` Sets whether the Duplex should be readable. **Default**: `true`.
+  - `writable`: `<boolean>` Sets whether the Duplex should be writable. **Default**: `true`.
+  - `readableObjectMode`: `<boolean>` Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **Default**: `false`.
+  - `writableObjectMode`: `<boolean>` Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Default**: `false`.
+  - `readableHighWaterMark`: `<number>` Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
+  - `writableHighWaterMark`: `<number>` Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
