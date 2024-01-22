@@ -308,3 +308,18 @@ The `_transform()` method accepts the following three arguments:
 - chu`nk: The data to be transformed
 - `encoding`: If the input is of the `String` type, the encoding will be of the `String` type. If it is of the `Buffer` type, this value is set to `buffer`
 - `callback(err, transformedChunk)`: The callback function to be called once the chunk has been processed. The callback function is expected to have two arguments – the first an error and the second the transformed chunk
+
+### 📝 ES6 syntax
+
+As well as the simplified constructor approach used, transform streams can be written using ES6 class syntax:
+
+```js
+const { Transform } = require('node:stream');
+
+class MyTransform extends Transform {
+  constructor(options) {
+    super(options);
+    // ...
+  }
+}
+```
