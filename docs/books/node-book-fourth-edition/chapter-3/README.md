@@ -273,3 +273,7 @@ sourceStream.pipe(destinationStream, { end: false });
 ```
 
 This configuration instructs the destination stream to remain open even after the end event has been emitted by the source stream.
+
+## #️⃣ Transforming data with transform streams
+
+Transform streams allow us to consume input data, then process that data, and then output the data in processed form. We can use transform streams to handle data manipulation functionally and asynchronously. 
