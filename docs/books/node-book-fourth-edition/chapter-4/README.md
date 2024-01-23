@@ -16,7 +16,7 @@ Will cover the following:
 - Using ws to create a `WebSocket` server
 - Sending an automated `email` using your own `SMTP` server
 
-HTTP: is a `stateless protocol` that was originally designed to facilitate communication between `web browsers` and `servers`.
+📒 `HTTP`: is a `stateless protocol` that was originally designed to facilitate communication between `web browsers` and `servers`.
 
 ## #️⃣ Using http module to make HTTP requests
 
