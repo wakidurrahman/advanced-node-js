@@ -91,3 +91,80 @@ const https = require("https");
 https.get(...);
 https.request(...);
 ```
+
+## #️⃣ Building an HTTP server to accept GET requests
+
+`HTTP` stands for `HyperText Transfer Protocol` and is an application layer protocol that underpins the `World Wide Web` (WWW). `HTTP` enables communication between `servers` and `browsers`.
+
+📒 **_Important note_**: When building large complex applications, it is typical to implement these using a higher-level `framework` rather than interacting with core `Node.js APIs`.
+
+```js
+const http = require("http");
+
+const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
+const POST = process.env.POST || 3000;
+
+// Create a local server to receive data from
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(
+    JSON.stringify({
+      data: "Hello World!",
+    })
+  );
+});
+
+server.listen(POST, HOSTNAME, () => {
+  console.log(`Server listening on port ${server.address().port}`);
+});
+```
+
+The Node.js core `http module` provides interfaces to the features of the HTTP protocol.
+
+Created a server using the `createServer()` function that is exposed by the `http module`.
+the `createServer()` function a `request listener` function that is executed upon each `request`.
+
+Each time a request is received to the specified route, the request listener function will execute. The request listener function has two parameters, `req` and `res`, where
+
+- `req` is the request object.
+- `res` is the response object.
+
+The `http module` creates the `req` object based on the data in the request. The `createServer()` function returns an `http.Server` object. We start the server by calling the `listen()` function.
+By pass the listen() our `HOSTNAME` and `PORT` parameters to instruct the server which hostname and port it should be listening on.
+
+> Uniform Resource Locator (URL),
+
+### 📝 HTTP status codes are part of the HTTP protocol
+
+The following table shows how the HTTP response codes are grouped
+
+- 1xx: Informational - Request received, continuing process
+
+- 2xx: Success - The action was successfully received, understood, and accepted
+
+- 3xx: Redirection - Further action must be taken in order to complete the request
+
+- 4xx: Client Error - The request contains bad syntax or cannot be fulfilled
+
+- 5xx: Server Error - The server failed to fulfill an apparently valid request
+
+![status-code](HTTP-status-codes.png)
+The individual values of the numeric status codes defined for HTTP/1.1, and an example set of corresponding Reason-Phrase's, are presented below.
+![Status-Code](./Status-Code.png)
+
+The http module exposes a constant object that stores all of the HTTP response codes and their corresponding descriptions `http.STATUS_CODES`.
+
+You may not want to predefine the `port` that your server binds to. It's possible to bind your HTTP server to a random free `port`. We defined a constant for the `HOSTNAME` and `PORT` values with the following lines:
+
+```js
+const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
+const PORT = process.env.PORT || 3000;
+```
+
+It's a good practice to allow the `HOSTNAME` and `PORT` values to be set via `environment` variables as this allows deployment `orchestrators`, such as `Kubernetes`, to inject these values at `runtime`.
+
+It is also possible to instruct your server to bind to a random free port. To do this, we set the PORT value to 0.
+
+```js
+const PORT = process.env.PORT || 0;
+```
