@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <h2>HTML Forms</h2>
+
+    <form method="POST">
+      <label for="forename">Forename:</label><br />
+      <input type="text" id="forename" name="forename" value="John" /><br />
+      <label for="surname">Surname:</label><br />
+      <input type="text" id="surname" name="surname" value="Doe" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <!-- which will convert our HTML form data into JSON and send it via a POST request to the server -->
+
+    <script>
+      document.forms[0].addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let data = {
+          forename: document.getElementById("forename").value,
+          surname: document.getElementById("surname").value,
+        };
+
+        console.log("Data ", data);
+
+        fetch("http://localhost:3000", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => {
+            console.log(response);
+            return response.json;
+          })
+          .catch((err) => console.error(err.message));
+      });
+    </script>
+  </body>
+</html>
