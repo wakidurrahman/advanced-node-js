@@ -168,3 +168,18 @@ It is also possible to instruct your server to bind to a random free port. To do
 ```js
 const PORT = process.env.PORT || 0;
 ```
+
+## #️⃣ Handling HTTP POST requests
+
+The HTTP POST method is used to send data to the server.
+
+A `POST` request typically contains data within the **_body of the request_**, which is sent to the server to be handled. The submission of a `web form` is typically done via an `HTTP POST request`.
+
+📒 **_Important note_**: Node.js, provides `asynchronous` interaction with `HTTP` data at a lower level, which allows us to interface with the `incoming message` body as a `stream`.
+
+
+The Node.js core `http` module is built on top of, and interacts with, the Node.js core `net` module.
+
+The `net` module interacts with an underlying `C` library built into Node.js, called `libuv`. The `libuv` `C` library handles network socket **`input/output (I/O)`** and also handles the passing of data between the `C` and `JavaScript` layers.
+
+When the server receives an `HTTP request`, the `http` module will create objects representing the `HTTP request` (req) and the `HTTP response` (res). After this, our request handler is called with the `req` and `res` arguments.
