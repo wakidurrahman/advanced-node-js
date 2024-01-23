@@ -1,10 +1,11 @@
 /**
- * To use the Node.js core http module to send an HTTP GET request and HTTP POST request.
+ * To use the Node.js core `http` module to send an
+ * HTTP GET request,
+ * HTTP POST request
  */
 const http = require("http");
-const { hostname } = require("os");
 
-// http.get("http://example.com", (res) => res.pipe(process.stdout));
+http.get("http://example.com", (res) => res.pipe(process.stdout));
 
 // first need to define the data that we want to send with the request
 const payload = `{
