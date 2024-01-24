@@ -177,9 +177,15 @@ A `POST` request typically contains data within the **_body of the request_**, w
 
 📒 **_Important note_**: Node.js, provides `asynchronous` interaction with `HTTP` data at a lower level, which allows us to interface with the `incoming message` body as a `stream`.
 
-
 The Node.js core `http` module is built on top of, and interacts with, the Node.js core `net` module.
 
 The `net` module interacts with an underlying `C` library built into Node.js, called `libuv`. The `libuv` `C` library handles network socket **`input/output (I/O)`** and also handles the passing of data between the `C` and `JavaScript` layers.
 
 When the server receives an `HTTP request`, the `http` module will create objects representing the `HTTP request` (req) and the `HTTP response` (res). After this, our request handler is called with the `req` and `res` arguments.
+
+## #️⃣ Using formidable to handle file uploads
+
+Uploading a file to the web is a common `activity`, be it an `image`, a `video`, or a `document`.
+Files require different handling compared to simple `POST` data. Browsers `embed` files being uploaded into `multipart messages`.
+
+Multipart messages allow multiple pieces of content to be combined into one payload. To handle multipart messages, we need to use a multipart parser.
