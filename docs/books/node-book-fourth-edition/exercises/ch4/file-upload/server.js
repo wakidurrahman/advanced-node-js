@@ -22,12 +22,30 @@ function get(res) {
   res.writeHead(200, { "Content-Type": "text/html" });
   res.end(htmlFormPage);
 }
+
 function post(req, res) {
   if (!/multipart\/form-data/.test(req.headers["content-type"])) {
     error(res, 415);
     return;
   }
+
+  const form = new formidable.IncomingForm({
+    uploadDir: "./uploads",
+    multiples: true,
+  });
+
+  form.parse(req, (err, fields, files) => {
+    if (err) return err;
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(
+      JSON.stringify({
+        fields,
+        files,
+      })
+    );
+  });
 }
+
 function error(res, code) {
   res.statusCode = code;
   res.end(http.STATUS_CODES[code]);
