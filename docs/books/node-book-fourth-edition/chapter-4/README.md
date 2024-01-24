@@ -214,3 +214,37 @@ const form = new formidable.IncomingForm({
 ## #️⃣ Using ws to create a WebSocket server
 
 The WebSocket protocol enables two-way ↔️ communication between a browser and a server. WebSockets are commonly leveraged for building real-time web applications, such as instant messaging clients. Similar to how **`HTTP protocol`** is built on top of the **`TCP protocol`**, the **`WebSocket protocol`** is built on top of the **`HTTP protocol`**. It allows for long-lived connections that start as normal HTTP connections, and then upgrade to socket-like connections.
+
+`$ npm i ws`
+
+## #️⃣ Sending an automated email using your own SMTP server
+
+SMTP stands for Simple Mail Transfer Protocol and is a protocol for sending emails.
+
+`$ npm i smtp-server`
+
+Creating an SMTP server that can receive email messages.
+
+```js
+const SMTPServer = require("smtp-server").SMTPServer;
+
+const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
+// Define the port that SMTP server should be accessible at
+const POST = process.env.POST || 4321;
+
+// create the SMTP server object
+const server = new SMTPServer({
+  disabledCommands: ["STARTTLS", "AUTH"], // This option disabled Transport Layer Security (TLS) support and authentication for simplicity
+  logger: true, // which enables logging from our SMTP server
+});
+
+// Register an error event listener function on the server object that catch any errors
+server.on("error", (err) => {
+  console.error(err);
+});
+
+// the listen() function a `port`, a `hostname`, and a `callback` function.
+server.listen(POST, HOSTNAME, () => {
+  console.log(`SMTPServer Server listening on port ${POST}`);
+});
+```
