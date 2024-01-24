@@ -201,4 +201,16 @@ Install a multipart parser module, formidable:
 
 `$ npm i formidable`
 
+```js
+const form = new formidable.IncomingForm({
+  keepExtensions: true,
+  multiples: true,
+  uploadDir: "./uploads",
+});
+```
+
 📒 **_Important note_** : Allowing the upload of any file type of any size makes your server vulnerable to Denial-of-Service (DoS) attacks. Attackers could purposely try to upload excessively large or malicious files to slow down your server. It is recommended that you add both client-side and server-side validation to restrict the file types and sizes that your server will accept.
+
+## #️⃣ Using ws to create a WebSocket server
+
+The WebSocket protocol enables two-way ↔️ communication between a browser and a server. WebSockets are commonly leveraged for building real-time web applications, such as instant messaging clients. Similar to how **`HTTP protocol`** is built on top of the **`TCP protocol`**, the **`WebSocket protocol`** is built on top of the **`HTTP protocol`**. It allows for long-lived connections that start as normal HTTP connections, and then upgrade to socket-like connections.

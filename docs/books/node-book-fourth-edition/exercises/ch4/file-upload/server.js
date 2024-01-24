@@ -13,6 +13,7 @@ const formidable = require("formidable");
  */
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
 const POST = process.env.POST || 3000;
+
 const contentType = (req) =>
   /multipart\/form-data/.test(req.headers["content-type"]);
 
