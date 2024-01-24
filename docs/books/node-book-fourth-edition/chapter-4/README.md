@@ -177,9 +177,74 @@ A `POST` request typically contains data within the **_body of the request_**, w
 
 📒 **_Important note_**: Node.js, provides `asynchronous` interaction with `HTTP` data at a lower level, which allows us to interface with the `incoming message` body as a `stream`.
 
-
 The Node.js core `http` module is built on top of, and interacts with, the Node.js core `net` module.
 
 The `net` module interacts with an underlying `C` library built into Node.js, called `libuv`. The `libuv` `C` library handles network socket **`input/output (I/O)`** and also handles the passing of data between the `C` and `JavaScript` layers.
 
 When the server receives an `HTTP request`, the `http` module will create objects representing the `HTTP request` (req) and the `HTTP response` (res). After this, our request handler is called with the `req` and `res` arguments.
+
+## #️⃣ Using formidable to handle file uploads
+
+Uploading a file to the web is a common `activity`, be it
+
+- an `image`,
+- a `video`,
+- a `document`.
+
+Files require different handling compared to simple `POST` data. Browsers `embed` files being uploaded into `multipart messages`.
+
+Multipart messages allow multiple pieces of content to be combined into one payload. To handle multipart messages, we need to use a multipart parser.
+
+we will use the `formidable` module as our multipart parser to handle file uploads.
+
+Install a multipart parser module, formidable:
+
+`$ npm i formidable`
+
+```js
+const form = new formidable.IncomingForm({
+  keepExtensions: true,
+  multiples: true,
+  uploadDir: "./uploads",
+});
+```
+
+📒 **_Important note_** : Allowing the upload of any file type of any size makes your server vulnerable to Denial-of-Service (DoS) attacks. Attackers could purposely try to upload excessively large or malicious files to slow down your server. It is recommended that you add both client-side and server-side validation to restrict the file types and sizes that your server will accept.
+
+## #️⃣ Using ws to create a WebSocket server
+
+The WebSocket protocol enables two-way ↔️ communication between a browser and a server. WebSockets are commonly leveraged for building real-time web applications, such as instant messaging clients. Similar to how **`HTTP protocol`** is built on top of the **`TCP protocol`**, the **`WebSocket protocol`** is built on top of the **`HTTP protocol`**. It allows for long-lived connections that start as normal HTTP connections, and then upgrade to socket-like connections.
+
+`$ npm i ws`
+
+## #️⃣ Sending an automated email using your own SMTP server
+
+SMTP stands for Simple Mail Transfer Protocol and is a protocol for sending emails.
+
+`$ npm i smtp-server`
+
+Creating an SMTP server that can receive email messages.
+
+```js
+const SMTPServer = require("smtp-server").SMTPServer;
+
+const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
+// Define the port that SMTP server should be accessible at
+const POST = process.env.POST || 4321;
+
+// create the SMTP server object
+const server = new SMTPServer({
+  disabledCommands: ["STARTTLS", "AUTH"], // This option disabled Transport Layer Security (TLS) support and authentication for simplicity
+  logger: true, // which enables logging from our SMTP server
+});
+
+// Register an error event listener function on the server object that catch any errors
+server.on("error", (err) => {
+  console.error(err);
+});
+
+// the listen() function a `port`, a `hostname`, and a `callback` function.
+server.listen(POST, HOSTNAME, () => {
+  console.log(`SMTPServer Server listening on port ${POST}`);
+});
+```

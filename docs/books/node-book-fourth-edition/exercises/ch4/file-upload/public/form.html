@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File upload</title>
+  </head>
+  <body>
+    <h1>
+      Using the formidable module as our multipart parser to handle single file
+      uploads.
+    </h1>
+
+    <form method="POST" enctype="multipart/form-data">
+      <label for="userfile">File:</label>
+      <input type="file" id="userfile" name="userfile" /><br />
+      <input type="submit" value="Upload" />
+    </form>
+
+    <h2>Uploading multiple files</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+      <label for="usermultifile">File:</label>
+      <input
+        type="file"
+        id="usermultifile"
+        name="usermultifile"
+        multiple
+      /><br />
+      <input type="submit" value="multiple" />
+    </form>
+    <h2>Processing multiple input types</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label for="user">User:</label>
+        <input type="text" id="user" name="user"><br>
+        <label for="userfile">File:</label>
+        <input type="file" id="userfile" name="userfile"><br>
+        <input type="submit" value="Multiple input types">
+    </form>
+  </body>
+</html>

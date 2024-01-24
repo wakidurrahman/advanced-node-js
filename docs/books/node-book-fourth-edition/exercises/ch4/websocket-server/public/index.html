@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real-Time web applications</title>
+  </head>
+  <body>
+    <h1>Communicating with WebSockets</h1>
+
+    <label for="msg">Message:</label><br />
+    <input type="text" name="msg" id="msg" /><br />
+    <button id="send">Send</button>
+    <div id="output"></div>
+
+    <script>
+        /**
+         * Created a connection to our WebSocket server, providing the endpoint that the `ws` object is listening to
+         * 
+         */
+      const WS_API = "ws://localhost:3000";
+      const ws = new WebSocket(`${WS_API}`);
+      const output = document.getElementById("output");
+      const sendButton = document.getElementById("send");
+
+      const printParagraphElement = (event, msg) =>
+        `<p> ${event}:  ${msg} </p>`;
+
+      sendButton.addEventListener("click", () => {
+        const msg = document.getElementById("msg").value;
+        // To send a message to our WebSocket server, just call send on the ws object with
+        ws.send(msg);
+        output.innerHTML += printParagraphElement("Send", msg);
+      });
+
+      ws.onopen = (e) =>
+        (output.innerHTML += printParagraphElement("Open", e.type));
+      ws.onmessage = (e) =>
+        (output.innerHTML += printParagraphElement("Received", e.data));
+      ws.onclose = (e) => {
+        output.innerHTML += printParagraphElement("Disconnected", e.code);
+      };
+      ws.onerror = (e) =>
+        (output.innerHTML += printParagraphElement("Error", e.data));
+    </script>
+  </body>
+</html>

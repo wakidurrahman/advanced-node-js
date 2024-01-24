@@ -1,0 +1,16 @@
+{
+  "name": "file-upload",
+  "version": "1.0.0",
+  "description": "Use the formidable module as our multipart parser to handle file uploads.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "formidable": "^3.5.1"
+  }
+}
