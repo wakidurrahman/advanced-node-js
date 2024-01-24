@@ -15,8 +15,9 @@ const server = new SMTPServer({
 
 // Register an error event listener function on the server object that catch any errors
 server.on("error", (err) => {
-  console.error(err);
+  console.error("Error %s", err.message);
 });
+
 
 // the listen() function a `port`, a `hostname`, and a `callback` function.
 server.listen(POST, HOSTNAME, () => {
