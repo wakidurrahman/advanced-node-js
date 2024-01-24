@@ -185,7 +185,18 @@ When the server receives an `HTTP request`, the `http` module will create object
 
 ## #️⃣ Using formidable to handle file uploads
 
-Uploading a file to the web is a common `activity`, be it an `image`, a `video`, or a `document`.
+Uploading a file to the web is a common `activity`, be it
+
+- an `image`,
+- a `video`,
+- a `document`.
+
 Files require different handling compared to simple `POST` data. Browsers `embed` files being uploaded into `multipart messages`.
 
 Multipart messages allow multiple pieces of content to be combined into one payload. To handle multipart messages, we need to use a multipart parser.
+
+we will use the `formidable` module as our multipart parser to handle file uploads.
+
+Install a multipart parser module, formidable:
+
+`$ npm i formidable`
