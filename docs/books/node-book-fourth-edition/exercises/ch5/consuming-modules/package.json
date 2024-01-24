@@ -1,0 +1,14 @@
+{
+  "name": "consuming-modules",
+  "version": "1.0.0",
+  "description": "To set up a project.",
+  "main": "require-express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wakidur",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
