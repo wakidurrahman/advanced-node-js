@@ -200,3 +200,5 @@ we will use the `formidable` module as our multipart parser to handle file uploa
 Install a multipart parser module, formidable:
 
 `$ npm i formidable`
+
+📒 **_Important note_** : Allowing the upload of any file type of any size makes your server vulnerable to Denial-of-Service (DoS) attacks. Attackers could purposely try to upload excessively large or malicious files to slow down your server. It is recommended that you add both client-side and server-side validation to restrict the file types and sizes that your server will accept.
