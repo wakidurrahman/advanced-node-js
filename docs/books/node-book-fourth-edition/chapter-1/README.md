@@ -5,7 +5,7 @@ The NodeJS release schedule is based on the [`Semantic Versioning`](https://semv
 
 **_Semantic Versioning 2.0.0_**
 
-Given a version number `MAJOR`.`MINOR`.PATCH, increment the:
+Given a version number `MAJOR`.`MINOR`.`PATCH`, increment the:
 
 1. `MAJOR` version when you **make incompatible API changes**
 2. `MINOR` version when you **add functionality in a backward compatible manner**

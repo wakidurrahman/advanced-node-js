@@ -248,3 +248,132 @@ For our own module,
 - 👉 Create a GitHub repository to store our module code.
 
 The module we're going to make : ➡️ **👁️ will expose an API that reverses the sentence we pass to it**.
+
+To make a new directory for our module we will require to have
+
+1. GitHub account `https://github.com/wakidurrahman`
+2. npm account `https://www.npmjs.com/~wakidurrahman`
+
+Process of creating a Module
+
+- Using the `npm` CLI to initialize our `reverse-sentence-nodejs-module` module `$ npm init --yes`
+- Create a GitHub repository to store our module code. 📒 **_Note_** : that the repository name does not have to match the module name.
+- Recommended to add the default `.gitignore` for Node.js
+- GitHub remote repository for the repository field. This will update our package.json file's repository field to the following
+  ![repository](./repository.png)
+
+It was then possible to reinitialize our module by re-running the `$ npm init` command.
+
+### 📝 semver (semantic versioning)
+
+we specified the module version as `v0.1.0` to adhere to semantic versioning.
+
+Semantic version, often abbreviated to `semver`, is a well-known standard for versioning.
+The NodeJS release schedule is based on the [`Semantic Versioning`](https://semver.org/) standard.
+Node.js itself tries to adhere to semantic versioning as much as possible.
+
+Given a version number `MAJOR`.`MINOR`.`PATCH`, increment the:
+
+1. `MAJOR` version when you **make incompatible API changes**
+2. `MINOR` version when you **add functionality in a backward compatible manner**
+3. `PATCH` version when you **make backward compatible bug fixes**
+
+Additional labels for pre-release and build metadata are available as extensions to the `MAJOR`.`MINOR`.`PATCH` format.
+
+Semantic version numbers are in the form of X.Y.Z:
+
+1. X represents the `major` version.
+2. Y represents the `minor` version.
+3. Z represents the `patch` version.
+
+Semantic Versioning states that you increment
+
+> The `major` version, the first value, when you make breaking API changes.
+
+> The second number, the minor version, is incremented when new features have been added in a backward-compatible (or non-breaking) manner.
+
+> The patch version, or the third number, is for bug fixes and non-breaking and non-additive updates.
+
+```js
+"version": "0.1.0",
+```
+
+The `major` `version` `0` is reserved for initial development and it is acceptable to make breaking changes up until `v1` is released.
+
+## #️⃣ Implementing your module
+
+The module will expose a single API that will reverse the sentence we pass to it. We'll also install a popular code formatter to keep our module code consistent.
+
+```js
+"use strict";
+
+/**
+ * To reverse the sentence.
+ * @param {*} sentence : expect string
+ * @returns
+ */
+
+function reverseSentence(sentence) {
+  // to split the sentence into an array of single-word strings
+  const wordsArray = sentence.split(" ");
+
+  // to reverse the array
+  const reversedArray = wordsArray.reverse();
+
+  // to join the elements of the array back together to reform the sentence as a string.
+  const reversedSentence = reversedArray.join(" ");
+
+  return reversedSentence;
+}
+
+module.exports = reverseSentence;
+```
+
+`module.exports` is an object that is accessible in all `Node.js JavaScript` by default. Whatever is assigned to the `module.exports` object is `exposed`.
+
+```bash
+$ node --print "require('./')('Hello Beth\!')"
+```
+
+We tested our module by passing the `--print` argument to the Node.js process. The `–print` flag evaluates the statement or expression supplied and outputs the result.
+
+First authenticated our local npm client using the `$ npm login` command. provides the ability to set up access controls so that certain users can publish to specific modules or scopes.
+
+`$ npm login` identifies who you are and where you're entitled to publish. It is also possible to log out using `$ npm logout`.
+you can authorize your npm client `npm login` but it is depend on below `.npmrc` set npm configuration variables, such as credentials, registry location
+.npmrc file to use for reference:
+
+```sh
+registry=https://registry.npmjs.com/
+email=example@mail.com
+always-auth=true
+//registry.npmjs.com/:_auth=npm_432112dfdkk
+
+```
+
+It is ideal to keep your public GitHub repository up to date. Typically, module authors will create a `"tag"` on GitHub that matches the version that is pushed to `npm`.
+This can act as an audit trail for users wishing to see the source code of the module at a particular version, without having to download it via npm.
+
+However, please 📒 **_note_** : that nothing is enforcing a rule that the code you publish to npm has to match the code you publish to GitHub:
+
+```sh
+
+$ git add .
+$ git commit -m "v0.1.0"
+$ git push origin master
+$ git tag v0.1.0
+$ git push origin v0.1.0
+```
+
+### ♨️ 📢 💪 To publish our module to the npm registry using the following command:
+
+```sh
+$ npm publish --access=public
+```
+The command that did the actual publishing to the registry was the following:
+
+
+publish was successful by navigating to 
+https://www.npmjs.com/package/@wakidurrahman/reverse-sentence-nodejs-module Expect to see
+the following information about your module:
+![Fig](./reverse-sentence-nodejs-module.png)
