@@ -212,13 +212,13 @@ $ npm install --save-dev --save-exact prettier
 
 Typically, the type of modules you'll install globally are binaries or a program that you want to be accessible in your shell. To globally install a module, you pass the --global command to the install command as follows:
 
-```bash
+````bash
 
 $ npm install <module> --global # Where <module> is the name of  the module you want to install globally```
 $ npm install <module> -g # Where <module> is the name of the  module you want to install globally, using the -g alias
 
 $ sudo npm install -g typescript
-```
+````
 
 This will not install typescript into your `node_module` folder. Instead, it will be installed into the `bin` directory of your `Node.js` `installation`.
 
@@ -229,3 +229,22 @@ $ npx lolcatjs
 ```
 
 In general, `npx` should be sufficient for most modules that you wish to execute. However, if you want the global module to be `permanently` available `offline`, then you may wish to still globally install the module rather than using the `npx` command.
+
+### 📝 Responsibly consuming modules
+
+There are many considerations you should take when choosing a Node.js module to include in your application. The following few considerations should be taken in particular:
+
+1. `Security` : Can you depend on the module to fix security vulnerabilities?
+2. `Licenses` : If you link with open source libraries and then distribute the software, your software needs to be compliant with the licenses of the linked libraries. Licenses can vary from restrictive/protective to permissive.
+3. `Maintenance`: You'll also need to consider how well maintained the module is. The majority of modules publish their source code to GitHub and have their `bug reports` viewable as GitHub `issues`. From viewing their `issues` and **how/when** the maintainers are responding to `bug reports`, you should be able to get some insight into how maintained the module is.
+
+## #️⃣ Setting up your own module
+
+For our own module,
+
+- 👉 Will set up a typical file
+- 👉 Directory structure for our module
+- 👉 Learn how to initialize our project with the npm CLI.
+- 👉 Create a GitHub repository to store our module code.
+
+The module we're going to make : ➡️ **👁️ will expose an API that reverses the sentence we pass to it**.
