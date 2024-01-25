@@ -19,7 +19,7 @@ To install the `express module`, type the following command while in your projec
 
 After this command run.
 
-- The module has been added to a `dependencies` field inside `package.json` file.
+- ➡️ The module has been added to a `dependencies` field inside `package.json` file.
 
 ```js
 {
@@ -29,7 +29,7 @@ After this command run.
 }
 ```
 
-- Both a `node_modules` directory and a `package-lock.json` file have now been created inside project directory.
+- ➡️ Both a `node_modules` directory and a `package-lock.json` file have now been created inside project directory.
 
 > We used of both `npm` the `command-line interface` bundled with Node.js, and The `npm public registry` to download the third-party module.
 
@@ -185,3 +185,5 @@ It is also possible to require specific files by passing a relative path, such a
 ```JS
 const file = require("./file.js");
 ```
+
+### 📝 Development dependencies
