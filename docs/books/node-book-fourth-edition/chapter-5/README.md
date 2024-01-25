@@ -187,3 +187,23 @@ const file = require("./file.js");
 ```
 
 ### 📝 Development dependencies
+
+`Development dependencies` (`devDependencies`) are typically used for tooling that supports you in developing your application.
+
+`Development dependencies` should not be required to run your application.
+
+Having a distinction between `dependencies`(`"dependencies": {...}`) that are required for your application to run and `dependencies` that are required to `develop` your application is particularly useful when it comes to `deploying` your application.
+
+Your `production` application `deployment` can omit the `development dependencies` (`"devDependencies": { "prettier": "2.0.5" }`), which makes the resulting `production` application much **smaller**. Smaller deployments reduce the cost of deployment.
+
+A very common use of `development dependencies` is for `linters` and `formatters`.
+`prettier` is a tool that reformats your code consistently. For a much more customizable linter, you should consider using `eslint`.
+
+to install prettier, we can use the following
+
+```bash
+$ npm install --save-dev --save-exact prettier
+```
+
+- To install a development dependency, you need to supply the install command with the `--save-dev` parameter.
+- `--save-exact` pins the exact version in your package.json file. This is recommended when using `prettier` as `patch` `releases` may introduce new style `rules`, which when automatically picked up, could be `troublesome`.
