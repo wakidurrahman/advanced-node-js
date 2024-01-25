@@ -132,4 +132,56 @@ It is also possible to configure default answers using the `npm config` command.
 $ npm config set init.author.name "Your Name"
 ```
 
-📒 **_Important note_** :By default, when passed a name, the npm install command will look for a module with that name and download it from the public npm registry. But it is also possible to pass the `npm install` command other parameters, such as a `GitHub URL`, and the command will install the content of the `URL`.
+📒 **_Important note_** : By default, when passed a name, the npm install command will look for a module with that name and download it from the public npm registry. But it is also possible to pass the `npm install` command other parameters, such as a `GitHub URL`, and the command will install the content of the `URL`.
+
+When the `install` command completes, it will put the module contents into a
+`node_modules` directory.
+
+> If you look at the contents of the `node_modules` directory, We will notice that more than just the `express` module is present. This is because `express` has its own `dependencies`, and their `dependencies` may also have their own `dependencies`.
+
+When installing a `module`, we're potentially installing a whole tree of modules.
+
+Use the `$ npm list` command to list the contents of your `node_modules` directory.
+`$ npm list`
+
+The following output shows the structure of a node_modules directory
+`$ ls node_modules`
+
+> `package-lock.json` files were introduced in `npm` version `5`.
+
+The difference between `package-lock.json` and `package.json` is that a `package-lock` file defines the specific versions of all of the modules in the `node_modules` tree.
+
+It is possible that two `developers` with the same `package.json` files may experience different results when running `$ npm install`. This is mainly due to the fact that a `package.json` file can specify **acceptable module ranges**.
+
+For example, we installed the latest version of express, and this resulted in the following range:
+
+```js
+{
+  ...,
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+```
+
+`^ ` indicates that it will allow all versions above👆 `v4.18.2` to be installed, but not v5.x.x.
+
+If `v4.18.3` was to be released in the time between when developer `A` and developer `B` run the
+`npm install` command, then it is likely that developer `A` will get version 👉 `v4.18.2` and
+developer `B` will get version 👉 `v4.18.3`.
+
+If the `package-lock.json` file is **shared between the developers**, they will be guaranteed the installation of the same `version` of `express` and the same versions of all of the `dependencies` of `express`.
+
+Imported the `express` module to test whether it was accessible inside `require-express.js` file.
+
+```js
+const express = require("express");
+```
+
+📒 **_Note_** : that this is the same way in which we `import` Node.js `core` modules like `fs`, `http`, `path`. The module loading algorithm will first check to see whether you're requiring a core `Node.js` module; it will then look in the `node_modules` folder to find the `module` with that name.
+
+It is also possible to require specific files by passing a relative path, such as the following:
+
+```JS
+const file = require("./file.js");
+```
