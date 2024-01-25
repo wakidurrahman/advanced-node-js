@@ -207,3 +207,25 @@ $ npm install --save-dev --save-exact prettier
 
 - To install a development dependency, you need to supply the install command with the `--save-dev` parameter.
 - `--save-exact` pins the exact version in your package.json file. This is recommended when using `prettier` as `patch` `releases` may introduce new style `rules`, which when automatically picked up, could be `troublesome`.
+
+### 📝 Global modules
+
+Typically, the type of modules you'll install globally are binaries or a program that you want to be accessible in your shell. To globally install a module, you pass the --global command to the install command as follows:
+
+```bash
+
+$ npm install <module> --global # Where <module> is the name of  the module you want to install globally```
+$ npm install <module> -g # Where <module> is the name of the  module you want to install globally, using the -g alias
+
+$ sudo npm install -g typescript
+```
+
+This will not install typescript into your `node_module` folder. Instead, it will be installed into the `bin` directory of your `Node.js` `installation`.
+
+In `npm` version v5.2, `npm` added the `npx` command to their CLI. This command allows you to execute a global module without having it **permanently** stored.
+
+```bash
+$ npx lolcatjs
+```
+
+In general, `npx` should be sufficient for most modules that you wish to execute. However, if you want the global module to be `permanently` available `offline`, then you may wish to still globally install the module rather than using the `npx` command.
