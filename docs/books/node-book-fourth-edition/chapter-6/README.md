@@ -98,3 +98,11 @@ routes.get("/", (req, res) => {
 ```
 
 The route handler function calls `res.send()` to return the `HTML` content. `The send()` method is automatically added to the `response object` by `Express.js`. The `res.send()` method is similar to the `res.end()` method.
+
+### 📝 Adding views with Express.js
+
+Express.js is often used to generate and serve HTML web pages. To achieve this, it is
+common to implement a **_view layer_**, which takes care of the generation of the content.
+Typically, the content is dynamically created using `templates`.
+
+Add a view layer using the `Embedded JavaScript` (EJS) `templating` engine.
