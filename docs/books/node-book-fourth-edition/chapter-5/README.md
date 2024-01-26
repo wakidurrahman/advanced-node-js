@@ -339,9 +339,15 @@ We tested our module by passing the `--print` argument to the Node.js process. T
 
 First authenticated our local npm client using the `$ npm login` command. provides the ability to set up access controls so that certain users can publish to specific modules or scopes.
 
+## #️⃣ Preparing and publishing your module to npm
+
+Publishing your module to the npm registry will make it available for other developers to find and include in their application. This is how the `npm` ecosystem operates: developers will author and `publish` modules to `npm` for other developers to consume and reuse in their `Node.js` application.
+
+First authenticated our local `npm` client using the `$ npm login` command. `npm` provides the ability to set up access controls so that certain users can publish to specific modules or scopes.
+
 `$ npm login` identifies who you are and where you're entitled to publish. It is also possible to log out using `$ npm logout`.
-you can authorize your npm client `npm login` but it is depend on below `.npmrc` set npm configuration variables, such as credentials, registry location
-.npmrc file to use for reference:
+
+Can authorize your npm client `$ npm login` but it is depend on below `.npmrc` set npm configuration variables, such as credentials, registry location `.npmrc` file to use for reference:
 
 ```sh
 registry=https://registry.npmjs.com/
@@ -363,17 +369,69 @@ $ git commit -m "v0.1.0"
 $ git push origin master
 $ git tag v0.1.0
 $ git push origin v0.1.0
+
 ```
 
 ### ♨️ 📢 💪 To publish our module to the npm registry using the following command:
 
-```sh
-$ npm publish --access=public
-```
 The command that did the actual publishing to the registry was the following:
 
+```sh
+$ npm publish --access=public
 
-publish was successful by navigating to 
+```
+
+1. Github Repository [reverse-sentence-nodejs-module](https://github.com/wakidurrahman/reverse-sentence-nodejs-module)
+2. NPM package [@wakidurrahman/reverse-sentence-nodejs-module](https://www.npmjs.com/package/@wakidurrahman/reverse-sentence-nodejs-module?activeTab=readme)
+
+The npm publish command attempts to publish the package at the location identified by the name field in the `package.json`.
+
+We published it to a `scoped` package specifically, we used our own username's(`@wakidurrahman`) scope. `Scoped` packages help to avoid naming conflicts. It is possible to publish your package to the `global scope` by not passing it a named scope but you're likely to run into name conflicts if your package has a common name.
+
+We also passed the `--access=public` flag. When publishing to a `scoped` package, we explicitly need to indicate that we want the module to be public. `npm` allows you to publish your modules as either `public` or `private` for `scoped` packages. To publish a module `privately`, you need to have a `paid npm account`.
+
+📒 **_Note_** : that the `--access=public` flag is not required when publishing to the `global scope` because all modules in the global `namespace` are public.
+
+```sh
+{
+  "name": "@wakidurrahman/reverse-sentence-nodejs-module",
+}
+```
+
+The `npm` `publish` command packaged up our module code and uploaded it to the `npm` registry. Because the `package.json` generated from the `$ npm init` command is generated with consistent properties, `npm` can extract and render that information on the modules page.
+
+📢 Publish was successful by navigating to
 https://www.npmjs.com/package/@wakidurrahman/reverse-sentence-nodejs-module Expect to see
 the following information about your module:
 ![Fig](./reverse-sentence-nodejs-module.png)
+
+### 📝 Prepublish scripts
+
+`npm` supports a `prepublishOnly` script. This script will only run before the module is packaged and published. This is useful for catching mistakes before publishing.
+
+adding a prepublishOnly script to our module.
+
+```sh
+"scripts": {
+  "prepublish": "npm run lint"
+}
+```
+
+Typically, module authors will include rerunning their test suite in their prepublish scripts:
+
+```sh
+"prepublish": "npm run lint && npm test",
+```
+
+### 📝 `.npmignore`
+
+`.npmignore` omits the files listed in it from the package. `.npmignore` files are not mandatory, and if you do not have one but do have a `.gitignore` file, then npm will omit the files and directories matched by the `.gitignore` file. The `.npmignore` file will override `.gitignore` if one exists.
+
+### 📝 Private registries
+
+A private registry is a registry that has been set up with some form of access control.
+
+Typically, these are set up by **` #0969DA businesses`** and **`organizations #RRGGBB`** that wish to keep some of their `code off` the public registry, potentially due to policy restrictions determined by their business.
+
+This enables the business to share their modules among members of the same **organization**
+while adhering to the business policy. Equally, a private registry can be used as a caching-mechanism.
