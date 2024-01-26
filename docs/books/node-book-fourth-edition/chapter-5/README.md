@@ -3,11 +3,13 @@
 Node.js modules are `libraries` or a `set of functions` we want to include in our application. Most modules will provide an API to expose their functionality.
 The `npm` registry is where most Node.js modules are stored, where there are over a `million` Node.js modules available.
 
-📒 **_Important note_** : It is recommended to install Node.js with **Node Version Manager (nvm)**. It is a tool that enables you to easily switch Node.js versions on most Unix-like platforms.
+> [!IMPORTANT]
+> It is recommended to install Node.js with **Node Version Manager (nvm)**. It is a tool that enables you to easily switch Node.js versions on most Unix-like platforms.
 
-📒 **_Important note_** : `npm` is the name of the Command-Line Interface tool (CLI) bundled with Node.js as the default package manager.
+> [!IMPORTANT]
+> npm` is the name of the Command-Line Interface tool (CLI) bundled with Node.js as the default package manager.
 
-📒 **_Important note_** : `Yarn` is a popular alternative package manager for JavaScript and was created as an alternative to the npm CLI in 2016.
+> [!IMPORTANT] > `Yarn` is a popular alternative package manager for JavaScript and was created as an alternative to the npm CLI in 2016.
 
 ## #️⃣ Consuming Node.js modules
 
@@ -132,7 +134,8 @@ It is also possible to configure default answers using the `npm config` command.
 $ npm config set init.author.name "Your Name"
 ```
 
-📒 **_Important note_** : By default, when passed a name, the npm install command will look for a module with that name and download it from the public npm registry. But it is also possible to pass the `npm install` command other parameters, such as a `GitHub URL`, and the command will install the content of the `URL`.
+> [!IMPORTANT]
+> By default, when passed a name, the npm install command will look for a module with that name and download it from the public npm registry. But it is also possible to pass the `npm install` command other parameters, such as a `GitHub URL`, and the command will install the content of the `URL`.
 
 When the `install` command completes, it will put the module contents into a
 `node_modules` directory.
@@ -178,7 +181,8 @@ Imported the `express` module to test whether it was accessible inside `require-
 const express = require("express");
 ```
 
-📒 **_Note_** : that this is the same way in which we `import` Node.js `core` modules like `fs`, `http`, `path`. The module loading algorithm will first check to see whether you're requiring a core `Node.js` module; it will then look in the `node_modules` folder to find the `module` with that name.
+> [!NOTE]
+> Note that this is the same way in which we `import` Node.js `core` modules like `fs`, `http`, `path`. The module loading algorithm will first check to see whether you're requiring a core `Node.js` module; it will then look in the `node_modules` folder to find the `module` with that name.
 
 It is also possible to require specific files by passing a relative path, such as the following:
 
@@ -360,10 +364,8 @@ always-auth=true
 It is ideal to keep your public GitHub repository up to date. Typically, module authors will create a `"tag"` on GitHub that matches the version that is pushed to `npm`.
 This can act as an audit trail for users wishing to see the source code of the module at a particular version, without having to download it via npm.
 
-However, please 
-
 > [!NOTE]
-> That nothing is enforcing a rule that the code you publish to npm has to match the code you publish to GitHub:
+> However, please note That nothing is enforcing a rule that the code you publish to npm has to match the code you publish to GitHub:
 
 ```sh
 
@@ -393,7 +395,7 @@ We published it to a `scoped` package specifically, we used our own username's(`
 
 We also passed the `--access=public` flag. When publishing to a `scoped` package, we explicitly need to indicate that we want the module to be public. `npm` allows you to publish your modules as either `public` or `private` for `scoped` packages. To publish a module `privately`, you need to have a `paid npm account`.
 
-📒 **_Note_** : that the `--access=public` flag is not required when publishing to the `global scope` because all modules in the global `namespace` are public.
+> [!NOTE] > **_Note_** : that the `--access=public` flag is not required when publishing to the `global scope` because all modules in the global `namespace` are public.
 
 ```sh
 {
@@ -403,9 +405,9 @@ We also passed the `--access=public` flag. When publishing to a `scoped` package
 
 The `npm` `publish` command packaged up our module code and uploaded it to the `npm` registry. Because the `package.json` generated from the `$ npm init` command is generated with consistent properties, `npm` can extract and render that information on the modules page.
 
-📢 Publish was successful by navigating to
-https://www.npmjs.com/package/@wakidurrahman/reverse-sentence-nodejs-module Expect to see
-the following information about your module:
+> [!TIP]
+> 📢 Publish was successful by [navigating to](https://www.npmjs.com/package/@wakidurrahman/reverse-sentence-nodejs-module).Expect to see the following information about your module:
+
 ![Fig](./reverse-sentence-nodejs-module.png)
 
 ### 📝 Prepublish scripts
@@ -434,7 +436,7 @@ Typically, module authors will include rerunning their test suite in their prepu
 
 A private registry is a registry that has been set up with some form of access control.
 
-Typically, these are set up by **` #0969DA businesses`** and **`organizations #RRGGBB`** that wish to keep some of their `code off` the public registry, potentially due to policy restrictions determined by their business.
+Typically, these are set up by **`businesses`** and **`organizations`** `#RRGGBB` that wish to keep some of their `code off` the public registry, potentially due to policy restrictions determined by their business.
 
 This enables the business to share their modules among members of the same **organization**
 while adhering to the business policy. Equally, a private registry can be used as a caching-mechanism.
