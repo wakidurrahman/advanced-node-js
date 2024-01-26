@@ -9,7 +9,7 @@ const path = require("path");
  *
  */
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
-const POST = process.env.POST || 3001;
+const PORT = process.env.PORT || 3001;
 
 const indexHtmlPage = fs.readFileSync("public/index.html");
 
@@ -22,6 +22,6 @@ const server = http.createServer((req, res) => {
   res.end(indexHtmlPage);
 });
 
-server.listen(POST, HOSTNAME, () => {
+server.listen(PORT, HOSTNAME, () => {
   console.log(`Server listening on port ${server.address().port}`);
 });
