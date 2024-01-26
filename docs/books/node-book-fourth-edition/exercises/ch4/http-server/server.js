@@ -5,7 +5,7 @@ const http = require("http");
  * as this allows deployment orchestrators, such as Kubernetes, to inject these values at runtime.
  */
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
-const POST = process.env.POST || 3000;
+const PORT = process.env.PORT || 3000;
 
 /**
  * Pass the response object, `res`, to error() functions.
@@ -88,6 +88,6 @@ const server = http.createServer((req, res) => {
   error(res, 404);
 });
 
-server.listen(POST, HOSTNAME, () => {
+server.listen(PORT, HOSTNAME, () => {
   console.log(`Server listening on port ${server.address().port}`);
 });

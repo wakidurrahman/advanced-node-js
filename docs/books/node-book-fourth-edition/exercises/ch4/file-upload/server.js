@@ -12,7 +12,7 @@ const formidable = require("formidable");
  *
  */
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
-const POST = process.env.POST || 3000;
+const PORT = process.env.PORT || 3000;
 
 const contentType = (req) =>
   /multipart\/form-data/.test(req.headers["content-type"]);
@@ -78,6 +78,6 @@ const server = http.createServer((req, res) => {
 });
 
 // Server listen method
-server.listen(POST, HOSTNAME, () => {
+server.listen(PORT, HOSTNAME, () => {
   console.log(`Server listening on port ${server.address().port}`);
 });

@@ -5,7 +5,7 @@ const SMTPServer = require("smtp-server").SMTPServer;
 
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
 // Define the port that SMTP server should be accessible at
-const POST = process.env.POST || 4321;
+const PORT = process.env.PORT || 4321;
 
 // create the SMTP server object
 const server = new SMTPServer({
@@ -20,6 +20,6 @@ server.on("error", (err) => {
 
 
 // the listen() function a `port`, a `hostname`, and a `callback` function.
-server.listen(POST, HOSTNAME, () => {
-  console.log(`SMTPServer Server listening on port ${POST}`);
+server.listen(PORT, HOSTNAME, () => {
+  console.log(`SMTPServer Server listening on port ${PORT}`);
 });

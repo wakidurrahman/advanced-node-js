@@ -1,0 +1,1 @@
+export const wordOfSentence = "There are other ways of indicating that you'd like to treat a module as an ECMAScript module."

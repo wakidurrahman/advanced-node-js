@@ -9,7 +9,7 @@ The `npm` registry is where most Node.js modules are stored, where there are ove
 > [!IMPORTANT]
 > npm` is the name of the Command-Line Interface tool (CLI) bundled with Node.js as the default package manager.
 
-> [!IMPORTANT]
+> [!IMPORTANT] 
 > `Yarn` is a popular alternative package manager for JavaScript and was created as an alternative to the npm CLI in 2016.
 
 ## #️⃣ Consuming Node.js modules
@@ -302,7 +302,6 @@ Semantic Versioning states that you increment
 > [!TIP]
 > The patch version, or the third number, is for bug fixes and non-breaking and non-additive updates.
 
-
 ```js
 "version": "0.1.0",
 ```
@@ -400,7 +399,7 @@ We published it to a `scoped` package specifically, we used our own username's(`
 
 We also passed the `--access=public` flag. When publishing to a `scoped` package, we explicitly need to indicate that we want the module to be public. `npm` allows you to publish your modules as either `public` or `private` for `scoped` packages. To publish a module `privately`, you need to have a `paid npm account`.
 
-> [!NOTE] 
+> [!NOTE]
 > Note that the `--access=public` flag is not required when publishing to the `global scope` because all modules in the global `namespace` are public.
 
 ```sh
@@ -446,3 +445,52 @@ Typically, these are set up by **`businesses`** and **`organizations`** `#RRGGBB
 
 This enables the business to share their modules among members of the same **organization**
 while adhering to the business policy. Equally, a private registry can be used as a caching-mechanism.
+
+## #️⃣ Using ECMAScript modules
+
+ECMAScript is the language specification created to standardize JavaScript, defined by ECMAScript International.
+
+ECMAScript modules are the `official standard format` to package JavaScript code for reuse. Modules are defined using a variety of `import` and `export` statements.
+
+The following example of an ES module exports a function:
+
+```js
+// addTwo.mjs
+function addTwo(num) {
+  return num + 2;
+}
+
+export { addTwo };
+```
+
+The following example of an ES module imports the function from addTwo.mjs:
+
+```js
+// app.mjs
+import { addTwo } from "./addTwo.mjs";
+
+// Prints: 6
+console.log(addTwo(4));
+```
+
+
+
+Node.js fully supports `ECMAScript modules` as they are currently specified and provides interoperability between them and its original module format, `CommonJS`.
+
+`CommonJS` was the original and `default module format` for Node.js the `require()` syntax expects modules in the form of `CommonJS`.
+
+> [!NOTE]
+> ECMAScript `module` support is enabled by default in Node.js versions greater than v13.2.0
+
+Node.js has two module systems: `CommonJS modules` and `ECMAScript modules`.
+
+> [!IMPORTANT]
+> Authors can tell Node.js to interpret JavaScript as an `ES module` via the `.mjs` file extension, the `package.json` `"type"` field with a value `"module"`.  Files ending in `.js` are treated as ECMAScript `modules` if the nearest `package.json` contains the `type` field with a value of `module` as in the following:  `{ "type": "module" }`
+
+> [!IMPORTANT]
+> Inversely, authors can tell Node.js to interpret JavaScript as `CommonJS` via the `.cjs` file extension, the `package.json` `"type"` field with a value `"commonjs"`, to specify the type as a CommonJS module: `{ "type": "commonjs" }`
+
+### 📝 import Specifiers Terminology
+
+The _specifier_ of an `import` statement is the string after the from keyword, e.g. `'node:path'` in `import { sep } from 'node:path'`. Specifiers are also used in `export from` statements, and as the argument to an `import()` expression.
+

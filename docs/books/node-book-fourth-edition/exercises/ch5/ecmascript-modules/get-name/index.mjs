@@ -1,0 +1,1 @@
+export const sentence = "Express";
