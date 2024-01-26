@@ -360,7 +360,10 @@ always-auth=true
 It is ideal to keep your public GitHub repository up to date. Typically, module authors will create a `"tag"` on GitHub that matches the version that is pushed to `npm`.
 This can act as an audit trail for users wishing to see the source code of the module at a particular version, without having to download it via npm.
 
-However, please 📒 **_note_** : that nothing is enforcing a rule that the code you publish to npm has to match the code you publish to GitHub:
+However, please 
+
+> [!NOTE]
+> That nothing is enforcing a rule that the code you publish to npm has to match the code you publish to GitHub:
 
 ```sh
 
