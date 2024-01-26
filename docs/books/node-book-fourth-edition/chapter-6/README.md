@@ -106,3 +106,13 @@ common to implement a **_view layer_**, which takes care of the generation of th
 Typically, the content is dynamically created using `templates`.
 
 Add a view layer using the `Embedded JavaScript` (EJS) `templating` engine.
+
+```js
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", 'ejs');
+```
+
+`app.set()` can be used to alter settings used internally by Express. 
+
+1. The first `app. set()` command sets the `views` namespace to our `views` folder.
+2. The second `app.set()` command sets the `view engine`, and in our case, we set it to use the `EJS` view engine.

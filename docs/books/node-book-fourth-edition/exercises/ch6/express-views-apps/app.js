@@ -17,6 +17,9 @@ const app = express();
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
 const PORT = process.env.PORT || 3000;
 
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", 'ejs');
+
 /**
  * The app.use() function is used to register middleware.
  */
