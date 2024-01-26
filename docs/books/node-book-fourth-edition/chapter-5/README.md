@@ -9,7 +9,8 @@ The `npm` registry is where most Node.js modules are stored, where there are ove
 > [!IMPORTANT]
 > npm` is the name of the Command-Line Interface tool (CLI) bundled with Node.js as the default package manager.
 
-> [!IMPORTANT] > `Yarn` is a popular alternative package manager for JavaScript and was created as an alternative to the npm CLI in 2016.
+> [!IMPORTANT]
+> `Yarn` is a popular alternative package manager for JavaScript and was created as an alternative to the npm CLI in 2016.
 
 ## #️⃣ Consuming Node.js modules
 
@@ -33,6 +34,7 @@ After this command run.
 
 - ➡️ Both a `node_modules` directory and a `package-lock.json` file have now been created inside project directory.
 
+> [!TIP]
 > We used of both `npm` the `command-line interface` bundled with Node.js, and The `npm public registry` to download the third-party module.
 
 The first command was `$ npm init`. This command initializes a new project in the current working directory.
@@ -147,7 +149,7 @@ Use the `$ npm list` command to list the contents of your `node_modules` directo
 The following output shows the structure of a node_modules directory
 `$ ls node_modules`
 
-> [!TIP]
+> [!TIP] 
 > `package-lock.json` files were introduced in `npm` version `5`.
 
 The difference between `package-lock.json` and `package.json` is that a `package-lock` file defines the specific versions of all of the modules in the `node_modules` tree.
@@ -291,11 +293,15 @@ Semantic version numbers are in the form of X.Y.Z:
 
 Semantic Versioning states that you increment
 
+> [!TIP]
 > The `major` version, the first value, when you make breaking API changes.
 
+> [!TIP]
 > The second number, the minor version, is incremented when new features have been added in a backward-compatible (or non-breaking) manner.
 
+> [!TIP]
 > The patch version, or the third number, is for bug fixes and non-breaking and non-additive updates.
+
 
 ```js
 "version": "0.1.0",
@@ -394,7 +400,8 @@ We published it to a `scoped` package specifically, we used our own username's(`
 
 We also passed the `--access=public` flag. When publishing to a `scoped` package, we explicitly need to indicate that we want the module to be public. `npm` allows you to publish your modules as either `public` or `private` for `scoped` packages. To publish a module `privately`, you need to have a `paid npm account`.
 
-> [!NOTE] > **_Note_** : that the `--access=public` flag is not required when publishing to the `global scope` because all modules in the global `namespace` are public.
+> [!NOTE] 
+> Note that the `--access=public` flag is not required when publishing to the `global scope` because all modules in the global `namespace` are public.
 
 ```sh
 {
