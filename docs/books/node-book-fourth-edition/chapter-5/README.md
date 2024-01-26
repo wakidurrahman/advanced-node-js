@@ -53,36 +53,31 @@ Today, `npm` is a cornerstone of modern web development, whether used exclusivel
    - Install modules globally on your system
 
 2. The Basics of package.json
-
-   2.1. Identifying Metadata Inside package.json
-
-   - The `name` property
-   - The `version` property
-   - The `license` property
-   - The `description` property
-   - The `keywords` property
-
-     2.2. functional metadata inside package.json
-
-   - The `main` property
-   - The `repository` property
-   - The `script` property
-   - The `dependencies` property
-   - The `devDependencies` property
-
+   - Identifying Metadata Inside package.json
+     - The `name` property
+     - The `version` property
+     - The `license` property
+     - The `description` property
+     - The `keywords` property
+   - functional metadata inside package.json
+     - The `main` property
+     - The `repository` property
+     - The `script` property
+     - The `dependencies` property
+     - The `devDependencies` property
 3. Understanding the different types of dependencies and other host Specs inside package.json
 
-- PeerDependencies
-- PeerDependenciesMeta
-- OptionalDependencies
-- BundledDependencies
-- engines
-- os
-- cpu
+   - PeerDependencies
+   - PeerDependenciesMeta
+   - OptionalDependencies
+   - BundledDependencies
+   - engines
+   - os
+   - cpu
 
-**_The Essential npm Commands_**
+### 📝 The Essential npm Commands
 
-When using npm, you're most likely using the command-line tool for most of your interactions.
+When using `npm`, you're most likely using the command-line tool for most of your interactions.
 
 The `npm init` command is a step-by-step tool to build out the scaffolding for your project. It will prompt for input on a few aspects in the following order:
 
@@ -95,7 +90,8 @@ The `npm init` command is a step-by-step tool to build out the scaffolding for y
 7. `keywords:` Tags related to the project.
 8. `license:` This defaults to ISC. Most open-source Node.js projects are MIT.
 
-> **The only properties that are mandatory are the package `name` and `version`.**
+> [!TIP]
+> The only properties that are mandatory are the package `name` and `version`.
 
 It's worth noting that if you're content with the suggestion that the `npm init` command provides next to the prompt, you can hit or keys to accept it and move on to the following prompt.
 
@@ -140,6 +136,7 @@ $ npm config set init.author.name "Your Name"
 When the `install` command completes, it will put the module contents into a
 `node_modules` directory.
 
+> [!TIP]
 > If you look at the contents of the `node_modules` directory, We will notice that more than just the `express` module is present. This is because `express` has its own `dependencies`, and their `dependencies` may also have their own `dependencies`.
 
 When installing a `module`, we're potentially installing a whole tree of modules.
@@ -150,6 +147,7 @@ Use the `$ npm list` command to list the contents of your `node_modules` directo
 The following output shows the structure of a node_modules directory
 `$ ls node_modules`
 
+> [!TIP]
 > `package-lock.json` files were introduced in `npm` version `5`.
 
 The difference between `package-lock.json` and `package.json` is that a `package-lock` file defines the specific versions of all of the modules in the `node_modules` tree.
@@ -167,7 +165,8 @@ For example, we installed the latest version of express, and this resulted in th
 }
 ```
 
-`^ ` indicates that it will allow all versions above👆 `v4.18.2` to be installed, but not v5.x.x.
+> [!TIP] 
+> `^ ` indicates that it will allow all versions above👆 `v4.18.2` to be installed, but not v5.x.x.
 
 If `v4.18.3` was to be released in the time between when developer `A` and developer `B` run the
 `npm install` command, then it is likely that developer `A` will get version 👉 `v4.18.2` and
@@ -203,7 +202,7 @@ Your `production` application `deployment` can omit the `development dependencie
 A very common use of `development dependencies` is for `linters` and `formatters`.
 `prettier` is a tool that reformats your code consistently. For a much more customizable linter, you should consider using `eslint`.
 
-to install prettier, we can use the following
+To install prettier, we can use the following:
 
 ```bash
 $ npm install --save-dev --save-exact prettier
