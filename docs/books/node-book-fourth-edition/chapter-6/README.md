@@ -135,7 +135,6 @@ function logsHttpMethodAndUrl() {
 }
 
 export default logsHttpMethodAndUrl;
-
 ```
 
 Middleware can be used for a variety of use cases including
@@ -143,10 +142,9 @@ Middleware can be used for a variety of use cases including
 - 👉 setting customer headers,
 - 👉 parsing and/or manipulating a request,
 - 👉 session handling
-- 👉 implementing custom protocols on top of HTTP. 
+- 👉 implementing custom protocols on top of HTTP.
 
-and so on etc.
-
+and so on.
 
 ### 📝 Generating an Express.js application
 
@@ -167,7 +165,6 @@ HTTP `POST` requests are commonly used to submit HTML form data.
 The `body-parser` module is a middleware that parses the incoming `request` body and then `exposes` that on a `body property` on the `request` object (`req.body`).
 
 ```js
-
 import bodyParser from "body-parser";
 /**
  * Need to pass bodyParser to `app.use()` to instruct the server to use the middleware:
@@ -189,26 +186,58 @@ app.use(
 import express from "express";
 const router = express.Router();
 // get
-router.get('/', (req, res) => {
-  res.send('Hello World!')
+router.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 // post
-router.post('/', (req, res) => {
-  res.send('Got a POST request')
-})
+router.post("/", (req, res) => {
+  res.send("Got a POST request");
+});
 
 // put
-router.put('/user', (req, res) => {
-  res.send('Got a PUT request at /user')
-})
+router.put("/user", (req, res) => {
+  res.send("Got a PUT request at /user");
+});
 
 // delete
-router.delete('/user', (req, res) => {
-  res.send('Got a DELETE request at /user')
-})
+router.delete("/user", (req, res) => {
+  res.send("Got a DELETE request at /user");
+});
 
-router.all()
+router.all();
 ```
 
+Express.js also exposes a router.all() method. The `router.all()` method is used to define a request handler that responds to all requests to the specified endpoint, regardless of the HTTP method.
+
 ### 📝 Using the NODE_ENV environment variable
+
+Express.js anticipates `NODE_ENV` as a variable name. `NODE_ENV` is used to specify which `environment` the application is running in. This is typically either set to the `dev` or `production` values, indicating whether you're `developing` your application or running it in `production`.
+
+`Express.js` has inbuilt behavior changes for when `NODE_ENV` is set to `production`. The features provided in `production` mode include
+
+- caching of view templates and CSS files,
+- less verbose error messages.
+
+It is possible to implement custom behaviors by using the `NODE_ENV` variable.
+
+If you want multiple `production` or `development` specific behaviors, it would be worthwhile storing the `NODE_ENV` as a constant in your file.
+
+```js
+const dev = process.env.NODE_ENV !== "production";
+if (dev) {
+  // dev specific behaviors here
+}
+```
+
+You can set the environment variable in the Terminal you're using to start the process with:
+
+```sh
+$ export NODE_ENV=production
+```
+
+Alternatively, you can pass it as an environment variable directly to the Node.js process:
+
+```sh
+$ NODE_ENV=production node index.js
+```
