@@ -1,0 +1,31 @@
+{
+  "name": "express-post-apps",
+  "version": "1.0.0",
+  "description": "Create an Express.js web server and Handling POST requests and route parameters",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch app.js",
+    "lint": "./node_modules/prettier/bin/prettier.cjs . --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wakidurrahman/advanced-node-js.git"
+  },
+  "keywords": [
+    "Express"
+  ],
+  "author": "Wakidur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wakidurrahman/advanced-node-js/issues"
+  },
+  "homepage": "https://github.com/wakidurrahman/advanced-node-js#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "prettier": "3.2.4"
+  }
+}
