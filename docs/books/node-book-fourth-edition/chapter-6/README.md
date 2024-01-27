@@ -149,3 +149,9 @@ and so on etc.
 
 
 ### 📝 Generating an Express.js application
+
+Express.js provides a generator that scaffolds you a skeleton application.
+
+```bash
+$ npx express-generator --view=ejs express-generated-apps
+```
