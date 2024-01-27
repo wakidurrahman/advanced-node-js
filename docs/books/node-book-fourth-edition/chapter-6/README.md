@@ -155,7 +155,7 @@ Express.js provides a generator that scaffolds you a skeleton application.
 ```bash
 $ npx express-generator --view=ejs express-generated-apps
 
-$ npx express-generator --css=Sass  express-generated-with-sass-apps
+$ npx express-generator --view=ejs --css=sass  express-generated-with-sass-apps
 
 
 ```
