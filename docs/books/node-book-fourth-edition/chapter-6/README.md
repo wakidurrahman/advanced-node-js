@@ -159,3 +159,56 @@ $ npx express-generator --view=ejs --css=sass  express-generated-with-sass-apps
 
 
 ```
+
+### 📝 Handling `POST` requests and route parameters
+
+HTTP `POST` requests are commonly used to submit HTML form data.
+
+The `body-parser` module is a middleware that parses the incoming `request` body and then `exposes` that on a `body property` on the `request` object (`req.body`).
+
+```js
+
+import bodyParser from "body-parser";
+/**
+ * Need to pass bodyParser to `app.use()` to instruct the server to use the middleware:
+ */
+
+app.use(
+  bodyParser.urlencoded({
+    extended: false, // option instructs body-parser to use the querystring library for URL parsing. Omitting this setting or setting it to true will instruct body-parser to use the qs library instead.
+  })
+);
+```
+
+> [!IMPORTANT]
+> The `{ extended: false }` option instructs `body-parser` to use the `querystring` library for URL parsing. Omitting this setting or setting it to `true` will instruct `body-parser` to use the `qs` library instead. The main difference is that `qs` supports nested objects. However, `qs` has options that if not configured correctly could lead to `denial-of-service` attacks.
+
+### 📝 Router methods
+
+```js
+import express from "express";
+const router = express.Router();
+// get
+router.get('/', (req, res) => {
+  res.send('Hello World!')
+});
+
+// post
+router.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
+
+// put
+router.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
+
+// delete
+router.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
+
+router.all()
+```
+
+### 📝 Using the NODE_ENV environment variable
