@@ -101,8 +101,7 @@ The route handler function calls `res.send()` to return the `HTML` content. `The
 
 ### 📝 Adding views with Express.js
 
-Express.js is often used to generate and serve HTML web pages. To achieve this, it is
-common to implement a **_view layer_**, which takes care of the generation of the content.
+Express.js is often used to generate and serve HTML web pages. To achieve this, it is common to implement a **_view layer_**, which takes care of the generation of the content.
 Typically, the content is dynamically created using `templates`.
 
 Add a view layer using the `Embedded JavaScript` (EJS) `templating` engine.
@@ -116,3 +115,7 @@ app.set("view engine", 'ejs');
 
 1. The first `app. set()` command sets the `views` namespace to our `views` folder.
 2. The second `app.set()` command sets the `view engine`, and in our case, we set it to use the `EJS` view engine.
+
+
+We configured Express.js to use the `EJS` view engine, created an `EJS` template, and instructed Express.js to `render` the template on the index (/) route.
+

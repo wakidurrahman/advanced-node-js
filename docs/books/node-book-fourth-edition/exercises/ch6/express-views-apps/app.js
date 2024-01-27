@@ -17,8 +17,15 @@ const app = express();
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
 const PORT = process.env.PORT || 3000;
 
+/**
+ * app.set()
+ *
+ * The first app.set() command sets the views `namespace` to our views folder. Express
+ *
+ * The second app.set() command sets the view engine, and in our case, we set it to use the EJS view engine. Note
+ */
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", 'ejs');
+app.set("view engine", "ejs");
 
 /**
  * The app.use() function is used to register middleware.
