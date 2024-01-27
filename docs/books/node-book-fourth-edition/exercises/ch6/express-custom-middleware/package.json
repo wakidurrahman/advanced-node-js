@@ -1,7 +1,7 @@
 {
-  "name": "express-views-apps",
+  "name": "express-custom-middleware",
   "version": "1.0.0",
-  "description": "Create an Express.js web server with EJS templating engines",
+  "description": "Create an Express.js web server with custom middleware that implements any logic that we require for our web server.",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/wakidurrahman/advanced-node-js#readme",
   "dependencies": {
-    "ejs": "^3.1.9",
     "express": "^4.18.2"
   },
   "devDependencies": {

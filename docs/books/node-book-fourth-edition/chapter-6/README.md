@@ -108,14 +108,44 @@ Add a view layer using the `Embedded JavaScript` (EJS) `templating` engine.
 
 ```js
 app.set("views", path.join(__dirname, "views"));
-app.set("view engine", 'ejs');
+app.set("view engine", "ejs");
 ```
 
-`app.set()` can be used to alter settings used internally by Express. 
+`app.set()` can be used to alter settings used internally by Express.
 
 1. The first `app. set()` command sets the `views` namespace to our `views` folder.
 2. The second `app.set()` command sets the `view engine`, and in our case, we set it to use the `EJS` view engine.
 
-
 We configured Express.js to use the `EJS` view engine, created an `EJS` template, and instructed Express.js to `render` the template on the index (/) route.
 
+### 📝 Creating custom middleware with Express.js
+
+Express.js supports custom middleware. This means we can create middleware that implements any logic that we require for our web server.
+
+```js
+/**
+ * Create a middleware that logs the HTTP method and URL of the received request.
+ */
+
+function logsHttpMethodAndUrl() {
+  return (req, res, next) => {
+    console.log("Request received: ", req.method, req.url);
+    next();
+  };
+}
+
+export default logsHttpMethodAndUrl;
+
+```
+
+Middleware can be used for a variety of use cases including
+
+- 👉 setting customer headers,
+- 👉 parsing and/or manipulating a request,
+- 👉 session handling
+- 👉 implementing custom protocols on top of HTTP. 
+
+and so on etc.
+
+
+### 📝 Generating an Express.js application
