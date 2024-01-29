@@ -1,0 +1,17 @@
+{
+  "name": "stubbing-http-requests",
+  "version": "1.0.0",
+  "description": "Using Sinon.JS, which is a library that provides stubbing functionality.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "tape": "^5.7.4"
+  }
+}

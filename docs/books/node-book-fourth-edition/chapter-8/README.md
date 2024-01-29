@@ -149,3 +149,19 @@ describe("test", () => {
 
 > [!TIP]
 > There are benefits to mocking, including faster execution of test suites and ensuring your tests are not going to be impacted by `network` conditions.
+
+
+## #️⃣ Stubbing HTTP requests
+
+When unit testing, you do not typically want your test to send a request to an external service.
+
+Requests to the external service you're consuming can be metered or rate-limited, and you do not want your test cases to consume any allowance.
+
+It's also possible that your tests would require access to service credentials. This means every developer on the project would need access to those credentials before they could run the test suite.
+
+
+To be able to unit test your code without sending a request to an external service, you can fake a `request` and `response`. This concept is known as `stubbing`.
+
+`Stubbing` can be used to mimic the API calls, without actually sending the request. `Stubbing` comes with the additional benefit of reducing any request latency, potentially making the tests run faster than if they were to send real requests.
+
+
