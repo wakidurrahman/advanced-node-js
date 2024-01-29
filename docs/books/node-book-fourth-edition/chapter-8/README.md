@@ -44,7 +44,7 @@ test("test using promises", async function (t) {
 
 As the tests were executing, the test results were output to `STDOUT` in TAP format. In the TAP output, `ok` implies that the test has passed, and `not ok` implies that the test has failed. When a test case has failed, the corresponding error is output.
 
-## #️⃣ Testing with Mocha [tape](https://www.npmjs.com/package/tape)
+## #️⃣ Testing with [Mocha](https://mochajs.org/#getting-started)
 
 Mocha is a popular `open source` JavaScript test framework for both `Node.js` and the `browser`.
 
@@ -69,7 +69,83 @@ Mocha provides a feature called `test hooks`. It provides the following four `te
 
 - `before()`: runs **once** `before` the `first test` in the `describe()` block
 - `after()`: runs **once** `after` the `last test` in the `describe()` block
-- `beforeEach()`: runs `before`` each` test in the `describe()` block
+- `beforeEach()`: runs ` before`` each ` test in the `describe()` block
 - `afterEach()`: runs `after` `each` test in the `describe()` block
 
 Each of the functions accepts a `function as a parameter`. The `before()` and `beforeEach()` functions are expected to contain either a `setup` or `precondition` for the `test cases`, whereas the `after()` and `afterEach()` functions are generally used for `test cleanup`.
+
+## #️⃣ Testing with [Jest](https://jestjs.io/)
+
+Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
+
+It works with projects using: Babel, TypeScript, Node, React, Angular, Vue and more!
+
+Generate code coverage by adding the flag `--coverage`. No additional setup needed. Running this will show us which lines of our program have been covered by the test case.
+
+```js
+describe("uppercase", () => {
+  /**
+   * Use Jest's test() syntax to define an individual test.
+   *
+   * ** test will use Jest's assertion syntax to verify that
+   *  when we call our `uppercase.js` module with the string "hello" it returns "HELLO".
+   */
+  test("uppercase hello returns HELLO", () => {
+    expect(uppercase("hello")).toBe("HELLO");
+    expect(uppercase("hello")).not.toBe("hello");
+  });
+});
+```
+
+The assertion uses Jest's bundled assertion library, `Expect` We used the `toBe()` assertion from the Expect library to equate the two values.
+
+`Expect` `exposes` many `assertion` methods, including `toBe()`, `toContain()`, `toThrow()`, and others. The full list of assertions is defined in the Expect section of Jest's API documentation https://jestjs.io/docs/expect#methods
+
+```js
+    "scripts": {
+        "test": "jest --coverage"
+    }
+```
+
+### 📝 `jest` test runner
+
+To run our test cases, we call the `jest` test runner, which is located within our node_modules directory.
+
+The Jest executable runs the tests, automatically looking for a directory named `test`. The `runner` executes our tests and then generates an output summary of the results.
+
+### 📝 Code coverage `--coverage`
+
+Code coverage is a measure of how many `lines of our program` `code` are `touched` when executing our tests. `100%` code coverage means that every line of your program is covered by the test suite. This helps you easily detect bugs introduced by code changes. Some `developers` and `organizations` set acceptable `thresholds` for code coverage and put restrictions in place so that the code coverage `percentage` `%` cannot be regressed.
+
+### 📝 Setup and `teardown`
+
+Jest provides setup and `teardown` functionality for tests. Setup steps can be run before each or all tests using the `beforeEach()` and `beforeAll()` functions respectively.
+
+Similarly, `teardown` steps can be run after each or all tests with the `afterEach()` and `afterAll()` functions respectively.
+
+```js
+describe("test", () => {
+  beforeAll(() => {
+    // Runs once before all tests
+  });
+  beforeEach(() => {
+    // Runs before each test
+  });
+  afterEach(() => {
+    // Runs after each test
+  });
+  afterAll(() => {
+    // Runs after all tests
+  });
+});
+```
+
+### 📝 Mocking with Jest
+
+`Mocks` enable you to test the interaction of your code or functions without having to execute the code.
+
+> [!TIP]
+> `Mocks` are often used in cases where your tests rely on `third-party` services or APIs, and you do not want to send `real requests` to these `services` when running your `test suite`.
+
+> [!TIP]
+> There are benefits to mocking, including faster execution of test suites and ensuring your tests are not going to be impacted by `network` conditions.
