@@ -36,5 +36,5 @@ test("test subtract integer 5 and 4", (t) => {
 test("test subtract string 1000 and 4", (t) => {
   t.plan(1);
 
-  t.equal(subtract("1000", "4"), 99); 
+  t.equal(subtract("1000", "4"), 996); 
 });
