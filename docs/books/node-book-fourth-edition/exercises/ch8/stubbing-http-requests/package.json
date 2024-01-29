@@ -13,5 +13,8 @@
   "dependencies": {
     "node-fetch": "^2.7.0",
     "tape": "^5.7.4"
+  },
+  "devDependencies": {
+    "sinon": "^17.0.1"
   }
 }
