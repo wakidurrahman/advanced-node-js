@@ -11,6 +11,9 @@ Many applications require data access and storage.
 > [!IMPORTANT]
 > we will use Docker to provision/rule/law databases in containers
 
+> [!TIP]
+> Docker to provision containerized `MySQL`, `PostgreSQL`, `MongoDB`, and `Redis` data stores.
+
 Using a database container is common when building **scalable** and **resilient** architectures particularly when using a container `orchestrator` such as `Kubernetes`.
 
 The `dotenv` module loads environment variables from a `.env` file into the Node.js `process`. Where necessary, we will be storing database `credentials` in a `.env` file and then using the `dotenv` module to `parse` these into our Node.js process.

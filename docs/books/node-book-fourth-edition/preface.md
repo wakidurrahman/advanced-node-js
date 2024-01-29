@@ -18,6 +18,6 @@ The massive ecosystem of Node.js modules has supported Node.js's success. There 
 
 ## Who this book is for.
 
-- Who want to gain a broad understanding of fundamental Node.js concepts.
-- This book will provide a base understanding that will allow you to start building fast, efficient, and scalable Node.js applications.
+- Who want to gain a broad understanding of `fundamental` Node.js concepts.
+- This book will provide a `base understanding` that will allow you to start building fast, efficient, and scalable Node.js applications.
 
