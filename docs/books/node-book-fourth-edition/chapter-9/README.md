@@ -70,6 +70,10 @@ $ npm audit fix --force
 
 ## #️⃣ Authentication with Express.js
 
+Many web applications require a `login` system. Users of a website have different privileges, and to identify which resources they're able to access, they must first be identified via authentication. 
+
+
+
 ## #️⃣ Setting HTTP headers with Helmet
 
 ## #️⃣ Protecting against HTTP parameter pollution attacks
