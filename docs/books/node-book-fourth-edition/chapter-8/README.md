@@ -189,6 +189,41 @@ sinon.stub(github, "getGitHubUser").returns(octokitUserData);
 
 ## #️⃣ Using Puppeteer
 
-UI(User Interface) testing is a technique used to identify issues with Graphical User Interfaces(GUIs). This technique is commonly used to test web application interfaces. 
+UI(User Interface) testing is a technique used to identify issues with Graphical User Interfaces(GUIs). This technique is commonly used to test web application interfaces.
 
 Puppeteer is an open source library that can be used to automate UI tests.
+
+## #️⃣ Configuring Continuous Integration tests
+
+**_Continuous Integration_** (CI) is a development practice where developers regularly merge their code to a source repository.
+
+To maintain the integrity of the source code, automated tests will often be run before each code change is accepted.
+
+With GitHub, when you wish to merge a change into the main Git branch or repository, you open a `Pull Request` (PR).
+GitHub enables you to configure checks that should run on each `PR`.
+
+There are many CI products that can enable the execution of your unit tests.
+
+1. Travis CI
+2. GitHub Actions
+3. Circle CIÏ
+
+### 📝 Move on to configuring Travis CI
+
+Configure CI to run our unit tests when a new change is pushed to our GitHub repository
+
+The default build script for the Node.js `.travis.yml` file executes `npm test`. This means that when our `Travis CI` build executes, it will default to calling npm test, which will, in turn, execute our test cases.
+
+The base Node.js `.travis.yml` file also defaults to installing dependencies using `npm install` or `npm ci`.
+
+Travis CI will use `npm ci`. `npm ci` installs the dependencies of a project but ensures it is installing them from a `clean slate`. This command was created intentionally for use within CI environments.
+
+```yaml
+#.travis.yml
+
+language: node_js
+node_js: 
+  - 20
+```
+
+Internally, when a build is run, Travis CI will first `clone` the repository into a `virtual environment`. Travis `CI` will then execute the `build` tasks defined in the `.travis.yml` file. In our case, as we did not specify any `custom` `commands`, Travis CI `defaulted` to running `npm install` followed by `npm test`. If any of the build tasks `fail`, the build will be marked as `failed`.
