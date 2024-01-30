@@ -1,10 +1,24 @@
 const test = require("tape");
-const getGitHubUser = require("../src/github.js");
+const sinon = require("sinon");
 
-test("Get GitHub user by username", async (t) => {
+const github = require("../src/github.js");
+const octokitUserData = require('./octokitUserData.js');
+
+// test("Get GitHub user by username", async (t) => {
+//   t.plan(3);
+
+//   const githubUser = await github.getGitHubUser("octokit");
+
+//   t.equal(githubUser.id, 3430433);
+//   t.equal(githubUser.login, "octokit");
+//   t.equal(githubUser.name, "Octokit");
+// });
+
+test("Get GitHub user by username with stubbing", async (t) => {
   t.plan(3);
 
-  const githubUser = await getGitHubUser("octokit");
+  sinon.stub(github, "getGitHubUser").returns(octokitUserData);
+  const githubUser = await github.getGitHubUser("octokit");
 
   t.equal(githubUser.id, 3430433);
   t.equal(githubUser.login, "octokit");

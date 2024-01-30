@@ -144,12 +144,10 @@ describe("test", () => {
 
 `Mocks` enable you to test the interaction of your code or functions without having to execute the code.
 
-> [!TIP]
-> `Mocks` are often used in cases where your tests rely on `third-party` services or APIs, and you do not want to send `real requests` to these `services` when running your `test suite`.
+> [!TIP] > `Mocks` are often used in cases where your tests rely on `third-party` services or APIs, and you do not want to send `real requests` to these `services` when running your `test suite`.
 
 > [!TIP]
 > There are benefits to mocking, including faster execution of test suites and ensuring your tests are not going to be impacted by `network` conditions.
-
 
 ## #️⃣ Stubbing HTTP requests
 
@@ -159,9 +157,26 @@ Requests to the external service you're consuming can be metered or rate-limited
 
 It's also possible that your tests would require access to service credentials. This means every developer on the project would need access to those credentials before they could run the test suite.
 
-
 To be able to unit test your code without sending a request to an external service, you can fake a `request` and `response`. This concept is known as `stubbing`.
 
 `Stubbing` can be used to mimic the API calls, without actually sending the request. `Stubbing` comes with the additional benefit of reducing any request latency, potentially making the tests run faster than if they were to send real requests.
 
+### 📝 [Stubs - Sinon.JS](https://sinonjs.org/releases/v17/stubs/)
 
+> [!NOTE]
+> 👁️ What are stubs?
+
+Test stubs are functions (spies) with pre-programmed behavior.
+
+They support the full test `spy` API in addition to methods which can be used to alter the stub’s behavior.
+
+As spies, stubs can be either anonymous, or wrap existing functions. When wrapping an existing function with a stub, the original function is not called.
+
+> [!TIP]
+> When to use stubs?
+
+Use a stub when you want to:
+
+1. Control a method’s behavior from a test to force the code down a specific path. Examples include forcing a method to throw an error in order to test error handling.
+
+2. When you want to prevent a specific method from being called directly (possibly because it triggers undesired behavior, such as a XMLHttpRequest or similar).

@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 const api = "https://api.github.com/users/";
-const getGitHubUser = (username) => {
+module.exports.getGitHubUser = (username) => {
   return fetch(`${api}${username}`)
     .then((res) => res.json())
     .then((json) => {
@@ -9,4 +9,3 @@ const getGitHubUser = (username) => {
     });
 };
 
-module.exports = getGitHubUser;
