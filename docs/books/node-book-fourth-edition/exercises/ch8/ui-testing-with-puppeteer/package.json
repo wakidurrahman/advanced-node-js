@@ -1,0 +1,15 @@
+{
+  "name": "ui-testing-with-puppeteer",
+  "version": "1.0.0",
+  "description": "how to test a web page using Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "puppeteer": "^21.10.0"
+  }
+}

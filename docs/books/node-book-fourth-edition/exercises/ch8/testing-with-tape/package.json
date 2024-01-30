@@ -1,0 +1,18 @@
+{
+  "name": "testing-with-tape",
+  "version": "1.0.0",
+  "description": "create a small calculator program that we can use to learn how to unit test by using tape module",
+  "main": "calculator.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --watch test/test.js"
+  },
+  "keywords": [
+    "calculator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tape": "^5.7.4"
+  }
+}

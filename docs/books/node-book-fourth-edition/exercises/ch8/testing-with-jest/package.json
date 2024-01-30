@@ -1,0 +1,15 @@
+{
+  "name": "testing-with-jest",
+  "version": "1.0.0",
+  "description": "Jest to test a program that converts any string input to uppercase",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

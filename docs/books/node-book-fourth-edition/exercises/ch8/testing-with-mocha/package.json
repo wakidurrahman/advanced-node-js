@@ -1,0 +1,17 @@
+{
+  "name": "testing-with-mocha",
+  "version": "1.0.0",
+  "description": "Create a small calculator program that we can use to learn how to unit test with Mocha.",
+  "main": "calculator.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.0.3",
+    "mocha": "^10.2.0"
+  }
+}
