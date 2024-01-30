@@ -186,3 +186,9 @@ we call the following line to override our getGitHubUser() function:
 ```js
 sinon.stub(github, "getGitHubUser").returns(octokitUserData);
 ```
+
+## #️⃣ Using Puppeteer
+
+UI(User Interface) testing is a technique used to identify issues with Graphical User Interfaces(GUIs). This technique is commonly used to test web application interfaces. 
+
+Puppeteer is an open source library that can be used to automate UI tests.
