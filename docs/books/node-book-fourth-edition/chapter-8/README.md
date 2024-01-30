@@ -124,6 +124,7 @@ Jest provides setup and `teardown` functionality for tests. Setup steps can be r
 Similarly, `teardown` steps can be run after each or all tests with the `afterEach()` and `afterAll()` functions respectively.
 
 ```js
+
 describe("test", () => {
   beforeAll(() => {
     // Runs once before all tests
@@ -227,3 +228,5 @@ node_js:
 ```
 
 Internally, when a build is run, Travis CI will first `clone` the repository into a `virtual environment`. Travis `CI` will then execute the `build` tasks defined in the `.travis.yml` file. In our case, as we did not specify any `custom` `commands`, Travis CI `defaulted` to running `npm install` followed by `npm test`. If any of the build tasks `fail`, the build will be marked as `failed`.
+
+Building pushed branches can be turned on or off in the Travis CI Settings view for the repository.
