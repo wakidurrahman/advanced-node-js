@@ -173,10 +173,16 @@ They support the full test `spy` API in addition to methods which can be used to
 As `spies`, stubs can be either `anonymous`, or wrap existing functions. When wrapping an existing function with a `stub`, the `original function` is not called.
 
 > [!TIP]
-> When to use stubs?
+> 👁️ When to use stubs?
 
 Use a stub when you want to:
 
 1. Control a method’s behavior from a test to force the code down a specific path.
 
 2. When you want to prevent a specific method from being called directly (possibly because it triggers undesired behavior, such as a `XMLHttpRequest` or similar).
+
+we call the following line to override our getGitHubUser() function:
+
+```js
+sinon.stub(github, "getGitHubUser").returns(octokitUserData);
+```
