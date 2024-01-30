@@ -170,13 +170,13 @@ Test stubs are functions (spies) with pre-programmed behavior.
 
 They support the full test `spy` API in addition to methods which can be used to alter the stub’s behavior.
 
-As spies, stubs can be either anonymous, or wrap existing functions. When wrapping an existing function with a stub, the original function is not called.
+As `spies`, stubs can be either `anonymous`, or wrap existing functions. When wrapping an existing function with a `stub`, the `original function` is not called.
 
 > [!TIP]
 > When to use stubs?
 
 Use a stub when you want to:
 
-1. Control a method’s behavior from a test to force the code down a specific path. Examples include forcing a method to throw an error in order to test error handling.
+1. Control a method’s behavior from a test to force the code down a specific path.
 
-2. When you want to prevent a specific method from being called directly (possibly because it triggers undesired behavior, such as a XMLHttpRequest or similar).
+2. When you want to prevent a specific method from being called directly (possibly because it triggers undesired behavior, such as a `XMLHttpRequest` or similar).
