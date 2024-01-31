@@ -1,0 +1,16 @@
+{
+  "name": "hashing-with-bcrypt",
+  "version": "1.0.0",
+  "description": "Generate a hash with a salt using the bcrypt module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node hash.js 'badpassword'",
+    "compare": "node validate-password.js 'badpassword' '$2b$10$eKskpEYzPlFLTjRrPOVGtuyP2XYTRFDJggEsIi68sm5EeRvkb7TJW'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1"
+  }
+}

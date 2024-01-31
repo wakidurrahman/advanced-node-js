@@ -110,6 +110,11 @@ Hashing is typically combined with a technique called `salting`. Salting is wher
 
 This helps to protect against `brute-force` attacks and makes it more difficult to `crack` the password.
 
+bcrypt (https://www.npmjs.com/package/bcrypt) is a popular module that is used to hash passwords in Node.js.
+
+`$ npm i bcrypt`
+
+
 ## #️⃣ Setting HTTP headers with Helmet
 
 ## #️⃣ Protecting against HTTP parameter pollution attacks
