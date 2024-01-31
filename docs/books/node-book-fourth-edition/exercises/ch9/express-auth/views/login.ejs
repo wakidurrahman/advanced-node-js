@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Express - Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <% if (fail) { %>
+    <h2>Login Failed.</h2>
+    <% } %>
+    <form method="post" action="login">
+      <label for="username">Username:</label><br />
+      <input id="username" type="text" name="username" /> <br />
+      <label for="password">Password:</label><br />
+      <input id="password" type="password" name="password" /><br /><br />
+      <input type="submit" value="Login" />
+    </form>
+  </body>
+</html>

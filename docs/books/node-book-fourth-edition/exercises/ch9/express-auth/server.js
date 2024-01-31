@@ -5,6 +5,7 @@ const { join } = require("path");
 
 const router = require("./routes/index.js");
 const auth = require("./routes/auth.js");
+
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
 const PORT = process.env.PORT || 3000;
 
@@ -13,14 +14,14 @@ const app = express();
 app.set("views", join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// register the express-session middleware.
+// Register the express-session middleware.
 app.use(
   session({
-    name: "SESSIONID",
-    secret: "keyboard cat",
+    name: "SESSIONID", // The name of the cookie for the session.
+    secret: "keyboard cat", // The secret used to sign the session cookie. 
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true },
+    // cookie: { secure: true },
   })
 );
 
@@ -30,6 +31,7 @@ app.use(
   })
 );
 
+// register the authentication router
 app.use("/auth", auth);
 app.use("/", router);
 

@@ -67,12 +67,48 @@ $ npm audit fix --force
 > [!TIP]
 > It is possible to override this behavior and force `npm` to update all dependencies, even if they include breaking changes, using the `$ npm audit fix --force` command.
 
-
 ## #️⃣ Authentication with Express.js
 
-Many web applications require a `login` system. Users of a website have different privileges, and to identify which resources they're able to access, they must first be identified via authentication. 
+Many web applications require a `login` system. Users of a website have different privileges, and to identify which resources they're able to access, they must first be identified via authentication.
 
+The `express-session` module and explained how we can use it to build a simple login functionality.
 
+```js
+const session = require("express-session");
+// Register the express-session middleware.
+app.use(
+  session({
+    name: "SESSIONID",
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    // cookie: { secure: true },
+  })
+);
+```
+
+This middleware injects a `session` object into every request object (`req`). Before the user is authenticated, the session value will be an `empty` object.
+
+- `name`: The name of the cookie for the session.
+- `secret`: The secret used to sign the session cookie. This is a required configuration option.
+- `resave`: Forces the session to be resaved back in the session store, which is where the session information is stored. In the recipe, this value was set to false, indicating that we do not wish to save the session data in the session store.
+- `saveUninitialized`: Forces unsaved sessions to be saved to the session store.
+
+### 📝 Secure session cookies
+
+Session cookies can be marked with a `Secure` attribute. The Secure attribute forces the browser to not use HTTP to send cookies back to the server.
+
+It's typical for a `production` environment to apply the `SSL` encryption at the load balancer layer.
+
+A `load balancer` is a technology in an application architecture that is responsible for boosting the efficiency of the application by distributing a set of tasks over a set of resources – for example, distributing login requests to servers.
+
+### 📝 Hashing with bcrypt
+
+Passwords should never be stored in plain text and should instead be stored in a hashed form. Passwords are transformed into a hashed form using a hashing function. Hashing functions use an algorithm to transform a value into unrecognizable data.
+
+Hashing is typically combined with a technique called `salting`. Salting is where a unique value, referred to as the `salt`, is appended to the password before the hash is generated.
+
+This helps to protect against `brute-force` attacks and makes it more difficult to `crack` the password.
 
 ## #️⃣ Setting HTTP headers with Helmet
 
