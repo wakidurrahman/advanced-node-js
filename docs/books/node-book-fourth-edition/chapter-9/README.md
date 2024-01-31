@@ -2,8 +2,14 @@
 
 As with all software, you must take certain precautions to ensure the application you're building is secure.
 
-Cross-Site Scripting (XSS)
-Cross-Site Request Forgery (CSRF) .
+- Cross-Site Scripting (XSS)
+- Cross-Site Request Forgery (CSRF) .
+- Denial of Service (DoS)
+- SQL injection attacks
+- security-related headers on our HTTP requests
+- implement an authentication layer
+- parameter pollution attacks
+- injection attacks
 
 ## #️⃣ Detecting known dependency vulnerabilities
 
@@ -203,21 +209,35 @@ Keep-Alive: timeout=5
 ```
 
 > [!NOTE]
-> The  X-Powered-By header has been removed.
+> The X-Powered-By header has been removed.
 
 The `helmet` module configures some of the HTTP headers on our requests based on its `secure` defaults.
-
 
 `helmet` removes the `X-Powered-By: Express` header so that discovering the server is Express-based becomes more difficult.
 The reason to obfuscate this is to protect against attackers trying to exploit `Express.js-oriented` security vulnerabilities, slowing them down in determining the type of server being used in the application.
 
 The `helmet` module sets the injected HTTP headers to sensible secure defaults.
 
-
-The `helmet` middleware simply modifies the `response` `headers` to appropriate defaults. 
+The `helmet` middleware simply modifies the `response` `headers` to appropriate defaults.
 To demonstrate what `helmet` is doing under the covers, we can try `injecting` the same `HTTP headers` using the Node.js core `http` module:
 
 ## #️⃣ Protecting against HTTP parameter pollution attacks
+
+One of the easiest of vulnerabilities to exploit is **injection attacks**, with **SQL injection attacks** being the most common.
+
+> [!IMPORTANT]
+> SQL injection attacks are where an attacker injects malicious SQL into an application to delete, distort, or expose data stored in the database.
+
+> [!NOTE]
+> If an application accepts `input` in any `form`, you need to take necessary precautions to ensure that `malicious` `inputs` cannot exploit your application.
+
+Parameter pollution is a type of **injection attack** where the `HTTP parameters` of a web application's `HTTP endpoints` are injected with specific malicious input.
+
+HTTP parameter pollution can be used to expose `internal data` or ever cause a **_Denial of Service(DoS)_** attack, where an attacker tries to interrupt a resource and render it inaccessible by the resource's intended users.
+
+
+We can protect an HTTP server against `parameter pollution attacks`. Parameter pollution attacks are where malicious input is injected into
+URL parameters.
 
 ## #️⃣ Preventing JSON pollution
 
