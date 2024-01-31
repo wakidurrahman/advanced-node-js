@@ -114,8 +114,108 @@ bcrypt (https://www.npmjs.com/package/bcrypt) is a popular module that is used t
 
 `$ npm i bcrypt`
 
-
 ## #️⃣ Setting HTTP headers with Helmet
+
+One of the precautionary measures we can take is to set certain security-related HTTP headers on requests.
+Sometimes, this is referred to as `"hardening"` the headers of our HTTP requests.
+
+The `Helmet` module (https://github.com/helmetjs/helmet) provides a middleware to set security-related headers on our `HTTP requests`, saving time on manual configuration.
+
+```js
+// server.js
+const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => res.send("Hello World!"));
+app.listen(3000, () => {
+  console.log("Server listening on port 3000");
+});
+```
+
+- 👉 First start the web server
+
+```sh
+$ node server.js
+```
+
+- 👉 inspect the headers that our Express.js application returns. We can do this using the cURL tool.
+
+```sh
+$ curl -I http://localhost:3000
+
+output 👇👇👇
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/html; charset=utf-8
+Content-Length: 12
+ETag: W/"c-Lve95gjOVATpfV8EL5X4nxwjKHE"
+Date: Wed, 31 Jan 2024 07:47:09 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```
+
+> [!NOTE]
+> The `X-Powered-By: Express` header.
+
+let's start hardening these headers with the helmet module.
+
+```js
+app.use(helmet());
+```
+
+```sh
+$ curl -I http://localhost:3000
+
+output 👇👇👇
+
+HTTP/1.1 200 OK
+Content-Security-Policy:
+    default-src 'self';
+    base-uri 'self';
+    font-src 'self' https: data:;
+    form-action 'self';
+    frame-ancestors 'self';
+    img-src 'self' data:;
+    object-src 'none';
+    script-src 'self';
+    script-src-attr 'none';
+    style-src 'self' https: 'unsafe-inline';
+    upgrade-insecure-requests
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+Origin-Agent-Cluster: ?1
+Referrer-Policy: no-referrer
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Content-Type-Options: nosniff
+X-DNS-Prefetch-Control: off
+X-Download-Options: noopen
+X-Frame-Options: SAMEORIGIN
+X-Permitted-Cross-Domain-Policies: none
+X-XSS-Protection: 0
+Content-Type: text/html; charset=utf-8
+Content-Length: 12
+ETag: W/"c-Lve95gjOVATpfV8EL5X4nxwjKHE"
+Date: Wed, 31 Jan 2024 07:50:48 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+```
+
+> [!NOTE]
+> The  X-Powered-By header has been removed.
+
+The `helmet` module configures some of the HTTP headers on our requests based on its `secure` defaults.
+
+
+`helmet` removes the `X-Powered-By: Express` header so that discovering the server is Express-based becomes more difficult.
+The reason to obfuscate this is to protect against attackers trying to exploit `Express.js-oriented` security vulnerabilities, slowing them down in determining the type of server being used in the application.
+
+The `helmet` module sets the injected HTTP headers to sensible secure defaults.
+
+
+The `helmet` middleware simply modifies the `response` `headers` to appropriate defaults. 
+To demonstrate what `helmet` is doing under the covers, we can try `injecting` the same `HTTP headers` using the Node.js core `http` module:
 
 ## #️⃣ Protecting against HTTP parameter pollution attacks
 
