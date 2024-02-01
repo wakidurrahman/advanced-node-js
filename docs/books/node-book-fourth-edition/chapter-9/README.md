@@ -305,6 +305,97 @@ The `qs` module's approach to handling multiple parameters of the same name is t
 > [!IMPORTANT]
 > Other than enabling `DoS-style` `attacks`, not `sanitizing` and `validating` input `parameters` can lead to `XSS attacks`.
 
+### 📝 Node.js Buffer objects can be exploited by attackers.
+
+Node.js `Buffer` objects can be exploited by attackers if used incorrectly in application code.
+
+> [!NOTE] > `Buffer` objects represent a fixed-length series of `bytes` and are a subclass of JavaScript's Uint8Array() class.
+
+In many cases, we'll be interacting with `Buffer` objects via `higher-level` APIs, such as using `fs.readFile()` to read files.
+
+However, in cases where you need to interact with `binary` data directly, you may use `Buffer` objects, as they provide `low-level` fine-grained APIs for `data` manipulation.
+
+Node REPL(Read Eval Print Loop)
+
+```sh
+
+$ node
+Welcome to Node.js v20.11.0.
+Type ".help" for more information.
+
+> new Buffer(10)
+<Buffer 00 00 00 00 00 00 00 00 00 00>
+> (node:6810) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+```
+
+> [!IMPORTANT]
+> DeprecationWarning: Buffer() is deprecated due to security and usability issues.
+
+> [!TIP]
+> Please use the `Buffer.alloc()`, `Buffer.allocUnsafe()`, or `Buffer.from()` methods instead.
+
+REPL
+
+```sh
+
+> let greeting = { "msg": "hello"}
+undefined
+> greeting
+{ msg: 'hello' }
+> new Buffer(greeting.msg)
+<Buffer 68 65 6c 6c 6f>
+> greeting = {"msg": 10}
+{ msg: 10 }
+> greeting.msg
+10
+> new Buffer(greeting.msg)
+<Buffer 00 00 00 00 00 00 00 00 00 00>
+> greeting = {"msg": 108382738238728372837287382732080283028302830280382333}
+{ msg: 1.0838273823872837e+53 }
+> new Buffer(greeting.msg)
+Uncaught:
+RangeError [ERR_OUT_OF_RANGE]: The value of "size" is out of range. It must be >= 0 && <= 4294967296. Received 1_.08_382_738_238_728_37e_+53
+    at validateNumber (node:internal/validators:181:11)
+    at __node_internal_ (node:buffer:393:3)
+    at Function.alloc (node:buffer:401:3)
+    at new Buffer (node:buffer:277:19) {
+  code: 'ERR_OUT_OF_RANGE'
+}
+>
+
+```
+
+This has created a `Buffer` object of size `10`. So, an attacker could pass any value via the `msg` property and a `Buffer` object of that size would be created.
+
+A simple DoS attack could be launched by the attacker by supplying large integer values on each request.👇👇👇
+
+```sh
+
+> greeting = {"msg": 108382738238728372837287382732080283028302830280382333}
+{ msg: 1.0838273823872837e+53 }
+> new Buffer(greeting.msg)
+Uncaught:
+RangeError [ERR_OUT_OF_RANGE]: The value of "size" is out of range. It must be >= 0 && <= 4294967296. Received 1_.08_382_738_238_728_37e_+53
+    at validateNumber (node:internal/validators:181:11)
+    at __node_internal_ (node:buffer:393:3)
+    at Function.alloc (node:buffer:401:3)
+    at new Buffer (node:buffer:277:19) {
+  code: 'ERR_OUT_OF_RANGE'
+}
+```
+
+**👉 Recommends using**
+
+- new Buffer.from()
+- new Buffer.alloc(10)
+- new Buffer.allocUnsafe(10)
+
+```sh
+> greeting = {"msg": 10}
+> new Buffer.alloc(greeting.msg)
+<Buffer 00 00 00 00 00 00 00 00 00 00>
+```
 
 ## #️⃣ Preventing JSON pollution
 
