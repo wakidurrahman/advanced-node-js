@@ -1,0 +1,16 @@
+{
+  "name": "json-pollution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start:fixed": "node --watch fixed-server.js",
+    "start": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^8.12.0"
+  }
+}
