@@ -3,6 +3,7 @@
  */
 const express = require("express");
 const he = require("he");
+const escapeHTML = require("escape-html");
 
 const HOSTNAME = process.env.HOSTNAME || "0.0.0.0";
 const PORT = process.env.PORT || 3000;
@@ -16,9 +17,10 @@ const getServiceStatus = (callback) => {
 
 app.get("/", (req, res) => {
   const { previous, lang, token } = req.query;
+  console.log("OnClick")
   getServiceStatus((statusMessage) => {
     // prevent reflected XSS attack sent over an HTTP request containing malicious input.
-    const href = he.encode(`${previous}${token}/${lang}`);
+    const href = escapeHTML(`/${previous}${token}/${lang}`);
     res.send(`
         <h1>Service Status</h1>
         <div id=status>

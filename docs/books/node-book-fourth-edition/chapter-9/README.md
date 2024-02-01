@@ -455,7 +455,7 @@ We fixed this vulnerability using the `he module`. We use the he module's `encod
 
 **Persistent XSS attacks:** malicious data is injected into a persistence layer of the system. For example, it could be injected into a `field` within a `database`.
 
-**Reflected XSS attacks:**  are reliant on a single interaction with the server – for example, sending a single HTTP request.
+**Reflected XSS attacks:** are reliant on a single interaction with the server – for example, sending a single HTTP request.
 
 > [!IMPORTANT]
 > You can use Node.js's `decodeURI()` method to decode encoded URIs. For example, `$ node -p "decodeURI('%22%3E%3Cscri')"` would output "`><scri.`
@@ -465,5 +465,22 @@ We fixed this vulnerability using the `he module`. We use the he module's `encod
 
 > [!WARNING]
 > All input to our server should be `validated` and `sanitized` before use. This includes indirect inputs to data stores, as these may be used to conduct `persistent XSS` attacks.
+
+### 📝 Protocol-handler XSS
+
+In this scenario, we'll pretend that the `status` value is privileged information that the attacker shouldn't be able to read.
+
+```js
+const getServiceStatus = (callback) => {
+  const status = "All systems are running";
+  callback(status);
+};
+```
+
+### 📝 Parameter validation
+
+The browser can only show a portion of a very long URL in the address bar. This means for very long URLs with many parameters, you may not see what is appended to the end of the URL. This makes it more challenging to identify malicious URLs.
+
+Any user input should be escaped and validated where possible to help prevent XSS injection attacks.
 
 ## #️⃣ Guarding against cross-site request forgery attacks
