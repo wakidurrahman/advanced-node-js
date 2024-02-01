@@ -399,6 +399,16 @@ RangeError [ERR_OUT_OF_RANGE]: The value of "size" is out of range. It must be >
 
 ## #️⃣ Preventing JSON pollution
 
+In a `JSON pollution` attack, an attacker leverages this ability to override built-in attributes and functions with malicious code.
+
+Applications that accept `JSON` as `user input` are the most able/capable to these attacks. In the most `severe` cases, it's possible to `crash` a `server` by just supplying additional values in `JSON input`.
+
+> [!WARNING]
+> This can make the server vulnerable to `DoS` attacks via `JSON pollution`.
+
+> [!TIP]
+> The key to preventing `JSON pollution` attacks is to `validate` all `JSON input`. This can be done `manually` or by defining a `schema` for your `JSON` to `validate` against.
+
 ## #️⃣ Preventing cross-site scripting attacks
 
 ## #️⃣ Guarding against cross-site request forgery attacks
