@@ -23,7 +23,10 @@ const asyncWork = (callback) => {
 app.get("/", (req, res) => {
     console.log("request", req.query);
   asyncWork(() => {
-    const upper = (req.query.msg || "").toUpperCase();
+    let msg = req.query.msg;
+    // Our logic to always set the msg variable to the last value is working.
+    if (Array.isArray(msg)) msg = msg.pop();
+    const upper = (msg || "").toUpperCase();
     res.send(upper);
   });
 });

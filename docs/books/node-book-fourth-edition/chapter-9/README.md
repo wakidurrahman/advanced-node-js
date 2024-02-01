@@ -235,9 +235,76 @@ Parameter pollution is a type of **injection attack** where the `HTTP parameters
 
 HTTP parameter pollution can be used to expose `internal data` or ever cause a **_Denial of Service(DoS)_** attack, where an attacker tries to interrupt a resource and render it inaccessible by the resource's intended users.
 
-
 We can protect an HTTP server against `parameter pollution attacks`. Parameter pollution attacks are where malicious input is injected into
 URL parameters.
+
+We can do this using the cURL tool.
+
+```sh
+$ curl -I http://localhost:3000
+
+$ curl http://localhost:3000/\?msg\=hello
+```
+
+Server
+
+```js
+const app = express();
+
+/**
+ * the asyncWork() function is for demonstrational purposes only.
+ * In a real application, we could expect some asynchronous task to happen, such as a query to be made to a database or external service.
+ * @param {*} callback
+ */
+const asyncWork = (callback) => {
+  setTimeout(callback, 0);
+};
+
+app.get("/", (req, res) => {
+  console.log("request", req.query);
+  asyncWork(() => {
+    const upper = (req.query.msg || "").toUpperCase();
+    res.send(upper);
+  });
+});
+
+app.listen(PORT, HOSTNAME, () => {
+  console.log("Server listening on port 3000");
+});
+```
+
+```sh
+$ curl http://localhost:3000/\?msg\=hello\&msg\=world
+
+output 👇👇👇
+
+ const upper = (req.query.msg || "").toUpperCase();
+                                        ^
+
+TypeError: (req.query.msg || "").toUpperCase is not a function
+    at Timeout._onTimeout (/Users/xx/projects/advanced-node-js/docs/books/node-book-fourth-edition/exercises/ch9/express-input/server.js:26:41)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+
+Node.js v20.11.0
+Failed running 'server.js'
+
+```
+
+So, it is possible to cause the server to `crash` just by sending `duplicate` `parameters`. This makes it `fairly` easy for a perpetrator to launch an effective`DoS`attack.
+
+### 📝 Injection attacks
+
+Injection attacks are made possible when inputs are not appropriately sanitized.
+
+> [!NOTE]
+> Express.js depends on the `qs` module for URL parameter handling.
+
+The `qs` module's approach to handling multiple parameters of the same name is to convert the duplicate names into an array. like `{ msg: [ 'hello', 'world' ] }`
+
+> [!IMPORTANT]
+> Other than enabling `DoS-style` `attacks`, not `sanitizing` and `validating` input `parameters` can lead to `XSS attacks`.
+
 
 ## #️⃣ Preventing JSON pollution
 
