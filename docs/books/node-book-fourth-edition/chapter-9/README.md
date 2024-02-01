@@ -409,6 +409,61 @@ Applications that accept `JSON` as `user input` are the most able/capable to the
 > [!TIP]
 > The key to preventing `JSON pollution` attacks is to `validate` all `JSON input`. This can be done `manually` or by defining a `schema` for your `JSON` to `validate` against.
 
-## #️⃣ Preventing cross-site scripting attacks
+## #️⃣ Preventing cross-site scripting(XSS) attacks
+
+XSS attacks are client-side injection attacks where malicious are injected into websites.
+
+XSS vulnerabilities are vary dangerous, as they can compromise
+
+```sh
+$ npm install he
+```
+
+Route handler
+
+```js
+app.get("/", (req, res) => {
+  const { previous, lang, token } = req.query;
+  getServiceStatus((status) => {
+    const href = he.encode(`${previous}${token}/${lang}`);
+    res.send(`
+        <h1>Service Status</h1>
+        <div id=status>
+        ${status}
+        </div>
+        <div>
+        <a href="${href}">Back</a>
+        </div>
+        `);
+  });
+});
+```
+
+We've used the he module to prevent an XSS attack.
+
+We fixed this vulnerability using the `he module`. We use the he module's `encode()` function. This function accepts text that is expected to be `HTML` or `XML` input and returns it in `escaped` form.
+
+`XSS` attacks are `client-side` injection attacks where malicious `scripts` are injecting into trusted websites. The general flow of an `XSS` attack is as follows:
+
+1. ♨️ Malicious input enters the application – typically via a web request.
+2. ♨️ The input is `rendered` as `dynamic` content on the web page because the input has not been appropriately sanitized.
+
+### 📝 The two main types of XSS attacks are
+
+1. persistent XSS
+2. reflected XSS.
+
+**Persistent XSS attacks:** malicious data is injected into a persistence layer of the system. For example, it could be injected into a `field` within a `database`.
+
+**Reflected XSS attacks:**  are reliant on a single interaction with the server – for example, sending a single HTTP request.
+
+> [!IMPORTANT]
+> You can use Node.js's `decodeURI()` method to decode encoded URIs. For example, `$ node -p "decodeURI('%22%3E%3Cscri')"` would output "`><scri.`
+
+> [!NOTE]
+> Note that the attack would not have worked with a `single` parameter, as many modern browsers have `built-in XSS` auditors to prevent the obvious injection of `<script>` tags.
+
+> [!WARNING]
+> All input to our server should be `validated` and `sanitized` before use. This includes indirect inputs to data stores, as these may be used to conduct `persistent XSS` attacks.
 
 ## #️⃣ Guarding against cross-site request forgery attacks
