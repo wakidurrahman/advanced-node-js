@@ -65,6 +65,10 @@ $ autocannon -c 100 -d 15 -m POST -H 'content-type=application/json' -b '{ "hell
 
 ### 📝  Replicating a production environment
 
+It is important to replicate the production environment as closely as possible; otherwise, we may produce misleading results.
+
+> [!TIP]
+> The behavior of applications in development and production may differ, which can result in performance differences.
 ## #️⃣ Interpreting flame graphs
 
 ## #️⃣ Detecting memory leaks
