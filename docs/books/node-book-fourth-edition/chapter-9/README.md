@@ -484,3 +484,5 @@ The browser can only show a portion of a very long URL in the address bar. This 
 Any user input should be escaped and validated where possible to help prevent XSS injection attacks.
 
 ## #️⃣ Guarding against cross-site request forgery attacks
+
+CSRF is an attack where a malicious web application causes a user's web browser to to execute an action on another trusted web application where the user is logged in.
