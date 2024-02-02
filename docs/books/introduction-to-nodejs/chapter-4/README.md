@@ -1,4 +1,4 @@
-# Chapter 4. Building CLI Tools
+# 💁‍♂️  Building CLI Tools
 
 ## Working with CLI Tools
 
