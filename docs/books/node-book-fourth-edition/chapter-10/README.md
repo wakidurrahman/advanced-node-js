@@ -17,21 +17,53 @@ To be able to optimize, we must first record a baseline measure of our applicati
 > [!IMPORTANT]
 > To create a baseline, it is necessary to **simulate** the load on the application and record how it responds.For an HTTP based application, the **simulation** of HTTP `requests` sent to the server is required.
 
+`autocannon` is a cross-platform HTTP benchmarking tool written in Node.js and published to the `npm` registry.
 
+> [!NOTE]
+> We will be using the `autocannon` tool to benchmark an `Express.js` web server.
 
+Globally install the `autocannon` module
 
+```sh
+$ npm install --global autocannon
+```
 
+Start the Express.js web server
 
+```sh
+$ npm start
+```
 
+Now, we can use the `autocannon` tool to benchmark our HTTP requests.
 
+To run a load test with `autocannon`:
 
+```sh
+$ autocannon -c 100 http://localhost:3000/
 
+$ autocannon -c 100 -d 20 http://localhost:3000/
+```
 
+we used `autocannon` to load test our Express.js web server at the http://localhost:3000 endpoint.
 
+### 📝 Benchmarking HTTP POST requests
 
+`autocannon` module provides the ability to send requests using other `HTTP` methods, such as HTTP POST.
 
+Command to load test the HTTP POST request.
 
+- `-c/--connections`: The number of concurrent connections to use. default: 10.
+- `-d/--duration`: The number of seconds to run the autocannon. default: 10.
+- `-a/--amoun`: The number of requests to make before exiting the benchmark.
+- `-m/--method`: METHOD The HTTP method to use. default: 'GET'.
+- `-H/--headers`: The request headers.
+- `-b/--body`: BODY The body of the request.
 
+```sh
+$ autocannon -c 100 -d 15 -m POST -H 'content-type=application/json' -b '{ "hello": "world"}' http://localhost:3000/
+```
+
+### 📝  Replicating a production environment
 
 ## #️⃣ Interpreting flame graphs
 

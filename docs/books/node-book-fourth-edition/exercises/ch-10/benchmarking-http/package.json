@@ -1,0 +1,16 @@
+{
+  "name": "benchmarking-http",
+  "version": "0.1.0",
+  "private": true,
+  "description": "To capturing a baseline performance measure for an HTTP web server using a tool named `autocannon` to simulate HTTP requests.",
+  "scripts": {
+    "start": "node ./bin/www",
+    "app": "DEBUG=benchmarking-http:* npm start"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.18.2",
+    "morgan": "~1.9.1"
+  }
+}
