@@ -1,0 +1,21 @@
+{
+  "name": "express-csrf",
+  "version": "1.0.0",
+  "description": "secure an Express.js server against CSRF attacks.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --watch server.js",
+    "start:fixed": "node --watch fixed-server.js",
+    "start:attacker": "node --watch csrf-server.js",
+    "start:csurf": "node --watch csurf-server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "csurf": "^1.11.0",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0"
+  }
+}
