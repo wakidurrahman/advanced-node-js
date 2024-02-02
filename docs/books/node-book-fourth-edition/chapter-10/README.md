@@ -63,13 +63,20 @@ Command to load test the HTTP POST request.
 $ autocannon -c 100 -d 15 -m POST -H 'content-type=application/json' -b '{ "hello": "world"}' http://localhost:3000/
 ```
 
-### 📝  Replicating a production environment
+### 📝 Replicating a production environment
 
 It is important to replicate the production environment as closely as possible; otherwise, we may produce misleading results.
 
 > [!TIP]
 > The behavior of applications in development and production may differ, which can result in performance differences.
+
 ## #️⃣ Interpreting flame graphs
+
+A **flame graph** is a visual tool that allows us to identify **_"hot code paths"_** within our  application.
+
+The term **"hot code path"** is used to describe execution paths in the program that consume a relatively large amount of time, which can indicate a bottleneck in an application.
+
+We need to create an application that we can profile. Profiling is a type of `program` analysis that measures how frequently and for how long `functions` or `methods` in our program are being used.
 
 ## #️⃣ Detecting memory leaks
 
