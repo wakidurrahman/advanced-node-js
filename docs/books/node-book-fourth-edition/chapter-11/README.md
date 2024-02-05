@@ -54,3 +54,7 @@ we need to create a LoopBack controller. A LoopBack controller handles the API r
 ```sh
 $ lb4 controller
 ```
+
+## #️⃣ Consuming a microservice
+
+we'll extend the application to interact with the bookstore inventory microservice.
