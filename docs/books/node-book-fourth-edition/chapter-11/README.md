@@ -176,6 +176,26 @@ $ docker push <namespace>/fastify-microservice:1.0.0
 
 # It is also now possible to pull the image with the following command:
 $ docker pull <namespace>/fastify-microservice
-
-
 ```
+
+## #️⃣  Deploying to Kubernetes
+
+Kubernetes is an open source container orchestration and management system originally developed by Google.
+Today, the Kubernetes project is maintained by the **Cloud Native Computing Foundation** (https://www.cncf.io/).
+
+Kubernetes is a comprehensive and complex tool that provides the following features, among others:
+
+- `Service` discovery and `load balancing`
+- Storage orchestration
+- Automated `rollouts` and `rollbacks`
+- Automatic bin packing, specifying how much `CPU` and `memory` each container needs
+- Self-healing
+- `Secret` and `configuration` management
+
+> [!TIP]
+> An oversimplified description of Kubernetes is that it is a tool used to manage containers.
+
+> [!IMPORTANT]
+> **`Docker for Desktop`** is only available on `macOS` and `Windows` `OS`es. On Linux, an alternative is to use **`minikube`**, which is a tool that runs a Kubernetes cluster in a virtual machine on your local device.
+
+We will be using the `kubectl` CLI to interact with our Kubernetes cluster.
