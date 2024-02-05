@@ -62,3 +62,92 @@ we'll extend the application to interact with the bookstore inventory microservi
 ## #️⃣ Handling errors
 
 In microservice architectures, you will have many applications communicating together to form a larger system. When you have a system formed of many moving parts, it's important to handle `errors` within the system appropriately.
+
+## #️⃣ Building a Docker container
+
+Cloud and container technologies go hand in hand, and one of the most prevalent container technologies is Docker.
+
+Docker is a tool designed to make it easier to `create`, `deploy`, and run applications using `containers`.
+
+Docker and Kubernetes are large and complex technologies.
+
+```sh
+# Dockerfile
+
+# select a new base image
+FROM node:20
+
+# Set to a non-root built-in user `node`
+USER node
+
+# Create app directory (with user `node`)
+RUN mkdir -p /home/node/app
+
+WORKDIR "/app"
+
+RUN apt-get update \
+    && apt-get dist-upgrade -y \
+    && apt-get clean \
+    && echo 'Finished installing dependencies'
+
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY package*.json ./
+
+RUN npm install --production
+
+# Bundle app source code
+COPY . /app
+
+# Bind to all network interfaces so that it can be mapped to the host OS
+ENV PORT 3000
+
+EXPOSE 3000
+
+USER node
+
+CMD ["npm", "run", "start"]
+```
+
+Containers enable you to `package` your application into an `isolated` environment. Dockerfile is used to define the environment. The environment should include the libraries and dependencies that are required to run the application code.
+
+Let's examine the contents of the `Dockerfile` file:
+
+- 👉 `FROM node:20` : This instruction is used to initialize a new build stage. A `Dockerfile` file must start with a `FROM` instruction pointing to a valid Docker image that can be used as a `base` for our `image`. In this example, the `image` is based on the Docker official `Node.js image`.
+- 👉 `RUN apt-get update...` : This line instructs Docker to update the containers' OS dependencies, using **Advanced Package Tool (APT)**, which is `Debian's` default package manager. It's important that `OS` dependencies are up to date to ensure that your dependencies contain the latest available fixes and patches.
+- 👉 `COPY package*.json ./` : This copies the `package.json` and `package-lock.json` files, should they exist, into the container.
+- 👉 `RUN npm install --production` : This executes the `npm install` command within the container based on the `package*.json` files copied earlier into the container. `npm install` must be run within the `container` as some `dependencies` may have native components that need to be built based on the container's `OS`.
+- 👉 `COPY . /app` : This copies our application code into the `container`. Note that the `COPY` command will ignore all `patterns listed` in the `.dockerignore` file. This means that the COPY command will not copy `node_modules` and other information to the container.
+- 👉 `ENV PORT 3000` : This sets the PORT environment variable in the container to 3000.
+- 👉 `EXPOSE 3000` : The `EXPOSE` instruction is used as a `form of documentation` as to which port is intended to be `published` for the `containerized` application. **It does not publish the port**.
+- 👉 `USER node` : This instructs Docker to run the image as the `node` user. The `node` user is created by the Docker official `Node.js image`. When omitted, the image will default to being run as the root user. You should run your containers as an unprivileged (non-root) user where possible as security mitigation.
+- 👉 `CMD ["npm", "run", "start"]` : This executes the npm start command in the container, thereby starting the application.
+
+```sh
+# The below command builds the Docker image, based on the instructions in the Dockerfile file in the current directory.
+$ docker build -t fastify-microservice .
+
+# To run the image we call the below command. We pass this command the name of the image we'd like to run, and also the port we wish to expose.
+$ docker run -p 3000:3000 fastify-microservice
+
+# to view the Docker layers for an image using the docker `history` command.
+$ docker history fastify-microservice
+
+# to list your containers
+$ docker ps
+
+# to stop a container
+$ docker stop <containerID>
+
+# to remove a container
+$ docker rm -f <containerID>
+
+# to remove a Docker image
+$ docker image rm <image> 
+
+# to remove all images and containers on your system.
+$ docker system prune --all
+
+```
+
+> [!IMPORTANT]
+> Once you've completed, you should stop and remove the Docker `containers` and `images`. Otherwise, the containers and images may linger on your system and consume system resources.
