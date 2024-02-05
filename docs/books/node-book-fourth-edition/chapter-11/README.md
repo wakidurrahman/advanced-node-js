@@ -231,3 +231,5 @@ The following is a selection of the commercial Kubernetes services available fro
 - IBM Cloud Kubernetes Service: https://www.ibm.com/cloud/containerservice/details
 
 ### 📝 Kubernetes web UI
+
+Kubernetes provides a web UI that provides an interface to interact with your Kubernetes cluster and deployed applications.
