@@ -58,3 +58,7 @@ $ lb4 controller
 ## #️⃣ Consuming a microservice
 
 we'll extend the application to interact with the bookstore inventory microservice.
+
+## #️⃣ Handling errors
+
+In microservice architectures, you will have many applications communicating together to form a larger system. When you have a system formed of many moving parts, it's important to handle `errors` within the system appropriately.
