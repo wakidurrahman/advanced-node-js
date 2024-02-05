@@ -199,3 +199,35 @@ Kubernetes is a comprehensive and complex tool that provides the following featu
 > **`Docker for Desktop`** is only available on `macOS` and `Windows` `OS`es. On Linux, an alternative is to use **`minikube`**, which is a tool that runs a Kubernetes cluster in a virtual machine on your local device.
 
 We will be using the `kubectl` CLI to interact with our Kubernetes cluster.
+
+```sh
+
+$ kubectl version
+
+$ kubectl get nodes
+
+$ kubectl get services
+
+$ kubectl get deployments
+
+$ kubectl get pods
+
+$ docker delete pod <podname>
+
+$ kubectl apply -f deployment/fastify-app.yml
+
+$ kubectl apply -f deployment/fastify-app-svc.yml
+
+$ kubectl delete deployment fastify-app
+
+$ kubectl delete service fastify-app-svc
+```
+
+The following is a selection of the commercial Kubernetes services available from leading cloud providers:
+
+- Amazon Elastic Kubernetes Service: https://aws.amazon.com/eks/
+- Azure Kubernetes Service: https://azure.microsoft.com/en-gb/services/kubernetes-service/
+- Google Kubernetes Engine: https://cloud.google.com/kubernetes-engine
+- IBM Cloud Kubernetes Service: https://www.ibm.com/cloud/containerservice/details
+
+### 📝 Kubernetes web UI
