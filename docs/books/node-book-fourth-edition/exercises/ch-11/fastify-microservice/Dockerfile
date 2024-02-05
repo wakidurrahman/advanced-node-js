@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:20-alpine
 
 # Set to a non-root built-in user `node`
 USER node
@@ -6,17 +6,17 @@ USER node
 # Bind to all network interfaces so that it can be mapped to the host OS
 ENV HOST=0.0.0.0 PORT=3000
 
-WORKDIR "/app"
+# Create app directory
+WORKDIR /app
 
-RUN apt-get update \
-    && apt-get dist-upgrade -y \
-    && apt-get clean \
-    && echo 'Finished installing dependencies'
-COPY package*.json ./
+# Copy dependency definitions
+COPY ./package.json /app
 
-RUN npm install --production
+# Install dependecies
+RUN npm install
 
-COPY . /app
+# Get all the code needed to run the app
+COPY ./ /app
 
 EXPOSE ${PORT}
 
