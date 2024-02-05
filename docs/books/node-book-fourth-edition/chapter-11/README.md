@@ -36,3 +36,21 @@ Enter the following command to start creating a model:
 ```sh
 $ lb4 model
 ```
+
+we need to create our data source using LoopBack's data source CLI. Enter the following command in your Terminal window
+
+```sh
+$ lb4 datasource
+```
+
+we need to create a LoopBack repository. This is a LoopBack class that binds the data source and the model. Enter the following command to start the repository generator interface:
+
+```sh
+$ lb4 repository
+```
+
+we need to create a LoopBack controller. A LoopBack controller handles the API requests and responses. Enter the following command to start the controller generator interface:
+
+```sh
+$ lb4 controller
+```
