@@ -151,3 +151,31 @@ $ docker system prune --all
 
 > [!IMPORTANT]
 > Once you've completed, you should stop and remove the Docker `containers` and `images`. Otherwise, the containers and images may linger on your system and consume system resources.
+
+## #️⃣ Publishing a Docker image
+
+Docker Hub provides a global repository of images
+
+
+Once you've created your Docker Hub account, you need to authenticate your Docker client.
+
+```sh
+
+$ docker login
+
+# we then need to retag our image for it to be pushed to Docker Hub. Tag the image with the following command
+
+$ docker tag fastify-microservice <namespace>/fastifymicroservice
+or 
+$ docker tag fastify-microservice <namespace>/fastifymicroservice:1.0.0
+
+# we need to push the newly tagged image using the docker push command:
+$ docker push <namespace>/fastify-microservice
+or
+$ docker push <namespace>/fastify-microservice:1.0.0
+
+# It is also now possible to pull the image with the following command:
+$ docker pull <namespace>/fastify-microservice
+
+
+```
