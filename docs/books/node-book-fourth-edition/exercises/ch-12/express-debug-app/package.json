@@ -6,12 +6,14 @@
   "scripts": {
     "debug": "DEBUG=* node server.js",
     "router-actions:debug": "DEBUG=express:router* node server.js",
+    "debug:my-server": "DEBUG=my-server node debug-server.js",
     "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "debug": "^4.3.4",
     "express": "^4.18.2"
   }
 }
