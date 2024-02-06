@@ -90,5 +90,25 @@ Winston is another popular logger for Node.js. Winston exposes an interface that
 The main difference between **`Pino`** and **`Winston`** is that Winston provides a larger number of **features** and **configuration** options.
 
 ```sh
+
 $ npm install winston express-winston
+
 ```
+
+## #️⃣ Enabling debug logs
+
+`debug` is a popular library, used by many notable frameworks, including the `Express.js` and `Koa.js` web frameworks and the `Mocha` test framework. `debug` is a small JavaScript `debugging` utility based on the `debugging` technique used in Node.js core.
+
+```sh
+$ DEBUG=* node server.js
+
+$ DEBUG=express:router* node server.js
+```
+
+We first prepend `DEBUG=*` to our start command. This syntax passes an environment variable named `DEBUG` to our `Node.js` `process`, which can be accessed from within the application via `process.env.DEBUG`.
+
+> [!IMPORTANT]
+> We set the value to **`*`**, which enables all logs.
+
+we filter out logs by setting **`DEBUG=express:router*`**. Internally, the debug module is converting the values we set to regular expressions.
+
