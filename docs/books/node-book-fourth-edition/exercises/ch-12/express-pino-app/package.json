@@ -1,0 +1,17 @@
+{
+  "name": "express-pino-app",
+  "version": "1.0.0",
+  "description": "use of the express-pino-logger module to add logging via an Express.js middleware",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-pino-logger": "^7.0.0",
+    "pino": "^8.18.0"
+  }
+}
