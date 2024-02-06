@@ -88,3 +88,7 @@ The parameter `dev` indicates we want development formatted logging. In Morgan, 
 Winston is another popular logger for Node.js. Winston exposes an interface that is also similar to the `Log4j` interface.
 
 The main difference between **`Pino`** and **`Winston`** is that Winston provides a larger number of **features** and **configuration** options.
+
+```sh
+$ npm install winston express-winston
+```
