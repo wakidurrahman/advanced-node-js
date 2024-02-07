@@ -1,4 +1,4 @@
-# Chapter 2. Service Mocking
+# 💁‍♂️ Service Mocking
 
 The ability to rapidly create web services with mock data that can run locally is a useful skill.
 
