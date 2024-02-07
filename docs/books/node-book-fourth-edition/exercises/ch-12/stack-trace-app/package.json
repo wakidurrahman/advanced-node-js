@@ -1,0 +1,16 @@
+{
+  "name": "stack-trace-app",
+  "version": "1.0.0",
+  "description": "to enable additional stack frames using the --stack-trace-limit process flag",
+  "main": "routes.js",
+  "scripts": {
+    "stack-trace-limit": "node --stack-trace-limit=20 server.js",
+    "start": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

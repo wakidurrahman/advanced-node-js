@@ -147,3 +147,25 @@ It is also possible to enable debug logs on multiple subsystems via the `NODE_DE
 
 The output of each log message includes the subsystem/namespace, followed by the **process identifier (PID)**, and then the log message.
 
+## #️⃣ Increasing stack trace size
+
+A stack trace, sometimes referred to as a stack backtrace, is defined as a list of stack frames. When your Node.js process hits an `error`, a stack trace is shown detailing the function that experienced the error, and the functions that it was called by.
+
+> [!NOTE]
+> By default, Node.js's `V8` engine will return `10` `stack frames`.
+
+When debugging some errors, it can be useful to have more than 10 stack frames. The number of stack frames stored comes with a performance cost. Keeping track of additional stack frames will result in our applications consuming more `memory` and `CPU`.
+
+```js
+ "scripts": {
+    "stack-trace-limit": "node --stack-trace-limit=20 server.js",
+    "start": "node --watch server.js"
+  },
+
+```
+
+we make use of the `--stack-trace-limit` flag. This flag instructs the `V8` JavaScript engine to retain more stacks. When an `error` occurs, the stack trace will show the preceding function calls up to the limit set with the flag.
+
+Asynchronous stack traces were added to Node.js 12 via the V8 JavaScript engine update, these can help us debug our asynchronous functions.
+
+## #️⃣ Creating diagnostic reports
