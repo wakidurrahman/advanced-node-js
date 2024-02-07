@@ -1,0 +1,13 @@
+{
+  "name": "diagnostic-report",
+  "version": "1.0.0",
+  "description": "to enable and configure the diagnostic report utility and generate a report when an uncaught exception happens in our application.",
+  "main": "server.js",
+  "scripts": {
+    "diagnostic:report": "node --report-uncaught-exception server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

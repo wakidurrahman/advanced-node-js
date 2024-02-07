@@ -1,0 +1,17 @@
+{
+  "name": "debugging-with-chrome",
+  "version": "1.0.0",
+  "description": "a small web server for debugging node.js",
+  "main": "server.js",
+  "scripts": {
+    "debug": "node --inspect server.js",
+    "start": "node --watch server.js",
+    "command-line-based-debugger": "node inspect server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
