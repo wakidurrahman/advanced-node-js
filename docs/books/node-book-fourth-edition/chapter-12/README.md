@@ -169,3 +169,29 @@ we make use of the `--stack-trace-limit` flag. This flag instructs the `V8` Java
 Asynchronous stack traces were added to Node.js 12 via the V8 JavaScript engine update, these can help us debug our asynchronous functions.
 
 ## #️⃣ Creating diagnostic reports
+
+The diagnostic report utility has been available behind a process flag since Node.js v11.8.0.
+
+The diagnostic report utility allows you to generate a report containing diagnostic data on demand or when certain events occur.
+
+The situations
+
+- 👉 where a report could be generated include
+- 👉 when your application crashes, or
+- 👉 when your application is experiencing slow performance or
+- 👉 high CPU usage.
+
+we'll learn how to enable and configure the diagnostic report utility and generate a report when an uncaught exception happens in our application.
+
+
+The diagnostic report utility enables a diagnostic summary to be written in a file under certain conditions. The utility is built into `Node.js` core and is enabled by passing one of the following command-line `flags` to the Node.js process:
+
+- `--report-uncaught-exception`: As used in the recipe, it triggers a crash on an uncaught exception.
+- `--report-on-signal`: A report is triggered upon receiving a specified signal.
+- `--report-on-fatalerror`: A report is triggered on a fatal error, such as an out of memory error.
+
+Note that it is also possible to trigger the generation of the report from within your application using the following line:
+
+```sh
+process.report.writeReport();
+```
