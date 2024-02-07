@@ -15,6 +15,10 @@ Course Instructor: David Mark
 
 > Fourth Edition
 
+## 4. [Node.js Design Patterns: Design and implement production-grade Node.js applications using proven patterns and techniques, 3rd Edition](https://www.amazon.com/Node-js-Design-Patterns-production-grade-applications/dp/1839214112?&linkCode=sl1&tag=12308d41-20&linkId=305b70c20e110c18465cf74f753e2474&language=en_US&ref_=as_li_ss_tl)
+
+> 3rd Edition || by Mario Casciaro (Author), Luciano Mammino (Author)
+
 ---
 
 The OpenJS Foundation(https://openjsf.org/) and the Linux Foundation offer two Node.js trainings, 
