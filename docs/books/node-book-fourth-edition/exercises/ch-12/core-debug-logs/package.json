@@ -1,0 +1,18 @@
+{
+  "name": "core-debug-logs",
+  "version": "1.0.0",
+  "description": "the core debug logs to allow us to see what is happening at the Node.js runtime level",
+  "main": "server.js",
+  "scripts": {
+    "nodejs-core-debug-logs:timer": "NODE_DEBUG=timer node server.js",
+    "nodejs-core-debug-logs:http": "NODE_DEBUG=http node server.js",
+    "nodejs-core-debug-logs:multiple-subsystems": "NODE_DEBUG=http,timer node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

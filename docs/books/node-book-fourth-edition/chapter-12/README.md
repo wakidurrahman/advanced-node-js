@@ -112,3 +112,38 @@ We first prepend `DEBUG=*` to our start command. This syntax passes an environme
 
 we filter out logs by setting **`DEBUG=express:router*`**. Internally, the debug module is converting the values we set to regular expressions.
 
+## #️⃣ Enabling Node.js core debug logs
+
+When debugging some problems in your applications, it can be useful to have insight into the internals of Node.js and how it handles the execution of your program. Node.js provides debug logs that we can enable to help us understand what is happening internally in Node.js.
+
+These core debug logs can be enabled via an `environment` variable named `NODE_DEBUG`.
+
+we can enable the core debug logs to allow us to see what is happening at the Node.js runtime level.
+
+To set the `NODE_DEBUG` variable to the internal flag we wish to log.
+
+> [!IMPORTANT]
+> The internal flags align with specific subsystems of Node.js, such as `timers` or `HTTP`.
+
+To enable the `timer` **_`core debug logs`_**, start your server with the following command:
+
+```sh
+$ NODE_DEBUG=timer node server.js
+$ NODE_DEBUG=http node server.js
+
+# It is also possible to enable debug logs on multiple subsystems via the NODE_DEBUG environment variable.
+$ NODE_DEBUG=http,timer node server.js
+# or
+
+ "scripts": {
+    "nodejs-core-debug-logs:timer": "NODE_DEBUG=timer node server.js",
+    "nodejs-core-debug-logs:http": "NODE_DEBUG=http node server.js",
+    "nodejs-core-debug-logs:multiple-subsystems": "NODE_DEBUG=http,timer node server.js",
+    "start": "node server.js"
+  },
+```
+
+It is also possible to enable debug logs on multiple subsystems via the `NODE_DEBUG` environment variable. `$ NODE_DEBUG=http,timer node server.js`
+
+The output of each log message includes the subsystem/namespace, followed by the **process identifier (PID)**, and then the log message.
+
