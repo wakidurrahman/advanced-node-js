@@ -41,3 +41,39 @@ Another characteristic of many Node.js modules is the fact that they are created
 Keep It Simple, Stupid (KISS) principle
 
 Designing simple, as opposed to perfect, fully featured software is a good practice for several reasons: it takes less effort to implement, it allows shipping faster with fewer resources, it's easier to adapt, and, finally, it's easier to maintain and understand.
+
+## #️⃣ How Node.js works
+
+Node.js works internally and be introduced to the **_reactor pattern_**, which is the heart of the asynchronous nature of Node.js.
+
+The main concepts behind the pattern, such as the single-threaded architecture and the non-blocking I/O
+
+### 📝 I/O is slow
+
+I/O (short for input/output) is definitely the slowest among the fundamental
+operations of operations of a computer.
+I/O is usually not expensive in terms of CPU, but it adds a delay between the moment the request is sent to the device and the moment the operation completes.
+
+### 📝 Blocking I/O
+
+In traditional blocking `I/O` programming, the function call corresponding to an `I/O` request will block the execution of the `thread` until the **_operation completes_**. This is because each I/O operation on a socket will block the processing of any other connection.
+
+### 📝 Non-blocking I/O
+
+In addition to blocking I/O, most modern operating systems support another mechanism to access resources, called non-blocking I/O. In this operating mode, the system call always returns immediately without waiting for the data to be read or written.
+
+The most basic pattern for dealing with this type of non-blocking I/O is to actively poll the resource within a loop until some actual data is returned. This is called **_busy-waiting_**.
+
+Polling algorithms usually result in a huge amount of wasted CPU time.
+
+### 📝 Event demultiplexing
+
+We are talking about the **synchronous event demultiplexer** (also known as the **event notification interface**).
+
+**_Multiplexing:_** the term, in telecommunications, multiplexing refers to the method by which multiple signals are combined into one so that they can be easily transmitted over a medium with limited capacity.
+
+**_Demultiplexing:_** refers to the opposite operation, whereby the signal is split again into its original components. বিপরীত অপারেশন বোঝায়, যেখানে সংকেত আবার তার মূল উপাদানে বিভক্ত হয়।
+
+The synchronous event **demultiplexer** that we were talking about watches multiple resources and returns a new event (or set of events) when a read or write operation executed over one of those resources completes.
+
+## #️⃣ The reactor pattern
