@@ -165,3 +165,5 @@ variables assigned to the process (with `process.env`).
 ♨️📢 Command-line arguments passed to the application at the moment of its launch (with `process.argv`).
 
 ### 📝  Running native code
+
+One of the most powerful capabilities offered by Node.js is certainly the possibility to create userland modules that can bind to native code. Node.js দ্বারা অফার করা সবচেয়ে শক্তিশালী ক্ষমতাগুলির মধ্যে একটি হল অবশ্যই userland modules তৈরি করার সম্ভাবনা যা নেটিভ কোডের সাথে আবদ্ধ হতে পারে। This gives to the platform a tremendous advantage as it allows us to reuse existing or new components written in C/C++. এটি প্ল্যাটফর্মকে একটি অসাধারণ সুবিধা দেয় কারণ এটি আমাদের C/C++ এ লেখা বিদ্যমান বা নতুন উপাদানগুলিকে পুনরায় ব্যবহার করতে দেয়।
