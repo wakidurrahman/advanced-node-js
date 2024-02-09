@@ -142,3 +142,26 @@ The original Node.js module system is called `CommonJS` and it uses the `require
 
 **`ES modules`**: JavaScript has the so-called `ES modules` syntax (the `import` keyword may be more familiar) from which `Node.js` inherits just the syntax, as the underlying implementation is somewhat different from that of the browser. 
 
+### 📝 Full access to operating system services
+
+Node.js to have bindings for all the major services offered by the underlying operating system.
+
+we can access any file on the filesystem (subject to any operating system-level permission)
+
+- `fs module`: we can access any file on the filesystem
+- `net module`: we can write applications that use low-level TCP
+- `dgram module`: UDP sockets 
+- `http module`: We can create HTTP
+- `https module`: We can create HTTPS
+- `crypto module`: We can create the standard `encryption` and `hashing` algorithms of `OpenSSL`
+- `v8 module` : We can also access some of the `V8` internals
+- `vm module`. : We can also run code in a different V8 context
+- `child_process module`. : We can also run other processes 
+- `process` : We can retrieve our own application's `process` information using the `process` global variable.
+
+In particular, from the `process` global variable, we can get a list of the environment
+variables assigned to the process (with `process.env`).
+
+Command-line arguments passed to the application at the moment of its launch (with `process.argv`).
+
+### 📝  Running native code
