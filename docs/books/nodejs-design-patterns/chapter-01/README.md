@@ -83,7 +83,8 @@ The main idea behind the **_Reactor Pattern_** is to have a `handler` associated
 > [!NOTE]
 > A Node.js application will exit when there are no more pending operations in the event demultiplexer, and no more events to be processed inside the event queue.
 
-> [!IMPORTANT] > **`The reactor pattern:`** Handles I/O by blocking until new events are available from a set of observed resources, and then reacts by dispatching each event to an associated handler.
+> [!IMPORTANT]  
+> **`The reactor pattern:`** Handles I/O by blocking until new events are available from a set of observed resources, and then reacts by dispatching each event to an associated handler.
 
 ## #️⃣ Libuv, the I/O engine of Node.js
 
@@ -99,7 +100,8 @@ All these inconsistencies across and within the different operating systems requ
 
 The Node.js core team created a native library called `libuv`, with the objective to make Node.js compatible with all the major operating systems and normalize the non-blocking behavior of the different types of resource.
 
-> [!IMPORTANT] > `libuv` represents the low-level I/O **engine** of Node.js and is probably the most important component that Node.js is built on.
+> [!IMPORTANT]  
+> `libuv` represents the low-level I/O **engine** of Node.js and is probably the most important component that Node.js is built on.
 
 Other than abstracting the underlying system calls, `libuv` also implements the **_Reactor Pattern_**, thus providing an API for creating `event loops`, managing the `event queue`, running `asynchronous I/O operations`, and queuing other types of task.
 
@@ -120,3 +122,16 @@ The most obvious difference is that in **`Node.js`** we don't have a `DOM` and w
 The browser provides a higher-level abstraction over the **operating system** resources, which makes it easier to control and contain the code that runs in it, which will also inevitably limit its capabilities.
 
 In turn, in Node.js we can virtually have access to all the services exposed by the **operating system**.
+
+### 📝 Run the latest JavaScript with confidence
+
+One of the main pain points of using JavaScript in the browser is that our code will likely run on a variety of devices and browsers.
+
+All these inconveniences don't apply when developing applications on Node.js. In fact, our Node.js applications will most likely run on a system and a Node.js runtime that are well known in advance.
+
+> [!TIP]
+> Please bear in mind, though, that if we are developing a library meant to be used by third parties, we still have to take into account that our code may run on different versions of Node.js.
+
+The general pattern in this case is to target the oldest active long-term-support (LTS) release and specify the `engines` section in our package.json, so that the package manager will warn the user if they are trying to install a package that is not compatible with their version of Node.js.
+
+### 📝 The module system
