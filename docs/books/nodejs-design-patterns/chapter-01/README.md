@@ -74,6 +74,16 @@ We are talking about the **synchronous event demultiplexer** (also known as the 
 
 **_Demultiplexing:_** refers to the opposite operation, whereby the signal is split again into its original components. বিপরীত অপারেশন বোঝায়, যেখানে সংকেত আবার তার মূল উপাদানে বিভক্ত হয়।
 
-The synchronous event **demultiplexer** that we were talking about watches multiple resources and returns a new event (or set of events) when a read or write operation executed over one of those resources completes.
+The **synchronous event demultiplexer** watches multiple resources and returns a new event (or set of events) when a `read` or `write` operation executed over one of those resources completes. synchronous event demultiplexer একাধিক resources দেখে এবং একটি নতুন event (বা events সেট) ফেরত দেয় যখন সেই resources মধ্যে একটির উপর একটি read বা write ক্রিয়া সম্পন্ন হয়।
 
 ## #️⃣ The reactor pattern
+
+The main idea behind the **_Reactor Pattern_** is to have a `handler` associated **with each I/O operation**. A `handler` in Node.js is represented by a `callback` (or `cb` for short) function. Reactor Pattern পিছনে মূল ধারণা হল প্রতিটি I/O অপারেশনের সাথে একটি handler যুক্ত করা। Node.js-এ একটি handler একটি callback (বা সংক্ষেপে cb) function দ্বারা প্রতিনিধিত্ব করা হয়। The handler will be invoked as soon as an event is produced and processed by the event loop. 
+
+> [!NOTE]
+> A Node.js application will exit when there are no more pending operations in the event demultiplexer, and no more events to be processed inside the event queue.
+
+> [!IMPORTANT]
+> **`The reactor pattern:`** Handles I/O by blocking until new events are available from a set of observed resources, and then reacts by dispatching each event to an associated handler.
+
+## #️⃣ Libuv, the I/O engine of Node.js
