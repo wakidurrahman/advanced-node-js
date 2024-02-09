@@ -78,12 +78,35 @@ The **synchronous event demultiplexer** watches multiple resources and returns a
 
 ## #️⃣ The reactor pattern
 
-The main idea behind the **_Reactor Pattern_** is to have a `handler` associated **with each I/O operation**. A `handler` in Node.js is represented by a `callback` (or `cb` for short) function. Reactor Pattern পিছনে মূল ধারণা হল প্রতিটি I/O অপারেশনের সাথে একটি handler যুক্ত করা। Node.js-এ একটি handler একটি callback (বা সংক্ষেপে cb) function দ্বারা প্রতিনিধিত্ব করা হয়। The handler will be invoked as soon as an event is produced and processed by the event loop. 
+The main idea behind the **_Reactor Pattern_** is to have a `handler` associated **with each I/O operation**. A `handler` in Node.js is represented by a `callback` (or `cb` for short) function. Reactor Pattern পিছনে মূল ধারণা হল প্রতিটি I/O অপারেশনের সাথে একটি handler যুক্ত করা। Node.js-এ একটি handler একটি callback (বা সংক্ষেপে cb) function দ্বারা প্রতিনিধিত্ব করা হয়। The handler will be invoked as soon as an event is produced and processed by the event loop.
 
 > [!NOTE]
 > A Node.js application will exit when there are no more pending operations in the event demultiplexer, and no more events to be processed inside the event queue.
 
-> [!IMPORTANT]
-> **`The reactor pattern:`** Handles I/O by blocking until new events are available from a set of observed resources, and then reacts by dispatching each event to an associated handler.
+> [!IMPORTANT] > **`The reactor pattern:`** Handles I/O by blocking until new events are available from a set of observed resources, and then reacts by dispatching each event to an associated handler.
 
 ## #️⃣ Libuv, the I/O engine of Node.js
+
+Each opearating system has its own interface for the Event Demultiplexer:
+
+- `epoll`: on Linux,
+- `kqueue`: on macOS,
+- `I/O completion port (IOCP) API`: on Windows
+
+On top of that, each `I/O` operation can behave quite differently depending on the **type of resource**, even within the **same operating system**.
+
+All these inconsistencies across and within the different operating systems required a higher-level abstraction to be built for the event demultiplexer.
+
+The Node.js core team created a native library called `libuv`, with the objective to make Node.js compatible with all the major operating systems and normalize the non-blocking behavior of the different types of resource.
+
+> [!IMPORTANT] > `libuv` represents the low-level I/O **engine** of Node.js and is probably the most important component that Node.js is built on.
+
+Other than abstracting the underlying system calls, `libuv` also implements the **_Reactor Pattern_**, thus providing an API for creating `event loops`, managing the `event queue`, running `asynchronous I/O operations`, and queuing other types of task.
+
+### 📝 The recipe for Node.js
+
+The reactor pattern and libuv are the basic building blocks of Node.js, but we need three more components to build the full platform:
+
+- Bindings: A set of bindings responsible for wrapping and exposing libuv and other low-level functionalities to JavaScript. 
+- V8: The Javascript engine.
+- Core Javascript API: A core JavaScript library that implements the high-level node.js API.
