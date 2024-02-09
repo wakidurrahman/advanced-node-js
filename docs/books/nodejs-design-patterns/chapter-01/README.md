@@ -107,6 +107,16 @@ Other than abstracting the underlying system calls, `libuv` also implements the 
 
 The reactor pattern and libuv are the basic building blocks of Node.js, but we need three more components to build the full platform:
 
-- Bindings: A set of bindings responsible for wrapping and exposing libuv and other low-level functionalities to JavaScript. 
+- Bindings: A set of bindings responsible for wrapping and exposing libuv and other low-level functionalities to JavaScript.
 - V8: The Javascript engine.
 - Core Javascript API: A core JavaScript library that implements the high-level node.js API.
+
+## #️⃣ JavaScript in Node.js
+
+We use in **`Node.js`** is somewhat different from the JavaScript we use in the **Browser**.
+
+The most obvious difference is that in **`Node.js`** we don't have a `DOM` and we don't have a `window` or a `document`. On the other hand, **`Node.js`** has access to a set of services offered by the underlying **operating system** that are not available in the **Browser**.
+
+The browser provides a higher-level abstraction over the **operating system** resources, which makes it easier to control and contain the code that runs in it, which will also inevitably limit its capabilities.
+
+In turn, in Node.js we can virtually have access to all the services exposed by the **operating system**.
