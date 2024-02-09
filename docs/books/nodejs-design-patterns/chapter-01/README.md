@@ -159,9 +159,9 @@ We can access any file on the filesystem (subject to any operating system-level 
 - `child_process module`. : We can also run other processes 
 - `process` : We can retrieve our own application's `process` information using the `process` global variable.
 
-In particular, from the `process` global variable, we can get a list of the environment
+♨️📢 In particular, from the `process` global variable, we can get a list of the environment
 variables assigned to the process (with `process.env`).
 
-Command-line arguments passed to the application at the moment of its launch (with `process.argv`).
+♨️📢 Command-line arguments passed to the application at the moment of its launch (with `process.argv`).
 
 ### 📝  Running native code
