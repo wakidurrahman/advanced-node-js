@@ -135,3 +135,10 @@ All these inconveniences don't apply when developing applications on Node.js. In
 The general pattern in this case is to target the oldest active long-term-support (LTS) release and specify the `engines` section in our package.json, so that the package manager will warn the user if they are trying to install a package that is not compatible with their version of Node.js.
 
 ### 📝 The module system
+
+The original Node.js module system is called `CommonJS` and it uses the `require` keyword to import `functions`, `variables`, and `classes` exported by `built-in modules` or other `modules` located on the device's `filesystem`.
+
+**`CommonJS`**: CommonJS was a revolution for the JavaScript world in general. CommonJS was a necessary component for Node.js to allow developers to create large and better organized applications on a par with other server-side platforms.
+
+**`ES modules`**: JavaScript has the so-called `ES modules` syntax (the `import` keyword may be more familiar) from which `Node.js` inherits just the syntax, as the underlying implementation is somewhat different from that of the browser. 
+
