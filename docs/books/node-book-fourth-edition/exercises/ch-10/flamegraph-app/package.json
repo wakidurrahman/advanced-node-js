@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "start:profiling": "0x ./bin/www",
-    "start:profiling:prod": "NODE_ENV=production 0x ./bin/www"
+    "start:profiling:prod": "NODE_ENV=production 0x ./bin/www",
+    "start:profiling:inspect": "node --inspect ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
