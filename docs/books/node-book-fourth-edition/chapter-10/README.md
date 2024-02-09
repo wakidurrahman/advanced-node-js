@@ -78,6 +78,8 @@ The term **"hot code path"** is used to describe execution paths in the program 
 
 We need to create an application that we can profile. Profiling is a type of `program` analysis that measures how frequently and for how long `functions` or `methods` in our program are being used.
 
+We can use this flag to enable the Node.js process to be both `debugged` and `profiled` using the Chrome DevTools:
+
 ## #️⃣ Detecting memory leaks
 
 ## #️⃣ Optimizing synchronous functions
