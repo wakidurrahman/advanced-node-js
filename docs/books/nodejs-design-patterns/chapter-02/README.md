@@ -61,3 +61,12 @@ This pattern leverages a self-invoking function. This type of function is someti
 In the preceding code, the myModule variable contains only the exported API, while the rest of the module content is practically inaccessible from outside.
 
 This demonstrates that only the exported properties are directly accessible from myModule.
+
+## #️⃣ CommonJS modules
+
+CommonJS is the first `module system` originally built into Node.js.
+
+Let's summarize two of the main concepts of the CommonJS specification:
+
+1. `require`: is a function that allows you to import a module from the local filesystem
+2. `exports`: and `module.exports` are special `variables` that can be used to `export` **_public functionality_** from the current `module`.
