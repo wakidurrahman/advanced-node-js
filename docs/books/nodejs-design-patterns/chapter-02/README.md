@@ -29,5 +29,35 @@ It is important to clarify the distinction between a `module` and a `module syst
 
 ESM: it tries to bridge the gap between how modules are managed on `browsers` and `servers`.
 
+### 📝 The module system and its patterns
 
+Modules are the bricks for structuring non-trivial applications and the main mechanism to enforce information hiding by keeping private all the `functions` and `variables` that are not explicitly marked to be exported.
 
+### 📝 The revealing module pattern
+
+One of the bigger problems with JavaScript in the browser is the lack of namespacing. Every `script` runs in the `global scope`; therefore, `internal` `application` `code` or `third-party` dependencies can pollute the `scope` while exposing their own pieces of functionality.
+
+A popular technique to solve this class of problems is called the `revealing module pattern`, and it looks like this:
+
+```js
+const myModule = (() => {
+  const privateFoo = () => {};
+  const privateBar = [];
+
+  const exported = {
+    publicFoo: () => {},
+    publicBar: () => {},
+  };
+
+  return exported;
+})(); // once the parenthesis here are parsed, the function will be invoked
+
+console.log(myModule);
+console.log(myModule.privateFoo, myModule.privateBar);
+```
+
+This pattern leverages a self-invoking function. This type of function is sometimes also referred to as **_Immediately Invoked Function Expression (IIFE)_** and it is used to create a private scope, exporting only the parts that are meant to be public.
+
+In the preceding code, the myModule variable contains only the exported API, while the rest of the module content is practically inaccessible from outside.
+
+This demonstrates that only the exported properties are directly accessible from myModule.
