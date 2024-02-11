@@ -73,3 +73,5 @@ Let's summarize two of the main concepts of the CommonJS specification:
 
 ### 📝 A homemade module loader
 
+To understand how CommonJS works in Node.js, let's build a similar system from scratch.
+The code that follows creates a function that mimics a subset of the functionality of the original `require()` function of Node.js.

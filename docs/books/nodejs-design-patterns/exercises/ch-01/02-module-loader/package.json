@@ -1,0 +1,13 @@
+{
+  "name": "02-module-loader",
+  "version": "1.0.0",
+  "description": "This sample demonstrate how to build a custom module system, which is  partially compatible with Node.js's CommonJS module system.",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node loader.js ./main"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
