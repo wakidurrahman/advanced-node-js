@@ -75,3 +75,12 @@ Let's summarize two of the main concepts of the CommonJS specification:
 
 To understand how CommonJS works in Node.js, let's build a similar system from scratch.
 The code that follows creates a function that mimics a subset of the functionality of the original `require()` function of Node.js.
+
+### 📝 Defining a module
+
+The essential concept to remember is that everything inside a `module` is `private` unless it's assigned to the `module.exports` `variable`.
+
+### 📝 module.exports versus exports
+
+
+
