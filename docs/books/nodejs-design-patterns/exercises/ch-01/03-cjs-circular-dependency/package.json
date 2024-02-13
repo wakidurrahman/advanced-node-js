@@ -1,0 +1,17 @@
+{
+  "name": "03-cjs-circular-dependency",
+  "version": "1.0.0",
+  "description": "To demonstrates what happens when there are cycles in module dependencies using CommonJS.",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node ./main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}
