@@ -312,4 +312,12 @@ The ESM specification tries to retain some good ideas from previous existing mod
 
 The most important differentiator between **ESM** and **CommonJS** is that **ES** modules are **_static_**, which means that imports are described at the top level of every module and outside any control flow statement. Also, the name of the imported modules cannot be dynamically generated at runtime using expressions, only constant strings are allowed.
 
-### 📝  Using ESM in Node.js
+### 📝 Using ESM in Node.js
+
+There are several ways to tell the Node.js interpreter to consider a given module as an ES module rather than a CommonJS module:
+
+1. Give the module file the extension `.mjs`
+2. Add to the nearest parent `package.json` a field called "type" with a value fo "module" `"type": "module",`
+
+> [!IMPORTANT]
+> :+1: Node.js will consider every .js file to be written using the CommonJS syntax by default; :shipit:
