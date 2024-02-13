@@ -1,7 +1,7 @@
 {
-  "name": "06-cjs-exporting-a-constructor",
+  "name": "07-cjs-exporting-an-instance",
   "version": "1.0.0",
-  "description": "To demonstrates a module that exports a class is a specialization of a module that exports a function.",
+  "description": "To demonstrates Exporting an instance",
   "main": "main.js",
   "type": "commonjs",
   "scripts": {

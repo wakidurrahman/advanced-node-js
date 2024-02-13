@@ -281,5 +281,21 @@ class Logger {
   }
 }
 
-module.exports = Logger
+module.exports = Logger;
 ```
+
+### 📝 Exporting an instance
+
+We can leverage the caching mechanism of `require()` to easily define stateful instances created from a constructor or a factory, which can be shared across different modules.
+
+```js
+class Logger {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+module.exports = new Logger("DEFAULT");
+```
+
+Because the module is cached, every module that requires the logger module will actually always retrieve the same instance of the object, thus sharing its state.
