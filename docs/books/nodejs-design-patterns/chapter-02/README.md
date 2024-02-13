@@ -82,5 +82,12 @@ The essential concept to remember is that everything inside a `module` is `priva
 
 ### 📝 module.exports versus exports
 
+The `exports` variable is just a reference to the initial value of `module.exports`.
 
+If we want to export something other than an object literal, such as a function, an instance, or even a string, we have to reassign module.exports as follows:
 
+```js
+module.exports = () => {
+  console.log("Hello");
+};
+```

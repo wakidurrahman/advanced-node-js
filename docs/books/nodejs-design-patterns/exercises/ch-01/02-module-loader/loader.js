@@ -42,7 +42,7 @@ require = function require(moduleName) {
   // module metadata
   const module = {
     // ③
-    exports: {},
+    exports: {}, // The exports variable is just a reference to the initial value of module.exports.
     id,
   };
 
