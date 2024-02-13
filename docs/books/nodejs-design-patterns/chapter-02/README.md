@@ -229,3 +229,18 @@ The module cache is exposed via the `require.cache` variable,
 ### 📝 Circular dependencies
 
 Many consider circular dependencies an intrinsic design issue, but it is something that might actually happen in a real project,
+
+## #️⃣ Module definition patterns
+
+The module system, besides being a mechanism for loading dependencies, is also a tool for defining APIs. The main
+factor to consider is the balance between private and public functionality. The aim is to maximize information hiding and API usability, while balancing these with other software qualities, such as **_extensibility_** and **_code reuse_**.
+
+Some of the most popular **_patterns_** for defining modules in `Node.js`, such as
+
+- Named exports
+- Exporting Functions
+- Exporting Classes
+- Exporting an instance
+- monkey patching
+
+Each one has its own balance of information `hiding`, extensibility, and `code reuse`.
