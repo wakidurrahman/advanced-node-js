@@ -249,6 +249,12 @@ Each one has its own balance of information `hiding`, extensibility, and `code r
 
 The most basic method for exposing a public API is using **named exports**, which involves assigning the values we want to make public to properties of the object referenced by `exports` (or `module.exports`).
 
+```js
+exports.info = (message) => {
+  console.log(`info: ${message}`);
+};
+```
+
 > [!TIP]
 > Most of the Node.js core modules use this pattern.
 
@@ -257,3 +263,23 @@ The most basic method for exposing a public API is using **named exports**, whic
 One of the most popular module definition patterns consists of reassigning the whole `module.exports` variable to a function.
 
 The modularity of Node.js heavily encourages the adoption of the **single-responsibility principle (SRP)**: every module should have responsibility over a single functionality and that responsibility should be entirely encapsulated by the module.
+
+```js
+module.exports = (message) => {
+  console.log(`info: ${message}`);
+};
+```
+
+### 📝 Exporting a class
+
+A `module` that exports a `class` is a specialization of a module that exports a function. The difference is that with this new pattern we allow the user to create new `instances` using the `constructor`, but we also give them the ability to extend its `prototype` and forge/reproduce new `classes`.
+
+```js
+class Logger {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+module.exports = Logger
+```
