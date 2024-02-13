@@ -1,0 +1,17 @@
+{
+  "name": "06-cjs-exporting-a-constructor",
+  "version": "1.0.0",
+  "description": "To demonstrates a module that exports a class is a specialization of a module that exports a function.",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --watch main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

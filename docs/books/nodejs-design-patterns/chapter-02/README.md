@@ -229,3 +229,79 @@ The module cache is exposed via the `require.cache` variable,
 ### 📝 Circular dependencies
 
 Many consider circular dependencies an intrinsic design issue, but it is something that might actually happen in a real project,
+
+## #️⃣ Module definition patterns
+
+The module system, besides being a mechanism for loading dependencies, is also a tool for defining APIs. The main
+factor to consider is the balance between private and public functionality. The aim is to maximize information hiding and API usability, while balancing these with other software qualities, such as **_extensibility_** and **_code reuse_**.
+
+Some of the most popular **_patterns_** for defining modules in `Node.js`, such as
+
+- Named exports
+- Exporting Functions
+- Exporting Classes
+- Exporting an instance
+- monkey patching
+
+Each one has its own balance of information `hiding`, extensibility, and `code reuse`.
+
+### 📝 Named exports
+
+The most basic method for exposing a public API is using **named exports**, which involves assigning the values we want to make public to properties of the object referenced by `exports` (or `module.exports`).
+
+```js
+exports.info = (message) => {
+  console.log(`info: ${message}`);
+};
+```
+
+> [!TIP]
+> Most of the Node.js core modules use this pattern.
+
+### 📝 Exporting a function
+
+One of the most popular module definition patterns consists of reassigning the whole `module.exports` variable to a function.
+
+The modularity of Node.js heavily encourages the adoption of the **single-responsibility principle (SRP)**: every module should have responsibility over a single functionality and that responsibility should be entirely encapsulated by the module.
+
+```js
+module.exports = (message) => {
+  console.log(`info: ${message}`);
+};
+```
+
+### 📝 Exporting a class
+
+A `module` that exports a `class` is a specialization of a module that exports a function. The difference is that with this new pattern we allow the user to create new `instances` using the `constructor`, but we also give them the ability to extend its `prototype` and forge/reproduce new `classes`.
+
+```js
+class Logger {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+module.exports = Logger;
+```
+
+### 📝 Exporting an instance
+
+We can leverage the caching mechanism of `require()` to easily define stateful instances created from a constructor or a factory, which can be shared across different modules.
+
+```js
+class Logger {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+module.exports = new Logger("DEFAULT");
+```
+
+Because the module is cached, every module that requires the logger module will actually always retrieve the same instance of the object, thus sharing its state.
+
+### 📝 Modifying other modules or the global scope
+
+A module can modify other `modules` or `objects` in the `global scope`; well, this is called **_monkey patching_**. It generally refers to the practice of modifying the existing objects at runtime to change or extend their behavior or to apply temporary fixes.
+
+The technique described here can be very dangerous to use.

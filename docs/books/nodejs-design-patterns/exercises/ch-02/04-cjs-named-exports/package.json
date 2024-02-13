@@ -1,0 +1,17 @@
+{
+  "name": "04-cjs-named-exports",
+  "version": "1.0.0",
+  "description": "To demonstrate the use of `named exports`, which involves assigning the values we want to make public to properties of the object referenced by `exports`",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --watch main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

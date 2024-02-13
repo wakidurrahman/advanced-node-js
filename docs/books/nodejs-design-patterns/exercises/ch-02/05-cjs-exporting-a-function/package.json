@@ -1,0 +1,17 @@
+{
+  "name": "05-cjs-exporting-a-function",
+  "version": "1.0.0",
+  "description": "To demonstrates the use of `Exporting a function`, consists of reassigning the  whole module.exports variable to a function",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --watch main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}
