@@ -26,14 +26,18 @@ function loadModule(filename, module, require) {
 }
 
 /**
- * The function simulates the behavior of the original `require()` function of Node.js, 
+ * The function simulates the behavior of the original `require()` function of Node.js,
  * which is used to load a module.
  */
 
 require = function require(moduleName) {
   console.log(`Require invoked for module: ${moduleName}`);
 
-  const id = require.resolve(moduleName); // ①
+  /**
+   * ① the resolve() function takes a module name (which we will call moduleName) as input 
+   * and it returns the full path of the module.
+   */
+  const id = require.resolve(moduleName); // ① the resolve() function
 
   if (require.cache[id]) {
     // ②

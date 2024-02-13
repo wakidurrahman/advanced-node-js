@@ -218,5 +218,10 @@ RESOLVE_ESM_MATCH(MATCH)
 
 The `node_modules` directory is actually where the `package managers` install the dependencies of each `package`. This means that, based on the `algorithm` we just described, each `package` can have its own **_private dependencies_**.
 
-
 The `resolving algorithm` is the core part behind the robustness of the Node.js `dependency management`, and it makes it possible to have `hundreds` or even `thousands` of `packages` in an application without having collisions or problems of version compatibility.
+
+### 📝 The module cache
+
+Each `module` is only loaded and evaluated the first time it is required, since any subsequent call of `require()` will simply return the cached version.
+
+The module cache is exposed via the `require.cache` variable,
