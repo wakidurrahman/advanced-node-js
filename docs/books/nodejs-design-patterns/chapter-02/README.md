@@ -244,3 +244,10 @@ Some of the most popular **_patterns_** for defining modules in `Node.js`, such 
 - monkey patching
 
 Each one has its own balance of information `hiding`, extensibility, and `code reuse`.
+
+### 📝 Named exports
+
+The most basic method for exposing a public API is using **named exports**, which involves assigning the values we want to make public to properties of the object referenced by `exports` (or `module.exports`).
+
+> [!TIP]
+> Most of the Node.js core modules use this pattern.
