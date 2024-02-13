@@ -91,3 +91,7 @@ module.exports = () => {
   console.log("Hello");
 };
 ```
+
+### 📝 The require function is synchronous
+
+The `synchronous` nature of `require()` has important reflection on the way we define modules, as it limits us to mostly using `synchronous` code during the definition of a module.

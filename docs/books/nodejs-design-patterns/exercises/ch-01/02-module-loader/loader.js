@@ -26,7 +26,8 @@ function loadModule(filename, module, require) {
 }
 
 /**
- * The function simulates the behavior of the original `require()` function of Node.js, which is used to load a module.
+ * The function simulates the behavior of the original `require()` function of Node.js, 
+ * which is used to load a module.
  */
 
 require = function require(moduleName) {
