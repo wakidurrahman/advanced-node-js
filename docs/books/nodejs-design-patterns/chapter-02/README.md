@@ -299,3 +299,9 @@ module.exports = new Logger("DEFAULT");
 ```
 
 Because the module is cached, every module that requires the logger module will actually always retrieve the same instance of the object, thus sharing its state.
+
+### 📝 Modifying other modules or the global scope
+
+A module can modify other `modules` or `objects` in the `global scope`; well, this is called **_monkey patching_**. It generally refers to the practice of modifying the existing objects at runtime to change or extend their behavior or to apply temporary fixes.
+
+The technique described here can be very dangerous to use.
