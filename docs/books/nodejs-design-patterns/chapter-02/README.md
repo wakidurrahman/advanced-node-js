@@ -251,3 +251,5 @@ The most basic method for exposing a public API is using **named exports**, whic
 
 > [!TIP]
 > Most of the Node.js core modules use this pattern.
+
+### 📝 Exporting a function
