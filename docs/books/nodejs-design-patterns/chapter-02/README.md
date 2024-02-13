@@ -305,3 +305,11 @@ Because the module is cached, every module that requires the logger module will 
 A module can modify other `modules` or `objects` in the `global scope`; well, this is called **_monkey patching_**. It generally refers to the practice of modifying the existing objects at runtime to change or extend their behavior or to apply temporary fixes.
 
 The technique described here can be very dangerous to use.
+
+## #️⃣ ESM: ECMAScript modules
+
+The ESM specification tries to retain some good ideas from previous existing module systems like `CommonJS` and `AMD`. There is support for rotational dependencies and the possibility to load modules asynchronously.
+
+The most important differentiator between **ESM** and **CommonJS** is that **ES** modules are **_static_**, which means that imports are described at the top level of every module and outside any control flow statement. Also, the name of the imported modules cannot be dynamically generated at runtime using expressions, only constant strings are allowed.
+
+### 📝  Using ESM in Node.js
