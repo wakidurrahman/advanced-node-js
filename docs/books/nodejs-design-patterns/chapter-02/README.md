@@ -225,3 +225,7 @@ The `resolving algorithm` is the core part behind the robustness of the Node.js 
 Each `module` is only loaded and evaluated the first time it is required, since any subsequent call of `require()` will simply return the cached version.
 
 The module cache is exposed via the `require.cache` variable,
+
+### 📝 Circular dependencies
+
+Many consider circular dependencies an intrinsic design issue, but it is something that might actually happen in a real project,
