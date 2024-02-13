@@ -253,3 +253,7 @@ The most basic method for exposing a public API is using **named exports**, whic
 > Most of the Node.js core modules use this pattern.
 
 ### 📝 Exporting a function
+
+One of the most popular module definition patterns consists of reassigning the whole `module.exports` variable to a function.
+
+The modularity of Node.js heavily encourages the adoption of the **single-responsibility principle (SRP)**: every module should have responsibility over a single functionality and that responsibility should be entirely encapsulated by the module.
