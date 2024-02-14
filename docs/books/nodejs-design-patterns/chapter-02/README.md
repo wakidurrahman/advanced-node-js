@@ -449,10 +449,13 @@ import(translationModule).then((strings) => {
 
    The goal of the interpreter is to build a graph of all the necessary module (a dependency graph). Essentially, the dependency graph is needed by the interpreter to figure out how modules depend on each other and in what order the code needs to be executed.
 
-   - Phase 1 - Construction (or parsing):
-   - Phase 2 - Instantiation:
-   - Phase 3 - Evaluation:
+   - Phase 1 - Construction (or `parsing`):
+   - Phase 2 - `Instantiation`:
+   - Phase 3 - `Evaluation`:
 
 2. #### Read-only live bindings
 
    Another fundamental characteristic of ES modules, which helps with **cyclic/rotational dependencies**, is the idea that imported modules are effectively **_`read-only live bindings`_** to their `exported` values.
+
+3. #### Circular dependency resolution
+
