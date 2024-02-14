@@ -1,12 +1,12 @@
-// exports a function
+// exports a function as `log`
 export function log(message) {
   console.log(message);
 }
 
-// exports a constant
+// exports a constant as `DEFAULT_LEVEL`
 export const DEFAULT_LEVEL = 'info';
 
-// Exports an object
+// exports an object as `LEVELS`
 export const LEVELS = {
   error: 0,
   debug: 1,
@@ -16,7 +16,7 @@ export const LEVELS = {
   verbose: 5,
 };
 
-// exports a class
+// exports a class as `Logger`
 export class Logger {
   constructor(name) {
     this.name = name;

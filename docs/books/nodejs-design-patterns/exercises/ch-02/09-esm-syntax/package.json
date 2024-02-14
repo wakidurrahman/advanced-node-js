@@ -5,7 +5,7 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js && node main-01.js && node main-02.js && node main-03.js && node main-04.js"
   },
   "keywords": [],
   "author": "",

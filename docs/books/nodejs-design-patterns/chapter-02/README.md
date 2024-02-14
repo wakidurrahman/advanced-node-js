@@ -329,6 +329,22 @@ ESM allows us to export functionality from a module through the `export` keyword
 > [!NOTE]
 > :smiling_imp: Note that `ESM` uses the singular word `export` as opposed to the plural (exports and module.exports) used by CommonJS. :shipit:
 
-
 > [!IMPORTANT]
 > :+1: In an ES module, everything is private by default and only exported entities are publicly accessible from other modules. :shipit:
+
+```js
+// logger.js
+// exports a function as `log`
+export function log(message) {
+  console.log(message);
+}
+
+// main.js
+import * as loggerModule from './logger.js';
+```
+
+- ♨️📢If we want to import entities from a module we can use the import keyword.
+- ♨️📢 we are using the `*` syntax (also called **namespace import**) to import all the members of the module and assign them to the local loggerModule variable.
+
+> [!IMPORTANT]
+> :rage: ESM we have to specify the **file extension** of the imported modules.
