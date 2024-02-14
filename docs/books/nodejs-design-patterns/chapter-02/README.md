@@ -88,7 +88,7 @@ If we want to export something other than an object literal, such as a function,
 
 ```js
 module.exports = () => {
-  console.log("Hello");
+  console.log('Hello');
 };
 ```
 
@@ -295,7 +295,7 @@ class Logger {
   }
 }
 
-module.exports = new Logger("DEFAULT");
+module.exports = new Logger('DEFAULT');
 ```
 
 Because the module is cached, every module that requires the logger module will actually always retrieve the same instance of the object, thus sharing its state.
@@ -310,7 +310,7 @@ The technique described here can be very dangerous to use.
 
 The ESM specification tries to retain some good ideas from previous existing module systems like `CommonJS` and `AMD`. There is support for rotational dependencies and the possibility to load modules asynchronously.
 
-The most important differentiator between **ESM** and **CommonJS** is that **ES** modules are **_static_**, which means that imports are described at the top level of every module and outside any control flow statement. Also, the name of the imported modules cannot be dynamically generated at runtime using expressions, only constant strings are allowed.
+The most important differentiator between **ESM** and **CommonJS** is that **ES** modules are **_static_**, which means that imports are described at the top level of every module and outside any control flow statement. Also, the name of the imported modules cannot be **_dynamically generated_** at runtime using expressions, only constant strings are allowed.
 
 ### 📝 Using ESM in Node.js
 
@@ -321,3 +321,14 @@ There are several ways to tell the Node.js interpreter to consider a given modul
 
 > [!IMPORTANT]
 > :+1: Node.js will consider every .js file to be written using the CommonJS syntax by default; :shipit:
+
+### 📝 Named exports and imports
+
+ESM allows us to export functionality from a module through the `export` keyword.
+
+> [!NOTE]
+> :smiling_imp: Note that `ESM` uses the singular word `export` as opposed to the plural (exports and module.exports) used by CommonJS. :shipit:
+
+
+> [!IMPORTANT]
+> :+1: In an ES module, everything is private by default and only exported entities are publicly accessible from other modules. :shipit:

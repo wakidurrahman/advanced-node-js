@@ -1,0 +1,17 @@
+{
+  "name": "09-esm-syntax",
+  "version": "1.0.0",
+  "description": "ESM description",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}
