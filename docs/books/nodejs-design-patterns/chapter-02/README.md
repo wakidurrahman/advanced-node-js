@@ -452,4 +452,7 @@ import(translationModule).then((strings) => {
    - Phase 1 - Construction (or parsing):
    - Phase 2 - Instantiation:
    - Phase 3 - Evaluation:
-   
+
+2. #### Read-only live bindings
+
+   Another fundamental characteristic of ES modules, which helps with **cyclic/rotational dependencies**, is the idea that imported modules are effectively `**_read-only live bindings_**` to their `exported` values.
