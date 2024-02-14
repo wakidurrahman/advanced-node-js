@@ -310,7 +310,7 @@ The technique described here can be very dangerous to use.
 
 The ESM specification tries to retain some good ideas from previous existing module systems like `CommonJS` and `AMD`. There is support for rotational dependencies and the possibility to load modules asynchronously.
 
-The most important differentiator between **ESM** and **CommonJS** is that **ES** modules are **_static_**, which means that imports are described at the top level of every module and outside any control flow statement. Also, the name of the imported modules cannot be **_dynamically generated_** at runtime using expressions, only constant strings are allowed.
+The most important differentiator between **ESM** and **CommonJS** is that **ES** modules are **_static_**, which means that imports are described at the top level of every file and they cannot be nested within control flow statements. Also, the name of the imported modules cannot be **_dynamically generated_** at runtime using expressions, only constant strings are allowed.
 
 ### 📝 Using ESM in Node.js
 
@@ -416,3 +416,25 @@ export class Source {
 
 - _Bare specifiers_: `import fastify from 'fastify';`
 - _Deep import specifiers_: `import MyLogger from 'fastify/lib/logger.js';`
+
+### 📝 Async imports
+
+The `import` statement is `static`.
+
+There are two important limitations:
+
+1. A module identity cannot be constructed at runtime.
+2. Module imports are declared at the top level of every file and they cannot be nested withing control flow statements.
+
+To allow us to overcome these limitations ES modules provides _`async imports`_ (also called _dynamic imports_).
+
+Async imports can be performed at `runtime` using the special `import()` operator.
+
+The `import()` operator is syntactically equivalent to a function that takes a **_module identifier_** as an argument and it returns a `promise` that resolves to a module object.
+
+```js
+const translationModule = `./strings-en.js`;
+import(translationModule).then((strings) => {
+  console.log(strings.HELLO);
+});
+```
