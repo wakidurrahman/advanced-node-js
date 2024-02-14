@@ -448,3 +448,8 @@ import(translationModule).then((strings) => {
 1. #### Loading phases
 
    The goal of the interpreter is to build a graph of all the necessary module (a dependency graph). Essentially, the dependency graph is needed by the interpreter to figure out how modules depend on each other and in what order the code needs to be executed.
+
+   - Phase 1 - Construction (or parsing):
+   - Phase 2 - Instantiation:
+   - Phase 3 - Evaluation:
+   
