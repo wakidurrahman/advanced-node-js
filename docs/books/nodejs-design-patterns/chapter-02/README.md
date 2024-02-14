@@ -438,3 +438,13 @@ import(translationModule).then((strings) => {
   console.log(strings.HELLO);
 });
 ```
+
+### 📝 Module loading in depth
+
+- To understand how ESM actually works
+- How it can deal effectively with circular dependencies,
+- How JavaScript code is parsed and evaluated when using ES modules.
+
+1. #### Loading phases
+
+   The goal of the interpreter is to build a graph of all the necessary module (a dependency graph). Essentially, the dependency graph is needed by the interpreter to figure out how modules depend on each other and in what order the code needs to be executed.
