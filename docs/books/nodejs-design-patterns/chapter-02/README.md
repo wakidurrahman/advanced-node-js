@@ -368,11 +368,22 @@ export default class Logger {...}
 
 In this case, the name Logger is ignored, and the entity exported is registered under the name `default`.
 
-This exported name is handled in a special way, and it can be  imported as follows:
+This exported name is handled in a special way, and it can be imported as follows:
 
 ```js
 // main.js
-import MyLogger from './logger.js'
+import MyLogger from './logger.js';
 ```
 
 The difference with `named ESM` imports is that here, since the default export is considered `unnamed`, we can import it and at the same time assign it a `local name` of our choice. In this example, we can replace `MyLogger` with anything else that makes sense in our context.
+
+### 📝 Mixed exports
+
+It is possible to mix `named exports` and a `default export` within an ES module.
+
+It is generally considered good practice to stick with `named exports`, especially when you want to expose more than one functionality, and only use `default exports` if it's one clear functionality you want to export.
+
+This is not a hard rule and there are notable exceptions to this suggestion.
+
+> [!TIP]
+> :alien: Consider carefully what the best approach for your specific module is and what you want the developer experience to be for the users of your module.
