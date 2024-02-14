@@ -455,4 +455,4 @@ import(translationModule).then((strings) => {
 
 2. #### Read-only live bindings
 
-   Another fundamental characteristic of ES modules, which helps with **cyclic/rotational dependencies**, is the idea that imported modules are effectively `**_read-only live bindings_**` to their `exported` values.
+   Another fundamental characteristic of ES modules, which helps with **cyclic/rotational dependencies**, is the idea that imported modules are effectively **_`read-only live bindings`_** to their `exported` values.
