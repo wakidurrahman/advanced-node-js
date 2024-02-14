@@ -387,3 +387,32 @@ This is not a hard rule and there are notable exceptions to this suggestion.
 
 > [!TIP]
 > :alien: Consider carefully what the best approach for your specific module is and what you want the developer experience to be for the users of your module.
+
+### 📝 Module identifiers
+
+**Module identifiers** (also called **_module specifiers_**) are the different types of values that we can use in our `import` statements to specify the location of the module we want to load.
+
+- _Relative specifiers_: `import MyLogger from './logger.js';`
+- _Absolute specifiers_: like `'file:///opt/nodejs/config.js'`. They refer directly and explicitly to a full path.
+
+```js
+
+// package.json:
+{
+  "type" : "module",
+  "imports": {
+    "#root/*.js": "./*.js"
+  }
+}
+
+// main.js
+import { Source } from '#root/path/to/Source.js';
+
+// Source.js:
+export class Source {
+  // ...
+}
+```
+
+- _Bare specifiers_: `import fastify from 'fastify';`
+- _Deep import specifiers_: `import MyLogger from 'fastify/lib/logger.js';`
