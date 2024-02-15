@@ -1,0 +1,17 @@
+{
+  "name": "10-esm-default",
+  "version": "1.0.0",
+  "description": "Default `exports` and `imports`",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js && node showDefault.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

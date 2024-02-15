@@ -1,0 +1,22 @@
+{
+  "name": "12-esm-async-imports",
+  "version": "1.0.0",
+  "description": "This sample demonstrates how to load modules dynamically with ESM",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js en",
+    "start:it": "node main.js it",
+    "start:el": "node main.js el",
+    "start:es": "node main.js es",
+    "start:pl": "node main.js pl",
+    "start:pt": "node main.js pt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

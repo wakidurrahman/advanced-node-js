@@ -1,0 +1,17 @@
+{
+  "name": "14-esm-circular-dependency",
+  "version": "1.0.0",
+  "description": "This sample demonstrates that ESM can effectively resolve circular dependencies.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

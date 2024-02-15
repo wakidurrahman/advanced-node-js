@@ -1,0 +1,17 @@
+{
+  "name": "11-esm-mixed-exports",
+  "version": "1.0.0",
+  "description": "It is possible to mix named exports and a default export within an ES module.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

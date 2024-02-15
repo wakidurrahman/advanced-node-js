@@ -1,0 +1,17 @@
+{
+  "name": "07-cjs-exporting-an-instance",
+  "version": "1.0.0",
+  "description": "To demonstrates a module can modify other modules or objects in the global scope; well, this is called monkey patching",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node --watch main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}
