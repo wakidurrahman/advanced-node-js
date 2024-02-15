@@ -1,0 +1,17 @@
+{
+  "name": "15-esm-modifying-other-modules",
+  "version": "1.0.0",
+  "description": "This sample demonstrates how an ESM module can be use to alter another module.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

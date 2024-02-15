@@ -463,3 +463,7 @@ import(translationModule).then((strings) => {
    - **_Phase 2: Instantiation_**: In the instantiation phase, the **interpreter walks** the `tree view` obtained from the previous phase from the **bottom to the top** ⬆️. For every module, the `interpreter` will look for all the **_exported properties_** e.i: `export let loaded = false;` first and build out a map of the exported names in memory. After this sequence of steps, the `interpreter` will do another pass to `link` the `exported names` to the modules importing them.
 
    - **_Phase 3: Evaluation_**: In this phase, all the code in every file is finally executed. The execution order is again bottom-up respecting the post-order depth-first visit of our original dependency graph. With this approach, `main.js` is the last file to be executed. This way, we can be sure that all the exported values have been initialized before we start executing our main business logic.
+
+### 📝 Modifying other modules
+
+It is true that we can't change the bindings of the `default export` or `named exports` of an existing module from another module, but, if one of these bindings is an `object`, we can still mutate the `object` itself by **_reassigning_** some of the `object properties`.
