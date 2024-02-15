@@ -467,3 +467,81 @@ import(translationModule).then((strings) => {
 ### 📝 Modifying other modules
 
 It is true that we can't change the bindings of the `default export` or `named exports` of an existing module from another module, but, if one of these bindings is an `object`, we can still mutate the `object` itself by **_reassigning_** some of the `object properties`.
+
+## #️⃣ ESM and CommonJS differences and interoperability
+
+### 📝 ESM runs in strict mode
+
+ES modules run implicitly in strict mode. This means that we don't have to explicitly add the "use strict" statements at the beginning of every file.
+
+### 📝 Missing references in ESM
+
+This value can be used to reconstruct `__filename` and `__dirname` in the form of absolute paths:
+
+```js
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+```
+
+It is also possible to recreate the `require()` function as follows:
+
+```js
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+```
+
+Now we can use `require()` to import functionality coming from CommonJS modules in the context of `ES modules`.
+
+In the `global scope` of an ES module, `this` is `undefined`, while in CommonJS, `this` is a reference to `exports`:
+
+```js
+// this.js - ESM
+console.log(this); // undefined
+
+// this.cjs – CommonJS
+console.log(this === exports); // true
+```
+
+### 📝 Interoperability
+
+We discussed how to import `CommonJS modules` in ESM by using the `module.createRequire` function.
+
+It is also possible to import `CommonJS modules` from ESM by using the standard import syntax. This is only limited to `default exports`, though:
+
+```js
+import packageMain from 'commonjs-package'; // Works
+import { method } from 'commonjs-package'; // Errors
+```
+
+Unfortunately, it is not possible to import ES modules from CommonJS modules.
+
+ESM cannot import JSON files directly as modules. The following import statement will fail:
+
+```js
+import data from './data.json'
+
+It will produce a TypeError (Unknown file extension: .json).
+```
+
+To overcome this limitation, we can use again the `module.createRequire` utility:
+
+```js
+// Option 1: Read and parse JSON files yourself
+import { readFile } from 'fs/promises';
+const json = JSON.parse(
+  await readFile(
+    new URL('./some-file.json', import.meta.url)
+  )
+);
+
+// Option 2: Leverage the CommonJS require function to load JSON files
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const data = require('./data.json');
+console.log(data);
+```
+
+There is ongoing work to support JSON modules natively even in ESM.
+![json-module](./json-module.png)
