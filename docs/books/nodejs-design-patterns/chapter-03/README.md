@@ -20,3 +20,9 @@ JavaScript is the ideal language for `callbacks` because functions are **_first-
 Another ideal construct for implementing callbacks is `closures`.
 
 ### 📝 The continuation-passing style
+
+In JavaScript, a callback is a function that is passed as an argument to another function and is invoked with the result when the operation completes.(JavaScript মধ্যে, একটি callback একটি function যা অন্য ফাংশনে একটি argument হিসাবে পাস করা হয় এবং যখন অপারেশন সম্পূর্ণ হয় তখন ফলাফলের সাথে আহ্বান করা হয়।)
+
+> [!NOTE]
+> In functional programming, this way of propagating the result is called continuation-passing style (CPS).
+
