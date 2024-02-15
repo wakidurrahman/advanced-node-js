@@ -26,3 +26,27 @@ In JavaScript, a callback is a function that is passed as an argument to another
 > [!NOTE]
 > In functional programming, this way of propagating the result is called continuation-passing style (CPS).
 
+### 📝 Synchronous continuation-passing style (CPS).
+
+```js
+function addCps(a, b, callback) {
+  callback(a + b);
+}
+
+addCps(1, 2, (result) => console.log(`Result: ${result}`));
+```
+
+### 📝 Asynchronous continuation-passing style (CPS).
+
+we used setTimeout() to simulate an asynchronous invocation of the callback.
+`setTimeout()` adds a task to the event queue that is executed after the given number of milliseconds.
+
+```js
+function addAsyncCps(a, b, callback) {
+  setTimeout(() => callback(a + b), 100);
+}
+
+additionAsync(1, 2, (result) => console.log(`Result: ${result}`));
+```
+
+Since `setTimeout()` triggers an asynchronous operation, it doesn't wait for the callback to be executed; instead, it returns immediately, giving the control back to addAsyncCps(), and then back again to its caller.
