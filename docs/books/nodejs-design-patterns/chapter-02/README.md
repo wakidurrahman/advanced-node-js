@@ -460,6 +460,6 @@ import(translationModule).then((strings) => {
 3. #### Circular dependency resolution
 
    - **_Phase 1: Parsing_**: The code is explored starting from the entry point. The `interpreter` looks only for `import statements` to find all the necessary modules and to load the source code from the module files. The `dependency graph` is explored in a depth-first fashion, and every module is visited only once. This way the interpreter builds a view of the dependencies that looks like a **tree structure**, as
-   - **_Phase 2: Instantiation_**: In the instantiation phase, the **interpreter walks** the `tree view` obtained from the previous phase from the **bottom to the top** :arrow_up::arrow_up:. For every module, the `interpreter` will look for all the **_exported properties_** e.i: `export let loaded = false;` first and build out a map of the exported names in memory.
+   - **_Phase 2: Instantiation_**: In the instantiation phase, the **interpreter walks** the `tree view` obtained from the previous phase from the **bottom to the top** :arrow*up::arrow_up:. For every module, the `interpreter` will look for all the \*\*\_exported properties*\*\* e.i: `export let loaded = false;` first and build out a map of the exported names in memory. After this sequence of steps, the `interpreter` will do another pass to `link` the `exported names` to the modules importing them.
 
-   After this sequence of steps, the `interpreter` will do another pass to `link` the `exported names` to the modules importing them.
+   - **_Phase 3: Evaluation_**:
