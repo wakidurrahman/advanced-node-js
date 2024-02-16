@@ -144,6 +144,33 @@ Throwing an `error` inside an `asynchronous` `callback` would cause the `error` 
 > In Node.js, this is an **_unrecoverable state_** and the application would simply `exit` with a `non-zero exit code`, printing the stack trace to the `stderr` interface.
 
 > [!TIP]
-> it is always advised, especially in production, to never leave the application running after an uncaught exception is received.
+> It is always advised, especially in production, to never leave the application running after an uncaught exception is received.
 
 Instead, the process should exit immediately, optionally after having run some necessary cleanup tasks, and ideally, a supervising process should restart the application. This is also known as the **fail-fast** approach and it's the recommended practice in Node.js. (পরিবর্তে, প্রক্রিয়াটি অবিলম্বে প্রস্থান করা উচিত, ঐচ্ছিকভাবে কিছু প্রয়োজনীয় ক্লিনআপ কাজ চালানোর পরে, এবং আদর্শভাবে, একটি তত্ত্বাবধান প্রক্রিয়া অ্যাপ্লিকেশন পুনরায় চালু করা উচিত। এটি ব্যর্থ-দ্রুত পদ্ধতি হিসাবেও পরিচিত এবং এটি Node.js-এ প্রস্তাবিত অনুশীলন।)
+
+---
+
+## #️⃣ The Observer pattern
+
+The Observer pattern defines an object (called subject) that can notify a set of observers (or listeners) when a change in its state occurs.
+
+### 📝 The EventEmitter
+
+The Observer pattern is already built into the core and is available through the `EventEmitter` class.
+
+The `EventEmitter` class allows us to register one or more functions as listeners, which will be invoked when a particular event type is fired.
+
+The EventEmitter is exported from the events core module.
+
+```js
+import { EventEmitter } from 'events';
+const emitter = new EventEmitter();
+```
+
+The essential methods of the EventEmitter are as follows:
+
+
+- `on(event, listener)`: This method allows us to register a new listener (a function) for the given event type (a string).
+- `once(event, listener)`: This method registers a new listener, which is then removed after the event is emitted for the first time.
+- `emit(event, [arg1], [...])`: This method produces a new event and provides additional arguments to be passed to the listeners.
+- `removeListener(event, listener)`: This method removes a listener for the specified event type.
