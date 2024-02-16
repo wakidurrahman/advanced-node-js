@@ -68,17 +68,23 @@ The callback is used just to iterate over the elements of the array, and not to 
 
 ### 📝 Using synchronous APIs
 
-using a synchronous API instead of an asynchronous one has some caveats: 
+using a synchronous API instead of an asynchronous one has some caveats:
 
 - A synchronous API for a specific functionality might not always be available.
 - A synchronous API will block the event loop and put any concurrent requests on hold.
 - A synchronous API will break the Node.js concurrency model, slowing down the whole application.
 
-The risk of blocking the event loop is partially mitigated because the synchronous I/O API is invoked only once per filename, while 
+The risk of blocking the event loop is partially mitigated because the synchronous I/O API is invoked only once per filename, while
 
 Using synchronous I/O in Node.js is strongly discouraged in many circumstances
 
 > [!TIP]
 > It makes perfect sense to use a synchronous blocking API to load a configuration file while bootstrapping an application.
 
+### 📝 Guaranteeing asynchronicity with deferred execution
 
+In Node.js, with process.nextTick(), which defers the execution of a function after the currently running operation completes. Its functionality is very simple: it takes a `callback` as an argument and pushes it to the top 🔝 of the `event queue`, in front of any pending `I/O` event, and returns immediately. The `callback` will then be invoked as soon as the currently running operation yields control back to the `event loop`.
+
+```js
+process.nextTick(() => callback(cache.get(filename)));
+```
