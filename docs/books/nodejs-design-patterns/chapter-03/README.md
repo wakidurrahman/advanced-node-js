@@ -118,3 +118,32 @@ readFile('foo.txt', 'utf8', (err, data) => {
 **In synchronous:**, `direct style` functions error propagation is done with the well-known `throw` statement, which causes the `error` to jump up in the call stack until it is taken.
 
 **In asynchronous:** `CPS`, however, proper error propagation is done by simply passing the `error` to the `next` `callback` in the chain.
+
+### 📝 Uncaught exceptions
+
+Sometimes, it can happen that an `error` is thrown and not caught within the `callback` of an `asynchronous` function.
+
+```js
+readFile(filename, 'utf8', (err, data) => {
+  // the callback of an asynchronous function
+  try {
+    // parse the file contents
+    parsed = JSON.parse(data);
+  } catch (err) {
+    // catch parsing errors
+    console.error(err);
+  }
+});
+```
+
+This could happen if, for example, we had forgotten to surround `JSON.parse()` with a `try...catch` statement in the `readJSON()` function.
+
+Throwing an `error` inside an `asynchronous` `callback` would cause the `error` to jump up to the `event loop`, so it would never be propagated to the next callback.(একটি অ্যাসিঙ্ক্রোনাস কলব্যাকের ভিতরে একটি ত্রুটি নিক্ষেপ করার ফলে ত্রুটিটি ইভেন্ট লুপে চলে যাবে, তাই এটি পরবর্তী কলব্যাকে কখনই প্রচারিত হবে না।)
+
+> [!CAUTION]
+> In Node.js, this is an **_unrecoverable state_** and the application would simply `exit` with a `non-zero exit code`, printing the stack trace to the `stderr` interface.
+
+> [!TIP]
+> it is always advised, especially in production, to never leave the application running after an uncaught exception is received.
+
+Instead, the process should exit immediately, optionally after having run some necessary cleanup tasks, and ideally, a supervising process should restart the application. This is also known as the **fail-fast** approach and it's the recommended practice in Node.js. (পরিবর্তে, প্রক্রিয়াটি অবিলম্বে প্রস্থান করা উচিত, ঐচ্ছিকভাবে কিছু প্রয়োজনীয় ক্লিনআপ কাজ চালানোর পরে, এবং আদর্শভাবে, একটি তত্ত্বাবধান প্রক্রিয়া অ্যাপ্লিকেশন পুনরায় চালু করা উচিত। এটি ব্যর্থ-দ্রুত পদ্ধতি হিসাবেও পরিচিত এবং এটি Node.js-এ প্রস্তাবিত অনুশীলন।)
