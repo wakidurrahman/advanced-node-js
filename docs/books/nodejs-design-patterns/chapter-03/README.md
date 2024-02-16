@@ -88,3 +88,22 @@ In Node.js, with process.nextTick(), which defers the execution of a function af
 ```js
 process.nextTick(() => callback(cache.get(filename)));
 ```
+
+## #️⃣ Node.js callback conventions
+
+In Node.js, CPS APIs and callbacks follow a set of specific conventions. These conventions apply to the Node.js core API, but they are also followed by the vast majority of the userland modules and applications.
+
+### 📝 The callback comes last
+
+In all core Node.js functions, the standard convention is that when a function accepts a `callback` as input, this has to be passed as the **last argument**.
+
+Let's take the following Node.js core API as an example:
+
+```js
+readFile(filename, [options], callback);
+```
+
+The reason for this convention is that the function call is more readable in case the `callback` is defined in place.
+
+
+### 📝 The callback comes last
