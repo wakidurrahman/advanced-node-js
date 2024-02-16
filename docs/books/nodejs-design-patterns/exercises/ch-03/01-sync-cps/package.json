@@ -1,0 +1,17 @@
+{
+  "name": "01-sync-cps",
+  "version": "1.0.0",
+  "description": "This example demonstrates Synchronous continuation-passing style",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

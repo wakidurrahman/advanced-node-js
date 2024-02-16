@@ -78,7 +78,7 @@ The **synchronous event demultiplexer** watches multiple resources and returns a
 
 ## #️⃣ The reactor pattern
 
-The main idea behind the **_Reactor Pattern_** is to have a `handler` associated **with each I/O operation**. A `handler` in Node.js is represented by a `callback` (or `cb` for short) function. Reactor Pattern পিছনে মূল ধারণা হল প্রতিটি I/O অপারেশনের সাথে একটি handler যুক্ত করা। Node.js-এ একটি handler একটি callback (বা সংক্ষেপে cb) function দ্বারা প্রতিনিধিত্ব করা হয়। The handler will be invoked as soon as an event is produced and processed by the event loop.
+The main idea behind the **_Reactor Pattern_** is to have a `handler` associated **with each I/O operation**. A `handler` in Node.js is represented by a `callback` (or `cb` for short) function.( Reactor Pattern পিছনে মূল ধারণা হল প্রতিটি I/O অপারেশনের সাথে একটি handler যুক্ত করা। Node.js-এ একটি handler একটি callback (বা সংক্ষেপে cb) function দ্বারা প্রতিনিধিত্ব করা হয়। )The handler will be invoked as soon as an event is produced and processed by the event loop.
 
 > [!NOTE]
 > A Node.js application will exit when there are no more pending operations in the event demultiplexer, and no more events to be processed inside the event queue.
