@@ -50,3 +50,12 @@ additionAsync(1, 2, (result) => console.log(`Result: ${result}`));
 ```
 
 Since `setTimeout()` triggers an asynchronous operation, it doesn't wait for the callback to be executed; instead, it returns immediately, giving the control back to addAsyncCps(), and then back again to its caller.
+
+### 📝 Non-CPS callbacks
+
+```js
+const result = [1, 5, 7].map((element) => element - 1);
+console.log(result); // [0, 4, 6]
+```
+
+The callback is used just to iterate over the elements of the array, and not to pass the result of the operation. In fact, the result is returned synchronously using a **_direct style_**.
