@@ -106,4 +106,11 @@ readFile(filename, [options], callback);
 The reason for this convention is that the function call is more readable in case the `callback` is defined in place.
 
 
-### 📝 The callback comes last
+### 📝 Any error always comes first
+
+```js
+readFile('foo.txt', 'utf8', (err, data) => { // .. 
+})
+```
+
+
