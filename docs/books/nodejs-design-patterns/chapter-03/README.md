@@ -59,3 +59,7 @@ console.log(result); // [0, 4, 6]
 ```
 
 The callback is used just to iterate over the elements of the array, and not to pass the result of the operation. In fact, the result is returned synchronously using a **_direct style_**.
+
+## #️⃣ Synchronous or asynchronous?
+
+### 📝 An unpredictable function

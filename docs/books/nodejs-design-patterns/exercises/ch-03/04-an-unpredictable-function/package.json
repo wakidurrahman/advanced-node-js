@@ -1,0 +1,17 @@
+{
+  "name": "04-an-unpredictable-function",
+  "version": "1.0.0",
+  "description": "This example demonstrates how a function can behave synchronously under certain circumstances and asynchronously under other.  ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}
