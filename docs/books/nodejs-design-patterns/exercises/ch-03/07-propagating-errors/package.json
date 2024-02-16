@@ -1,0 +1,17 @@
+{
+  "name": "07-propagating-errors",
+  "version": "1.0.0",
+  "description": "This example demonstrates how to propagate errors in asynchronous CPS APIs.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

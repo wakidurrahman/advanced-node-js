@@ -1,0 +1,17 @@
+{
+  "name": "08-uncaught-errors",
+  "version": "1.0.0",
+  "description": "This example demonstrates how uncaught errors will cause the application to exit. It also shows how to catch those errors just before the application exits.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}
