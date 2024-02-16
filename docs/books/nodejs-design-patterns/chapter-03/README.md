@@ -105,12 +105,16 @@ readFile(filename, [options], callback);
 
 The reason for this convention is that the function call is more readable in case the `callback` is defined in place.
 
-
 ### 📝 Any error always comes first
 
 ```js
-readFile('foo.txt', 'utf8', (err, data) => { // .. 
-})
+readFile('foo.txt', 'utf8', (err, data) => {
+  // ..
+});
 ```
 
+### 📝 Propagating errors
 
+**In synchronous:**, `direct style` functions error propagation is done with the well-known `throw` statement, which causes the `error` to jump up in the call stack until it is taken.
+
+**In asynchronous:** `CPS`, however, proper error propagation is done by simply passing the `error` to the `next` `callback` in the chain.
