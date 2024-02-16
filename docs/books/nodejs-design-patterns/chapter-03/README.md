@@ -63,3 +63,22 @@ The callback is used just to iterate over the elements of the array, and not to 
 ## #️⃣ Synchronous or asynchronous?
 
 ### 📝 An unpredictable function
+
+### 📝 Unleashing Zalgo
+
+### 📝 Using synchronous APIs
+
+using a synchronous API instead of an asynchronous one has some caveats: 
+
+- A synchronous API for a specific functionality might not always be available.
+- A synchronous API will block the event loop and put any concurrent requests on hold.
+- A synchronous API will break the Node.js concurrency model, slowing down the whole application.
+
+The risk of blocking the event loop is partially mitigated because the synchronous I/O API is invoked only once per filename, while 
+
+Using synchronous I/O in Node.js is strongly discouraged in many circumstances
+
+> [!TIP]
+> It makes perfect sense to use a synchronous blocking API to load a configuration file while bootstrapping an application.
+
+

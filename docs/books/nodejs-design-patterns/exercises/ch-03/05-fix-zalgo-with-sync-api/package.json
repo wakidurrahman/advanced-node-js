@@ -1,0 +1,17 @@
+{
+  "name": "05-fix-zalgo-with-sync-api",
+  "version": "1.0.0",
+  "description": "This example demonstrates how to fix Zalgo by making our unpredictable function synchronous.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

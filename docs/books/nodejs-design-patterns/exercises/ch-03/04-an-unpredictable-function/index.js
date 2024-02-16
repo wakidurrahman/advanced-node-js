@@ -25,6 +25,15 @@ function inconsistentRead(filename, callback) {
   }
 }
 
+/**
+ * it creates a new object that acts as a notifier, allowing us to set multiple listeners for a file read operation.
+ * 
+ * All the listeners will be invoked at once when the read operation completes and the data is available.
+ * 
+ * The function uses our inconsistentRead() function to implement this functionality.
+ * @param {*} filename 
+ * @returns 
+ */
 function createFileReader(filename) {
   const listeners = [];
   inconsistentRead(filename, (value) => {
