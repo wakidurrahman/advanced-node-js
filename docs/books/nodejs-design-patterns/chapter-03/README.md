@@ -144,6 +144,66 @@ Throwing an `error` inside an `asynchronous` `callback` would cause the `error` 
 > In Node.js, this is an **_unrecoverable state_** and the application would simply `exit` with a `non-zero exit code`, printing the stack trace to the `stderr` interface.
 
 > [!TIP]
-> it is always advised, especially in production, to never leave the application running after an uncaught exception is received.
+> It is always advised, especially in production, to never leave the application running after an uncaught exception is received.
 
 Instead, the process should exit immediately, optionally after having run some necessary cleanup tasks, and ideally, a supervising process should restart the application. This is also known as the **fail-fast** approach and it's the recommended practice in Node.js. (পরিবর্তে, প্রক্রিয়াটি অবিলম্বে প্রস্থান করা উচিত, ঐচ্ছিকভাবে কিছু প্রয়োজনীয় ক্লিনআপ কাজ চালানোর পরে, এবং আদর্শভাবে, একটি তত্ত্বাবধান প্রক্রিয়া অ্যাপ্লিকেশন পুনরায় চালু করা উচিত। এটি ব্যর্থ-দ্রুত পদ্ধতি হিসাবেও পরিচিত এবং এটি Node.js-এ প্রস্তাবিত অনুশীলন।)
+
+---
+
+## #️⃣ The Observer pattern
+
+The Observer pattern defines an object (called subject) that can notify a set of observers (or listeners) when a change in its state occurs.
+
+### 📝 The EventEmitter
+
+The Observer pattern is already built into the core and is available through the `EventEmitter` class.
+
+The `EventEmitter` class allows us to register one or more functions as listeners, which will be invoked when a particular event type is fired.
+
+The EventEmitter is exported from the events core module.
+
+```js
+import { EventEmitter } from 'events';
+const emitter = new EventEmitter();
+```
+
+The essential methods of the EventEmitter are as follows:
+
+- `on(event, listener)`: This method allows us to register a new listener (a function) for the given event type (a string).
+- `once(event, listener)`: This method registers a new listener, which is then removed after the event is emitted for the first time.
+- `emit(event, [arg1], [...])`: This method produces a new event and provides additional arguments to be passed to the listeners.
+- `removeListener(event, listener)`: This method removes a listener for the specified event type.
+
+### 📝 The EventEmitter Propagating errors
+
+The convention is to emit a special event, called error, and pass an Error object as an argument.
+
+### 📝 Making any object observable
+
+### 📝 EventEmitter and memory leaks
+
+When subscribing to observables with a long life span, it is extremely important that we **unsubscribe** our listeners once they are no longer needed. This allows us to release the memory used by the objects in a listener's scope and prevent **memory leaks**.
+
+A **memory leak** is a software defect whereby memory that is no longer needed is not released, causing the memory usage of an application to grow **indefinitely**.
+
+```js
+const thisTakesMemory = 'A big string....';
+const listener = () => {
+  console.log(thisTakesMemory);
+};
+emitter.on('an_event', listener);
+
+// we can release the listener with the removeListener() method of the EventEmitter
+emitter.removeListener('an_event', listener);
+```
+
+### 📝 Synchronous and asynchronous events
+
+As with callbacks, events can also be emitted synchronously or asynchronously.
+
+The main difference between emitting synchronous and asynchronous events lies in the way listeners can be registered. (synchronous এবং asynchronous ইভেন্ট নির্গত করার মধ্যে প্রধান পার্থক্য হল যেভাবে শ্রোতাদের নিবন্ধন করা যায় তার মধ্যে রয়েছে।)
+
+When events are emitted asynchronously, we can register new listeners, even after the task that produces the events is triggered up until the current stack yields to the
+event loop. This is because the events are guaranteed not to be fired until the next cycle of the `event loop`, so we can be sure that we won't miss any events.
+
+If we emit our events `synchronously` after the task is launched, we have to register all the listeners before we launch the task, or we will miss all the events.
