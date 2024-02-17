@@ -169,7 +169,6 @@ const emitter = new EventEmitter();
 
 The essential methods of the EventEmitter are as follows:
 
-
 - `on(event, listener)`: This method allows us to register a new listener (a function) for the given event type (a string).
 - `once(event, listener)`: This method registers a new listener, which is then removed after the event is emitted for the first time.
 - `emit(event, [arg1], [...])`: This method produces a new event and provides additional arguments to be passed to the listeners.
@@ -181,3 +180,19 @@ The convention is to emit a special event, called error, and pass an Error objec
 
 ### 📝 Making any object observable
 
+### 📝 EventEmitter and memory leaks
+
+When subscribing to observables with a long life span, it is extremely important that we **unsubscribe** our listeners once they are no longer needed. This allows us to release the memory used by the objects in a listener's scope and prevent **memory leaks**.
+
+A **memory leak** is a software defect whereby memory that is no longer needed is not released, causing the memory usage of an application to grow **indefinitely**.
+
+```js
+const thisTakesMemory = 'A big string....';
+const listener = () => {
+  console.log(thisTakesMemory);
+};
+emitter.on('an_event', listener);
+
+// we can release the listener with the removeListener() method of the EventEmitter
+emitter.removeListener('an_event', listener);
+```
