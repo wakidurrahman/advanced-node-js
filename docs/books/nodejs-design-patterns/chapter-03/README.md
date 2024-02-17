@@ -196,3 +196,14 @@ emitter.on('an_event', listener);
 // we can release the listener with the removeListener() method of the EventEmitter
 emitter.removeListener('an_event', listener);
 ```
+
+### 📝 Synchronous and asynchronous events
+
+As with callbacks, events can also be emitted synchronously or asynchronously.
+
+The main difference between emitting synchronous and asynchronous events lies in the way listeners can be registered. (synchronous এবং asynchronous ইভেন্ট নির্গত করার মধ্যে প্রধান পার্থক্য হল যেভাবে শ্রোতাদের নিবন্ধন করা যায় তার মধ্যে রয়েছে।)
+
+When events are emitted asynchronously, we can register new listeners, even after the task that produces the events is triggered up until the current stack yields to the
+event loop. This is because the events are guaranteed not to be fired until the next cycle of the `event loop`, so we can be sure that we won't miss any events.
+
+If we emit our events `synchronously` after the task is launched, we have to register all the listeners before we launch the task, or we will miss all the events.
