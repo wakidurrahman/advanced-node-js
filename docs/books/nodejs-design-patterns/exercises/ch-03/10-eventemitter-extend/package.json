@@ -1,0 +1,17 @@
+{
+  "name": "10-eventemitter-extend",
+  "version": "1.0.0",
+  "description": "This sample demonstrates how to extend an EventEmitter.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

@@ -178,3 +178,6 @@ The essential methods of the EventEmitter are as follows:
 ### 📝 The EventEmitter Propagating errors
 
 The convention is to emit a special event, called error, and pass an Error object as an argument.
+
+### 📝 Making any object observable
+

@@ -28,4 +28,4 @@ function findRegex(files, regex) {
 findRegex(fileList, regExp)
   .on('fileread', (file) => console.log(`${file} was read`))
   .on('found', (file, match) => console.log(`Matched "${match}" in ${file}`))
-  .on('error', (err) => console.log(`Error emitter ${err.match}`));
+  .on('error', (err) => console.error(`Error emitted ${err.match}`));
