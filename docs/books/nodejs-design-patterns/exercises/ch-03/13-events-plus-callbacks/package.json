@@ -1,0 +1,20 @@
+{
+  "name": "13-events-plus-callbacks",
+  "version": "1.0.0",
+  "description": "This sample demonstrates how the `glob` package, combines callbacks and the EventEmitter.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "glob": "^7.1.6"
+  }
+}

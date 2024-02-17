@@ -207,3 +207,5 @@ When events are emitted asynchronously, we can register new listeners, even afte
 event loop. This is because the events are guaranteed not to be fired until the next cycle of the `event loop`, so we can be sure that we won't miss any events.
 
 If we emit our events `synchronously` after the task is launched, we have to register all the listeners before we launch the task, or we will miss all the events.
+
+### 📝 EventEmitter versus callbacks
