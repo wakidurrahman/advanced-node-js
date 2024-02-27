@@ -29,10 +29,12 @@ export const spider = (url, callback) => {
       superagent.get(url).end((err, res) => {
         if (err) {
           callback(err);
-        } else {
+        } else { 
+
           // [3]: we make sure that the directory that will contain the file exists
           mkdirp(path.dirname(filename))
-            .then((result) => {
+            .then(() => {
+
               // [4] we write the body of the HTTP response to the filesystem
               writeFile(filename, res.text, (err) => {
                 if (err) {
