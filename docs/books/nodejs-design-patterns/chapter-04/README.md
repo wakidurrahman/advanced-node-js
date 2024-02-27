@@ -13,3 +13,19 @@ The **KISS** principle (**_Keep It Simple, Stupid_**);
 ### 📝 Callback hell
 
 The situation where the abundance of closures and in-place callback definitions transforms the code into an unreadable and unmanageable blob is known as callback hell. (যে পরিস্থিতিতে প্রচুর পরিমাণে closures এবং in-place callback সংজ্ঞা কোডটিকে একটি অপঠনযোগ্য এবং নিয়ন্ত্রণের অযোগ্য ব্লবে রূপান্তরিত করে তা কলব্যাক হেল নামে পরিচিত।)
+
+## #️⃣ 📝 Callback best practices and control flow patterns
+
+There are several situations where controlling the flow of a set of asynchronous tasks requires the use of specific patterns and techniques especially if we are only using plain JavaScript without the aid of any external library.
+
+### 📝 Callback discipline
+
+The first rule to keep in mind is to not abuse in-place function definitions when defining callbacks.(মনে রাখা প্রথম নিয়ম হল কলব্যাক সংজ্ঞায়িত করার সময় in-place ফাংশন সংজ্ঞার অপব্যবহার না করা৷)
+
+These are some basic principles that can help us keep the nesting level low and improve the organization of our code in general:
+
+- **Exit as soon as possible**. Use `return`, `continue`, or `break`, depending on the context, to immediately exit the current statement instead of writing(and nesting) complete `if...else` statement.
+- **Create name functions for callbacks**, keeping them out of closures and passing intermediate results as arguments. Naming our functions will also make them look better in stack traces.
+- **Modularize the code**. Split the code into smaller, reusable functions whenever possible.
+
+### 📝 Applying the callback discipline
