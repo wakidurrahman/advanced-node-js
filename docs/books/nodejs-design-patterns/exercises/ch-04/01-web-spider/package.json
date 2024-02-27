@@ -1,0 +1,22 @@
+{
+  "name": "01-web-spider",
+  "version": "0.1.0",
+  "description": "First version of web spider that demonstrates CPS and callback hell.",
+  "main": "spider-cli.js",
+  "type": "module",
+  "scripts": {
+    "start": "node spider-cli.js http://www.example.com"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "mkdirp": "^3.0.1",
+    "slug": "^8.2.3",
+    "superagent": "^8.1.2"
+  }
+}
