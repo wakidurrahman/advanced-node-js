@@ -49,3 +49,18 @@ function saveFile(filename, contents, cb) {
     .catch((err) => {});
 }
 ```
+
+### 📝 Sequential execution
+
+Executing a set of tasks in sequence means running them one at a time, one after the other. The order of execution matters and must be preserved, because the result of a task in the list may affect the execution of the next.
+
+There are different variation of this flow:
+
+- Executing a set of known task in sequence, without propagation data across them.
+- Using the output of a task as the input for the next (also known as _chain_ , _pipeline_ or _waterfall_ )
+- Iterating over a collection while running an asynchronous task on each element, one after the other.
+
+
+### 📝 Executing a known set of tasks in sequence
+
+### 📝 Sequential iteration
