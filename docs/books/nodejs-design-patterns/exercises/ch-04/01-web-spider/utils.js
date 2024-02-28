@@ -13,7 +13,7 @@ export const urlToFileName = (url) => {
   console.log('UrlPath', urlPath);
 
   let fileName = path.join(parsedUrl.hostname, urlPath);
-  if (path.extname(fileName).match(/htm/)) {
+  if (!path.extname(fileName).match(/htm/)) {
     fileName += '.html';
   }
 

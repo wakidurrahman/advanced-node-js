@@ -1,0 +1,23 @@
+{
+  "name": "02-web-spider-functions",
+  "version": "0.2.0",
+  "description": "Refactored version of web spider that cleans up callback hell.",
+  "main": "spider-cli.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch spider-cli.js http://www.example.com",
+    "start:second": "node --watch spider-cli.js https://loige.co"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "mkdirp": "^3.0.1",
+    "slug": "^8.2.3",
+    "superagent": "^8.1.2"
+  }
+}

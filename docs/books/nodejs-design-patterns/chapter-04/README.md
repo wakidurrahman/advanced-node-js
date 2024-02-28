@@ -29,3 +29,23 @@ These are some basic principles that can help us keep the nesting level low and 
 - **Modularize the code**. Split the code into smaller, reusable functions whenever possible.
 
 ### 📝 Applying the callback discipline
+
+1. The **first step**, we can refactor our `error-checking` pattern by removing the else statement.
+
+```js
+// This is often referred to as the **early return principle**.
+if (err) {
+  return cb(err);
+}
+// code to execute when there are no errors
+```
+
+2. Second optimization: we can try to identify reusable pieces of code.
+
+```js
+function saveFile(filename, contents, cb) {
+  mkdirp(path.dirname(filename))
+    .then(() => {})
+    .catch((err) => {});
+}
+```
