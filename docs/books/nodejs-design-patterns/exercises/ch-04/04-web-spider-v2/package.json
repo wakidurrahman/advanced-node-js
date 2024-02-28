@@ -1,0 +1,26 @@
+{
+  "name": "02-web-spider-functions",
+  "version": "0.3.0",
+  "description": "Web spider example to demonstrate sequential callbacks",
+  "main": "spider-cli.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch spider-cli.js http://www.example.com",
+    "start:second": "node --watch spider-cli.js https://loige.co 5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "mkdirp": "^3.0.1",
+    "slug": "^8.2.3",
+    "superagent": "^8.1.2"
+  }
+}
+
+

@@ -68,3 +68,5 @@ There are different variation of this flow:
 what happens if we want to execute an asynchronous operation for each item in a collection? In cases such as this, we can't hardcode the task sequence anymore; instead, we have to build it dynamically.
 
 ### 📝 Web spider version 2
+
+### 📝 Sequential crawling of links
