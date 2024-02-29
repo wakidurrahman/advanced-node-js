@@ -108,3 +108,16 @@ Here,
 3. `iteratorCallback` : is the function that gets executed when all the items are processed or in case of an error..
 
 > [!NOTE] > **The Sequential Iterator pattern :** Execute a list of tasks in sequence by creating a function named `iterator`, which invokes the next available task in the collection and makes sure to invoke the next step of the iteration when the current task completes.
+
+
+### 📝 Parallel execution
+
+We can only execute asynchronous operations in parallel, because their concurrency is handled internally by the non-blocking APIs. 
+
+### 📝 Web spider version 3
+
+### 📝 The pattern
+
+The Unlimited Parallel Execution pattern: Run a set of asynchronous tasks in parallel by launching them all at once, and then wait for all of them to complete by counting the number of times their callbacks are invoked.
+
+
