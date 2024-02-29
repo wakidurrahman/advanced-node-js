@@ -8,6 +8,7 @@ import { getPageLinks, urlToFilename } from './utils.js';
 function download(url, filename, callback) {
   // [2]: If the file is not found, the URL is downloaded
   console.log(`Downloading ${url} into ${filename}`);
+  // Make a HTTP call base on URL
   superagent.get(url).end((err, res) => {
     if (err) return callback(err);
 
@@ -60,7 +61,11 @@ function spiderLinks(currentUrl, body, nesting, callback) {
   }
 
   let completed = 0;
+  // The `hasErrors` variable is necessary because if one parallel task fails,
+  // we want to immediately call the callback with the given error.
   let hasErrors = false;
+
+  // The done() function increases a counter when a spider task completes.
   function done(err) {
     if (err) {
       hasErrors = true;
@@ -69,12 +74,18 @@ function spiderLinks(currentUrl, body, nesting, callback) {
 
     console.log('SpiderLink Done function calling', completed);
 
+    // When the number of completed downloads reaches the size of the links array, the final callback is invoked
     if (++completed === links.length && !hasErrors) {
       return callback();
     }
   }
   console.log("Links List", links);
 
+  /**
+   * The spider() tasks are now started all at once. 
+   * This is possible by simply iterating over the links array and
+   * starting each task without waiting for the previous one to finish:
+   */
   links.forEach((link) => spider(link, nesting - 1, done));
 }
 
@@ -93,6 +104,7 @@ export const spider = (url, nesting, callback) => {
   // [1]: read it and start spidering its links.
   readFile(filename, 'utf8', (err, fileContent) => {
     if (err) {
+      console.error(err.message);
       if (err.code !== 'ENOENT') {
         return callback(err);
       }
