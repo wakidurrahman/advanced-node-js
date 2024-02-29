@@ -1,0 +1,27 @@
+{
+  "name": "06-web-spider-v3",
+  "version": "0.4.0",
+  "description": "Web spider example to demonstrate unlimited parallel execution.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch index.js http://www.example.com",
+    "start:first": "node --watch index.js https://loige.co",
+    "start:second": "node --watch index.js https://loige.co 5"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "mkdirp": "^3.0.1",
+    "slug": "^8.2.3",
+    "superagent": "^8.1.2"
+  }
+}
+
+

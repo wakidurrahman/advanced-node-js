@@ -108,3 +108,9 @@ Here,
 3. `iteratorCallback` : is the function that gets executed when all the items are processed or in case of an error..
 
 > [!NOTE] > **The Sequential Iterator pattern :** Execute a list of tasks in sequence by creating a function named `iterator`, which invokes the next available task in the collection and makes sure to invoke the next step of the iteration when the current task completes.
+
+
+### 📝 Parallel execution
+
+### 📝 Web spider version 3
+
