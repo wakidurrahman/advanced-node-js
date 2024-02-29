@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node --watch spider-cli.js http://www.example.com",
+    "start:first": "node --watch spider-cli.js https://loige.co",
     "start:second": "node --watch spider-cli.js https://loige.co 5"
   },
   "keywords": [],

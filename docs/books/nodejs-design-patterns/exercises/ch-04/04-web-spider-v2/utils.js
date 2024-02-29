@@ -31,7 +31,6 @@ function getLinkUrl(currentUrl, element) {
  */
 export const urlToFilename = (url) => {
   const parsedUrl = new URL(url);
-  console.log('parsedUrl ', parsedUrl);
 
   const urlPath = parsedUrl.pathname
     .split('/')

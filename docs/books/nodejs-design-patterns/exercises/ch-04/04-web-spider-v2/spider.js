@@ -55,7 +55,7 @@ function spiderLinks(currentUrl, body, nesting, callback) {
    */
   const links = getPageLinks(currentUrl, body);
   if (links.length === 0) {
-    return callback();
+    return process.nextTick(callback);
   }
 
   /**
@@ -105,8 +105,6 @@ function spiderLinks(currentUrl, body, nesting, callback) {
  */
 export const spider = (url, nesting, callback) => {
   const filename = urlToFilename(url);
-
-  console.log('File name From Spider: ', filename);
 
   // [1]: read it and start spidering its links.
   readFile(filename, 'utf8', (err, fileContent) => {
