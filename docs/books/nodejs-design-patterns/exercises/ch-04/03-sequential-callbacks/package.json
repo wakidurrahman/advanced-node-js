@@ -1,0 +1,16 @@
+{
+  "name": "03-sequential-callbacks",
+  "version": "1.0.0",
+  "description": "Simple example that demonstrates sequential tasks using callbacks",
+  "main": "task.js",
+  "scripts": {
+    "start": "node --watch task"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}

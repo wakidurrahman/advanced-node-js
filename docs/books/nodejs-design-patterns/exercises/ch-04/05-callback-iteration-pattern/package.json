@@ -1,0 +1,16 @@
+{
+  "name": "05-callback-iteration-pattern",
+  "version": "1.0.0",
+  "description": "Simple example that demonstrates the callback iteration pattern",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch index"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "engineStrict": true
+}
