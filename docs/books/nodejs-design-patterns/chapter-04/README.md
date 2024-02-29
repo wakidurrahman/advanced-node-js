@@ -112,5 +112,12 @@ Here,
 
 ### 📝 Parallel execution
 
+We can only execute asynchronous operations in parallel, because their concurrency is handled internally by the non-blocking APIs. 
+
 ### 📝 Web spider version 3
+
+### 📝 The pattern
+
+The Unlimited Parallel Execution pattern: Run a set of asynchronous tasks in parallel by launching them all at once, and then wait for all of them to complete by counting the number of times their callbacks are invoked.
+
 
