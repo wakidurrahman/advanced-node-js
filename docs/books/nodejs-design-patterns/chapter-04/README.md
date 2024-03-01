@@ -120,4 +120,9 @@ We can only execute asynchronous operations in parallel, because their concurren
 
 The Unlimited Parallel Execution pattern: Run a set of asynchronous tasks in parallel by launching them all at once, and then wait for all of them to complete by counting the number of times their callbacks are invoked.
 
+### 📝 Fixing race conditions with concurrent tasks
 
+
+### 📝 Limited parallel execution
+
+A server that spawns unbounded parallel tasks to handle a user request could be exploited with a denial-of-service (DoS) attack.
