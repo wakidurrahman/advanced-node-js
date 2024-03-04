@@ -1,11 +1,11 @@
 {
-  "name": "07-callback-unlimited-parallel-execution-pattern",
+  "name": "08-callback-limited-parallel-execution-pattern",
   "version": "1.0.0",
-  "description": "Simple example that demonstrates the callback parallel execution pattern",
+  "description": "Simple example that demonstrates the callback limited parallel execution pattern",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch index.js"
+    "start": "node --watch index"
   },
   "keywords": [],
   "author": "",
