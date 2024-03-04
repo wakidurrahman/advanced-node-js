@@ -25,14 +25,25 @@ let running = 0;
 let completed = 0;
 let index = 0;
 
+// [1]: 
+/**
+ * [1]: We have an iterator function, 
+ * Which we call next(), and then an inner loop 
+ * that spawns as possible in parallel while staying within the concurrency limit.
+ * 
+ */
 function next() {
-  // [1]
   while (running < concurrency && index < tasks.length) {
     console.log('While Start: ', index);
     console.log('Running: ', running);
     const task = tasks[index++];
 
     // [2]
+    /**
+     * The callback we pass to each task,
+     * which checks whether we completed all the tasks in the list.
+     * If there are still tasks to run, it invokes next() to spawn another set of tasks.
+     */
 
     task(() => {
       if (++completed === tasks.length) {
