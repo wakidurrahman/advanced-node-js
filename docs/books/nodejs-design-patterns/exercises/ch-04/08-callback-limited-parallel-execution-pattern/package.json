@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch index"
+    "start": "node --watch index",
+    "get-env": "NODE_TARGET=com NODE_ALPS=dev node index.js"
   },
   "keywords": [],
   "author": "",

@@ -59,9 +59,15 @@ function next() {
   }
 }
 
-next();
+// next();
 
 function finish(message) {
   // All the tasks completed
   console.log(`${message} all the tasks executed!`);
 }
+
+console.log(process.env.NODE_TARGET)
+console.log(typeof process.env.NODE_TARGET)
+process.env.NODE_TARGET; // "239482"
+process.env.NODE_ALPS;
+

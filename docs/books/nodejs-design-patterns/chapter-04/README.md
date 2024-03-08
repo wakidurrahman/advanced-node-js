@@ -126,3 +126,7 @@ The Unlimited Parallel Execution pattern: Run a set of asynchronous tasks in par
 A server that spawns unbounded parallel tasks to handle a user request could be exploited with a denial-of-service (DoS) attack.
 
 ### 📝 Limiting concurrency
+
+### 📝 Globally limiting concurrency
+
+### 📝 Queues to the rescue
