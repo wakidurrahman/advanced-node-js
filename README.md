@@ -82,3 +82,25 @@ OpenJS Node.js Application Developer (JSNAD) Sample Curriculum Path
 **_Finally, register and sit for your exam:_**
 
 3. OpenJS Node.js Application Developer
+
+# Node js Developer Skills
+
+1. What is Node.js?
+2. Node js Developer Skills Required
+   - JavaScript
+   - Asynchronous Programming
+   - Node.js Frameworks
+   - Understanding of Databases
+   - RESTful API Development
+   - Knowledge of Web Technologies
+   - Debugging and Testing Skills
+   - Scalability and Performance Optimization
+   - Security
+   - Continuous Learning
+3. Node.js Case Studies
+4. Opportunities for Node.js Developers
+   - Backend Developer
+   - Full Stack Developer
+   - DevOps Engineer
+   - IoT Developer
+   - Software Architect
