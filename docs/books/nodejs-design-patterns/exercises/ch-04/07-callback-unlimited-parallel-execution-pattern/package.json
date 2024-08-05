@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple example that demonstrates the callback parallel execution pattern",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node --watch index.js"
   },
